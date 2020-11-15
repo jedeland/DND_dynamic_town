@@ -15,3 +15,8 @@
  The town and its history is documented
  
  The town is exportable and can be read in a fancy pdf format or a simple yaml / json format
+
+The way that NPC's are set out is by using the descriptors (eyes, hair, muscles ect) and each descriptor is given a value based on 
+the outstandingness of it, general descriptions take 2-4 of these descriptors to describe the asthetic of the character,
+
+Buildings and Locations follow a similar path, with certain descriptors (lots of green-ery, marble tiling, tapestries ect)
