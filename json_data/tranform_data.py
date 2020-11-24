@@ -20,8 +20,16 @@ def clean_files():
         f = open(file_path, encoding='utf-8')
         print("there", f)
         data = json.load(f)
-        print(data)
-        print(data["backgroundFluff"])
+        #print(data)
+        #print("Printing keys - " , data.keys())
+        for i in data.keys():
+            print(i)
+            #print("The key starts here", data[i])
+        #Should only load the first key
+        json_key = list(data.keys())[0]
+        print("Main Json Key is - ", json_key)
+
+
 
 
 clean_files()
