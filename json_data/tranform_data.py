@@ -13,6 +13,7 @@ def clean_files():
         files.append(file)
     #Relevant objects only contains objects with entries
     relevant_objects = []
+    json_file_names = {}
     for json_file in files:
         file_path = 'raw_data/{}'.format(json_file)
 
@@ -28,15 +29,21 @@ def clean_files():
         print("Main Json Key is - ", json_key)
         simplified_data = data[json_key]
         #print(simplified_data)
-        print(simplified_data[0])
+        print("Simplified data stream , ", simplified_data[0])
+        print("name aquisition ", simplified_data[0]["name"])
+        key_list = []
         for k in simplified_data:
             print("Json part starts here: {} {}".format(json_file, k))
             try:
+                key_list.append(k["name"])
+                d = {json_key: key_list}
+                json_file_names.update(d)
                 print("****** - ", k["entries"])
             except:
                 pass
         #TODO: go down the line in similar fashion and extract data, make dictionary of dictionaries that contain useful information,
         # like descriptions of objects or backgrounds and export to YAML file
+    print(json_file_names)
 
 
 
