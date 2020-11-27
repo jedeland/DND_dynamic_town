@@ -11,25 +11,35 @@ def clean_files():
     for file in os.listdir("raw_data"):
         print(file)
         files.append(file)
-
+    #Relevant objects only contains objects with entries
+    relevant_objects = []
     for json_file in files:
         file_path = 'raw_data/{}'.format(json_file)
 
         print("raw_data/{}".format(json_file))
-        print("*"*5)
+
         f = open(file_path, encoding='utf-8')
-        print("there", f)
+        print("IO Wrapper is", f)
         data = json.load(f)
         #print(data)
         #print("Printing keys - " , data.keys())
-        for i in data.keys():
-            print(i)
-            #print("The key starts here", data[i])
         #Should only load the first key
         json_key = list(data.keys())[0]
         print("Main Json Key is - ", json_key)
+        simplified_data = data[json_key]
+        #print(simplified_data)
+        print(simplified_data[0])
+        for k in simplified_data:
+            print("Json part starts here: {} {}".format(json_file, k))
+            try:
+                print("****** - ", k["entries"])
+            except:
+                pass
+        #TODO: go down the line in similar fashion and extract data, make dictionary of dictionaries that contain useful information,
+        # like descriptions of objects or backgrounds and export to YAML file
 
 
 
+#Doot DOOT
 
 clean_files()
