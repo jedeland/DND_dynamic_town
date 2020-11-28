@@ -25,10 +25,17 @@ def clean_files():
         #print(data)
         #print("Printing keys - " , data.keys())
         #Should only load the first key
-        json_key = list(data.keys())[0]
+        if "fluff" in json_file:
+            #Fluff files first object contain all info
+            print(json_file)
+            json_key = list(data.keys())[0]
+        else:
+            #Non fluff files contain metadata in first position, aka 0
+            print("Not fluff file")
+            json_key = list(data.keys())[1]
         print("Main Json Key is - ", json_key)
         simplified_data = data[json_key]
-        #print(simplified_data)
+        print(simplified_data)
         print("Simplified data stream , ", simplified_data[0])
         print("name aquisition ", simplified_data[0]["name"])
         key_list = []
