@@ -84,18 +84,36 @@ def load_yaml():
 
 def translate_json():
     print("Trying to simplify json data")
-    for file in os.listdir("raw_data"):
-        if os.path.exists("translated_data"):
+    if os.path.exists("translated_data"):
             print("moving files to translated_data")
-        else:
-            try:
-                
-                os.mkdir("translated_data")
-            except:
-                print("Already exists")
+    else:
+        try:
+            os.mkdir("translated_data")
+        except:
+            print("Already exists")
+    for file in os.listdir("raw_data"):
+        print(file)
+        f =  open("raw_data/{}".format(file), encoding="UTF-8")
+        json_version = json.load(f)
+        try:
+            json_version.pop("_meta", None)
+        except:
+            pass
+        json_key = list(json_version.keys())[0]
+        json_onedown = json_version[json_key]
+        #print(json_onedown)
+        print(type(json_onedown), len(json_onedown))
+        for i in json_onedown:
+            print("Json dict - {}".format(i))
+        #TODO: Add tags to each object in list, to make the object more readable in yaml format
+        # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
+        #print(json_version[json_key])
+        print("*\n"*5)
 
 
 
 
 
-load_yaml()
+
+
+translate_json()
