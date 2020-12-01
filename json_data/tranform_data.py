@@ -82,6 +82,18 @@ def load_yaml():
             output = yaml.safe_load(out)
             print(output)
 
+def translate_json():
+    print("Trying to simplify json data")
+    for file in os.listdir("raw_data"):
+        if os.path.exists("translated_data"):
+            print("moving files to translated_data")
+        else:
+            try:
+                
+                os.mkdir("translated_data")
+            except:
+                print("Already exists")
+
 
 
 
