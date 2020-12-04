@@ -103,13 +103,23 @@ def translate_json():
         json_onedown = json_version[json_key]
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
+        json_deities_list = {"deities": []}
         for i in json_onedown:
-            if "fluff" not in file:
+            if "deities" in file:
                 if "entries" in i:
                     print("Json dict - {}".format(i))
                     print(type(i))
                 i = {"god_code" : "{}_{}_{}".format(i["name"], i["source"], i["pantheon"]).upper(), "god_info": i}
                 print(i)
+                print(json_deities_list["deities"])
+                print(type(json_deities_list["deities"]))
+                json_deities_list["deities"].append(i)
+        print(json_deities_list)
+        if "deities" in file:
+            with open("translated_data/deities.json", "w+") as f:
+                print("writing to deities.json")
+                print(json_deities_list)
+                json.dump(json_deities_list, f)
 
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
