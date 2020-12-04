@@ -104,7 +104,14 @@ def translate_json():
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
         for i in json_onedown:
-            print("Json dict - {}".format(i))
+            if "fluff" not in file:
+                if "entries" in i:
+                    print("Json dict - {}".format(i))
+                    print(type(i))
+                i = {"god_code" : "{}_{}_{}".format(i["name"], i["source"], i["pantheon"]).upper(), "god_info": i}
+                print(i)
+
+
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
         # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
         #print(json_version[json_key])
