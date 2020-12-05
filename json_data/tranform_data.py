@@ -103,34 +103,39 @@ def translate_json():
         json_onedown = json_version[json_key]
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
-        json_deities_list = {"deities": []}
-        for i in json_onedown:
-            if "deities" in file:
-                if "entries" in i:
-                    print("Json dict - {}".format(i))
-                    print(type(i))
-                i = {"god_code" : "{}_{}_{}".format(i["name"], i["source"], i["pantheon"]).upper(), "god_info": i}
-                print(i)
-                print(json_deities_list["deities"])
-                print(type(json_deities_list["deities"]))
-                json_deities_list["deities"].append(i)
-        print(json_deities_list)
         if "deities" in file:
-            with open("translated_data/deities.json", "w+") as f:
-                print("writing to deities.json")
-                print(json_deities_list)
-                json.dump(json_deities_list, f)
-
+            deities_translation(file, json_onedown)
+        elif "items" in file:
+            items_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
         # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
         #print(json_version[json_key])
         print("*\n"*5)
 
+def items_translation(file, json_data):
+    for i in json_data:
+        print(i)
 
+def deities_translation(file, json_onedown):
+    json_deities_list = {"deities": []}
+    # TODO: Refactor sub functions into specific translation cases
+    for i in json_onedown:
 
-
-
+        if "entries" in i:
+            print("Json dict - {}".format(i))
+            print(type(i))
+        i = {"god_code": "{}_{}_{}".format(i["name"], i["source"], i["pantheon"]).upper(), "god_info": i}
+        print(i)
+        print(json_deities_list["deities"])
+        print(type(json_deities_list["deities"]))
+        json_deities_list["deities"].append(i)
+    print(json_deities_list)
+    if "deities" in file:
+        with open("translated_data/deities.json", "w+") as f:
+            print("writing to deities.json")
+            print(json_deities_list)
+            json.dump(json_deities_list, f)
 
 
 translate_json()
