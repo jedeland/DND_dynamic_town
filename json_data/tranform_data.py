@@ -103,9 +103,9 @@ def translate_json():
         json_onedown = json_version[json_key]
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
-        if "deities" in file:
+        if "deities" in file and not os.path.exists("translated_data/deities.json"):
             deities_translation(file, json_onedown)
-        elif "items" in file:
+        elif "items" in file and not os.path.exists("translated_data/items.json"):
             items_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
@@ -114,8 +114,18 @@ def translate_json():
         print("*\n"*5)
 
 def items_translation(file, json_data):
+    #Using a standardised translation service is ineffective, as the json files are formatted differently
+    print("translating items")
+    json_items_list = {"items" : []}
     for i in json_data:
-        print(i)
+        if "entries" in i:
+            print("Json dict - {}".format(i))
+            print(type(i))
+        try:
+            i = {"item_code": "{}_{}".format(i["name"], i["source"], i["rarity"]).upper(), "item_info": i}
+        except Exception as e:
+            print("Exception is " , e)
+            pass
 
 def deities_translation(file, json_onedown):
     json_deities_list = {"deities": []}
