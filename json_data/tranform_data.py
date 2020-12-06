@@ -2,6 +2,7 @@ import json
 import os; import io
 import time
 import yaml
+import re
 
 #This file is used to unspool and transorm the json data into usable sql or json files using my own format
 
@@ -105,7 +106,7 @@ def translate_json():
         print(type(json_onedown), len(json_onedown))
         if "deities" in file and not os.path.exists("translated_data/deities.json"):
             deities_translation(file, json_onedown)
-        elif "items" in file and not os.path.exists("translated_data/items.json"):
+        elif "items" in file and os.path.exists("translated_data/items.json"):
             items_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
@@ -122,10 +123,20 @@ def items_translation(file, json_data):
             print("Json dict - {}".format(i))
             print(type(i))
         try:
-            i = {"item_code": "{}_{}".format(i["name"], i["source"], i["rarity"]).upper(), "item_info": i}
+            clean_name = re.sub(r'[^A-Za-z0-9]+', '', i["name"])
+            clean_name = clean_name.replace("'", "")
+            print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
+            i = {"item_code": "{}_{}".format(i["name"].replace(" ", ""), i["source"], i["rarity"]).upper(), "item_info": i}
+            json_items_list["items"].append(i)
         except Exception as e:
             print("Exception is " , e)
             pass
+    print(json_items_list)
+    if "items" in file:
+        with open("translated_data/items.json", "w+") as f:
+            print("writing to items.json")
+            print(json_items_list)
+            json.dump(json_items_list, f)
 
 def deities_translation(file, json_onedown):
     json_deities_list = {"deities": []}
