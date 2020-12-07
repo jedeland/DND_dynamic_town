@@ -123,10 +123,10 @@ def items_translation(file, json_data):
             print("Json dict - {}".format(i))
             print(type(i))
         try:
-            clean_name = re.sub(r'[^A-Za-z0-9]+', '', i["name"])
+            clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
             clean_name = clean_name.replace("'", "")
             print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
-            i = {"item_code": "{}_{}".format(i["name"].replace(" ", ""), i["source"], i["rarity"]).upper(), "item_info": i}
+            i = {"item_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"], i["rarity"].replace(" ", "-")).upper(), "item_info": i}
             json_items_list["items"].append(i)
         except Exception as e:
             print("Exception is " , e)
