@@ -125,6 +125,7 @@ def items_translation(file, json_data):
         try:
             clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
             clean_name = clean_name.replace("'", "")
+            clean_name = re.sub(r"^\s", "", clean_name)
             print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
             i = {"item_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"], i["rarity"].replace(" ", "-")).upper(), "item_info": i}
             json_items_list["items"].append(i)
