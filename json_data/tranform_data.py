@@ -105,10 +105,12 @@ def translate_json():
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
         if "deities" in file and not os.path.exists("translated_data/deities.json"):
-            deities_translation(file, json_onedown)
+            #deities_translation(file, json_onedown)
+            pass
         elif "items" in file and os.path.exists("translated_data/items.json"):
-            items_translation(file, json_onedown)
-        else:
+            #items_translation(file, json_onedown)
+            pass
+        elif "fluff" in file:
             fluff_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
@@ -123,15 +125,25 @@ def fluff_translation(file, json_data):
     x = 0
     for i in json_data:
 
+
+
         print("Json dict {} - {}".format(x+1, i))
         print(type(i))
         x = x+1
+
         try:
             clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
             clean_name = clean_name.replace("'", "")
             clean_name = re.sub(r"^\s", "", clean_name)
             print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
-            i = {"item_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"], i["rarity"].replace(" ", "-")).upper(), "item_info": i}
+            json_entry_data = i["entries"][0]
+            print(json_entry_data)
+            json_entry_data = json_entry_data["entries"]
+            print("this is after assignment : " ,json_entry_data)
+            print([i for i in json_entry_data])
+            print(json_entry_data)
+            i = {"fluff_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"].upper()), "fluff_info": i}
+
             json_fluff_list["{}".format(file_name)].append(i)
         except Exception as e:
             print("Exception is " , e)
