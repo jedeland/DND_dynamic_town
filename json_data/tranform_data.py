@@ -139,9 +139,13 @@ def fluff_translation(file, json_data):
             json_entry_data = i["entries"][0]
             print(json_entry_data)
             json_entry_data = json_entry_data["entries"]
+            entry_data = json_entry_data[0]["entries"]
             print("this is after assignment : " ,json_entry_data)
-            print([i for i in json_entry_data])
+            print("new assignment : ", entry_data)
+            print(type(json_entry_data), len(json_entry_data),
+                  type(entry_data), len(entry_data))
             print(json_entry_data)
+            #TODO: Eliminate the entries segment in I, and use the entry data to replace the nested entries section
             i = {"fluff_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"].upper()), "fluff_info": i}
 
             json_fluff_list["{}".format(file_name)].append(i)
