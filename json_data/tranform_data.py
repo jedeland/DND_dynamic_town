@@ -108,11 +108,34 @@ def translate_json():
             deities_translation(file, json_onedown)
         elif "items" in file and os.path.exists("translated_data/items.json"):
             items_translation(file, json_onedown)
+        else:
+            fluff_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
         # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
         #print(json_version[json_key])
         print("*\n"*5)
+
+def fluff_translation(file, json_data):
+    file_name = file.split(".")[0]
+    json_fluff_list = {"{}".format(file_name) : []}
+    print(json_fluff_list)
+    x = 0
+    for i in json_data:
+
+        print("Json dict {} - {}".format(x+1, i))
+        print(type(i))
+        x = x+1
+        try:
+            clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
+            clean_name = clean_name.replace("'", "")
+            clean_name = re.sub(r"^\s", "", clean_name)
+            print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
+            i = {"item_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"], i["rarity"].replace(" ", "-")).upper(), "item_info": i}
+            json_fluff_list["{}".format(file_name)].append(i)
+        except Exception as e:
+            print("Exception is " , e)
+            pass
 
 def items_translation(file, json_data):
     #Using a standardised translation service is ineffective, as the json files are formatted differently
