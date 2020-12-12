@@ -104,54 +104,79 @@ def translate_json():
         json_onedown = json_version[json_key]
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
+        #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
         if "deities" in file and not os.path.exists("translated_data/deities.json"):
-            #deities_translation(file, json_onedown)
+            deities_translation(file, json_onedown)
             pass
-        elif "items" in file and os.path.exists("translated_data/items.json"):
-            #items_translation(file, json_onedown)
+        elif "items" in file and not os.path.exists("translated_data/items.json"):
+            items_translation(file, json_onedown)
             pass
-        elif "fluff" in file:
-            fluff_translation(file, json_onedown)
+        elif "fluff-backgrounds" in file:
+            background_translation(file, json_onedown)
+        elif "fluff-languages" in file:
+            language_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
         # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
         #print(json_version[json_key])
         print("*\n"*5)
-
-def fluff_translation(file, json_data):
-    file_name = file.split(".")[0]
-    json_fluff_list = {"{}".format(file_name) : []}
-    print(json_fluff_list)
+def language_translation(file, json_data):
+    file_name = file.split(".")[0].split("-")[-1]
+    #file has fluff as prefix
+    print(file_name)
+    #language list
+    json_lng_list = {"{}".format(file_name): []}
+    #X can be deleted in each translation function, its only there to enumerate the json output
     x = 0
     for i in json_data:
+        print("Json dict {} - {}".format(x + 1, i))
+        x = x+1
+        try:
+            base_languages = i["source"]
+            if "PHB" in base_languages:
+                i = {"languages_code": "{}_{}".format(i["name"].upper(), i["source"]), "language_info": i}
+                json_lng_list["{}".format(file)].append(i)
+        except:
+            pass
 
 
 
+def background_translation(file, json_data):
+    file_name = file.split(".")[0].split("-")[1]
+    json_bkg_list = {"{}".format(file_name) : []}
+    print(json_bkg_list)
+    x = 0
+    for i in json_data:
         print("Json dict {} - {}".format(x+1, i))
         print(type(i))
         x = x+1
-
         try:
             clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
             clean_name = clean_name.replace("'", "")
             clean_name = re.sub(r"^\s", "", clean_name)
-            print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
+            #print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
             json_entry_data = i["entries"][0]
-            print(json_entry_data)
+            #print(json_entry_data)
             json_entry_data = json_entry_data["entries"]
             entry_data = json_entry_data[0]["entries"]
-            print("this is after assignment : " ,json_entry_data)
-            print("new assignment : ", entry_data)
+            #print("this is after assignment : " ,json_entry_data)
+            #print("new assignment : ", entry_data)
             print(type(json_entry_data), len(json_entry_data),
                   type(entry_data), len(entry_data))
             print(json_entry_data)
             #TODO: Eliminate the entries segment in I, and use the entry data to replace the nested entries section
             i = {"fluff_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"].upper()), "fluff_info": i}
+            print("i is ", i)
 
-            json_fluff_list["{}".format(file_name)].append(i)
+            json_bkg_list["{}".format(file_name)].append(i)
         except Exception as e:
             print("Exception is " , e)
             pass
+    if "backgrounds" in file:
+        with open("translated_data/backgrounds.json", "w+") as f:
+            print("writing to backgrounds.json")
+            print(json_bkg_list)
+            json.dump(json_bkg_list, f)
 
 def items_translation(file, json_data):
     #Using a standardised translation service is ineffective, as the json files are formatted differently
