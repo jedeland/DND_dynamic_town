@@ -154,20 +154,15 @@ def background_translation(file, json_data):
             clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
             clean_name = clean_name.replace("'", "")
             clean_name = re.sub(r"^\s", "", clean_name)
-            #print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
             json_entry_data = i["entries"][0]
-            #print(json_entry_data)
             json_entry_data = json_entry_data["entries"]
             entry_data = json_entry_data[0]["entries"]
-            #print("this is after assignment : " ,json_entry_data)
-            #print("new assignment : ", entry_data)
             print(type(json_entry_data), len(json_entry_data),
                   type(entry_data), len(entry_data))
-            print(json_entry_data)
-            #TODO: Eliminate the entries segment in I, and use the entry data to replace the nested entries section
-            i = {"fluff_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"].upper()), "fluff_info": i}
-            print("i is ", i)
-
+            #Replaces nested entries section with just the entries list
+            i["entries"] = entry_data
+            info_line = i
+            i = {"background_code": "{}_{}".format(clean_name.replace(" ", "-").upper(), i["source"].upper()), "background_info": info_line}
             json_bkg_list["{}".format(file_name)].append(i)
         except Exception as e:
             print("Exception is " , e)
