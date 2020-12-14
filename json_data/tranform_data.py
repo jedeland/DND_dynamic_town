@@ -126,6 +126,7 @@ def language_translation(file, json_data):
     print(file_name)
     #language list
     json_lng_list = {"{}".format(file_name): []}
+    print(json_lng_list)
     #X can be deleted in each translation function, its only there to enumerate the json output
     x = 0
     for i in json_data:
@@ -133,11 +134,15 @@ def language_translation(file, json_data):
         x = x+1
         try:
             base_languages = i["source"]
-            if "PHB" in base_languages:
-                i = {"languages_code": "{}_{}".format(i["name"].upper(), i["source"]), "language_info": i}
-                json_lng_list["{}".format(file)].append(i)
-        except:
+            i = {"languages_code": "{}_{}".format(i["name"].upper(), i["source"]), "language_info": i}
+            json_lng_list["{}".format(file_name)].append(i)
+        except Exception as e:
+            print("Exception is ", e)
             pass
+    print(json_lng_list)
+    send_to_translated(file, "languages", json_lng_list)
+
+
 
 
 
@@ -167,11 +172,7 @@ def background_translation(file, json_data):
         except Exception as e:
             print("Exception is " , e)
             pass
-    if "backgrounds" in file:
-        with open("translated_data/backgrounds.json", "w+") as f:
-            print("writing to backgrounds.json")
-            print(json_bkg_list)
-            json.dump(json_bkg_list, f)
+    send_to_translated(file, "backgrounds", json_bkg_list)
 
 def items_translation(file, json_data):
     #Using a standardised translation service is ineffective, as the json files are formatted differently
@@ -192,11 +193,7 @@ def items_translation(file, json_data):
             print("Exception is " , e)
             pass
     print(json_items_list)
-    if "items" in file:
-        with open("translated_data/items.json", "w+") as f:
-            print("writing to items.json")
-            print(json_items_list)
-            json.dump(json_items_list, f)
+    send_to_translated(file, "items", json_items_list)
 
 def deities_translation(file, json_onedown):
     json_deities_list = {"deities": []}
@@ -212,11 +209,13 @@ def deities_translation(file, json_onedown):
         print(type(json_deities_list["deities"]))
         json_deities_list["deities"].append(i)
     print(json_deities_list)
-    if "deities" in file:
-        with open("translated_data/deities.json", "w+") as f:
-            print("writing to deities.json")
-            print(json_deities_list)
-            json.dump(json_deities_list, f)
+    send_to_translated(file, "deities", json_deities_list)
 
+def send_to_translated(file, name_input, json_list):
+    if "{}".format(name_input) in file:
+        with open("translated_data/{}.json".format(name_input), "w+") as f:
+            print("writing to {}.json".format(name_input))
+            print(json_list)
+            json.dump(json_list, f)
 
 translate_json()
