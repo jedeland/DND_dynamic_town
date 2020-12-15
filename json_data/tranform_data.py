@@ -106,13 +106,15 @@ def translate_json():
         print(type(json_onedown), len(json_onedown))
         print("Moving onto dict call translated_data/{}".format(file))
         #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
-        function_dict = {"deities": deities_translation(file, json_onedown), "items": items_translation(file, json_onedown), "fluff_backgrounds": background_translation(file, json_onedown),
-                         "fluff-languages": language_translation(file, json_onedown)}
+        function_dict = {"deities": deities_translation, "items": items_translation, "fluff_backgrounds": background_translation,
+                         "fluff-languages": language_translation}
         print("Moving to function call")
         try:
             if not os.path.exists("translated_data/{}".format(file)):
+                call = file.split(".")[0]
                 print("Starting get function on file - {}".format(file))
-                function_dict.get(file)
+                function_dict[call](file, json_onedown)
+
             else:
                 print("File already exists at translated_data/{}".format(file))
         except Exception as e:
