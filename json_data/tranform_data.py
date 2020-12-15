@@ -104,17 +104,29 @@ def translate_json():
         json_onedown = json_version[json_key]
         #print(json_onedown)
         print(type(json_onedown), len(json_onedown))
+        print("Moving onto dict call translated_data/{}".format(file))
         #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
-        if "deities" in file and not os.path.exists("translated_data/deities.json"):
-            deities_translation(file, json_onedown)
-            pass
-        elif "items" in file and not os.path.exists("translated_data/items.json"):
-            items_translation(file, json_onedown)
-            pass
-        elif "fluff-backgrounds" in file:
-            background_translation(file, json_onedown)
-        elif "fluff-languages" in file:
-            language_translation(file, json_onedown)
+        function_dict = {"deities": deities_translation(file, json_onedown), "items": items_translation(file, json_onedown), "fluff_backgrounds": background_translation(file, json_onedown),
+                         "fluff-languages": language_translation(file, json_onedown)}
+        print("Moving to function call")
+        try:
+            if not os.path.exists("translated_data/{}".format(file)):
+                print("Starting get function on file - {}".format(file))
+                function_dict.get(file)
+            else:
+                print("File already exists at translated_data/{}".format(file))
+        except Exception as e:
+            print("The dictionary get function didnt work because of : ", e)
+        # if "deities" in file and not os.path.exists("translated_data/deities.json"):
+        #     deities_translation(file, json_onedown)
+        #     pass
+        # elif "items" in file and not os.path.exists("translated_data/items.json"):
+        #     items_translation(file, json_onedown)
+        #     pass
+        # elif "fluff-backgrounds" in file:
+        #     background_translation(file, json_onedown)
+        # elif "fluff-languages" in file:
+        #     language_translation(file, json_onedown)
 
         #TODO: Add tags to each object in list, to make the object more readable in yaml format
         # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
@@ -204,9 +216,6 @@ def deities_translation(file, json_onedown):
             print("Json dict - {}".format(i))
             print(type(i))
         i = {"god_code": "{}_{}_{}".format(i["name"], i["source"], i["pantheon"]).upper(), "god_info": i}
-        print(i)
-        print(json_deities_list["deities"])
-        print(type(json_deities_list["deities"]))
         json_deities_list["deities"].append(i)
     print(json_deities_list)
     send_to_translated(file, "deities", json_deities_list)
