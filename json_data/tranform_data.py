@@ -1,5 +1,5 @@
 import json
-import os; import io
+import os
 import time
 import yaml
 import re
@@ -107,7 +107,7 @@ def translate_json():
         print("Moving onto dict call translated_data/{}".format(file))
         #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
         function_dict = {"deities": deities_translation, "items": items_translation, "fluff_backgrounds": background_translation,
-                         "fluff-languages": language_translation}
+                         "fluff-languages": language_translation, "fluff-races": races_translation}
         print("Moving to function call")
         try:
             if not os.path.exists("translated_data/{}".format(file)):
@@ -134,6 +134,15 @@ def translate_json():
         # Example: { "god_type" : "NAME-SOURCE-RACE" {'name': 'Abbathor', 'source': 'SCAG', 'page': 22, 'pantheon': 'Dwarven', 'alignment': ['N', 'E'], 'title': 'God of greed', 'domains': ['Trickery'], 'symbol': 'Jeweled dagger, point-down'}}
         #print(json_version[json_key])
         print("*\n"*5)
+
+def races_translation(file, json_data):
+    file_name = file.split(".")[0].split("-")[1]
+    json_race_list = {"{}".format(file_name) : []}
+    x = 0
+    for i in json_data:
+        print("Json dict {} - {}".format(x + 1, i))
+        x = x + 1
+        #TODO: Unspool entries 
 def language_translation(file, json_data):
     file_name = file.split(".")[0].split("-")[-1]
     #file has fluff as prefix
