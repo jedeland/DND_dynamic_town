@@ -110,9 +110,11 @@ def translate_json():
                          "fluff-languages": language_translation, "fluff-races": races_translation}
         print("Moving to function call")
         try:
-            print(file)
+
             call = file.split(".")[0]
-            print("Does path exist? {}".format(os.path.exists("translated_data/{}.json".format(call))))
+            if "-" in call:
+                call = call.split("-")[-1]
+            print("Does path exist? {} {}".format(os.path.exists("translated_data/{}.json".format(call)), call))
             if not os.path.exists("translated_data/{}.json".format(call)):
                 call = file.split(".")[0]
                 print("Starting get function on file - {}".format(file))
@@ -143,9 +145,21 @@ def races_translation(file, json_data):
     json_race_list = {"{}".format(file_name) : []}
     x = 0
     for i in json_data:
-        print("Json dict {} - {}".format(x + 1, i))
+        #print("Json dict {} - {} \n\n".format(x + 1, i))
         x = x + 1
+        #TODO: build modular function to search down the "entries" trees that exist
+        json_1 = i["entries"][0]
+        json_2 = json_1["entries"][0]
+        json_3 = json_2["entries"]
+        print(type(json_3), json_2)
+        try:
+            i = {"race_code": "{} {}".format(i["name"].upper(), i["source"].upper()), "race_info": i}
+            #print(i)
+        except Exception as e:
+            print(e)
+            pass
         #TODO: Unspool entries
+
 def language_translation(file, json_data):
     file_name = file.split(".")[0].split("-")[-1]
     #file has fluff as prefix
