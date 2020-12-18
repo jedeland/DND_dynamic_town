@@ -110,7 +110,10 @@ def translate_json():
                          "fluff-languages": language_translation, "fluff-races": races_translation}
         print("Moving to function call")
         try:
-            if not os.path.exists("translated_data/{}".format(file)):
+            print(file)
+            call = file.split(".")[0]
+            print("Does path exist? {}".format(os.path.exists("translated_data/{}.json".format(call))))
+            if not os.path.exists("translated_data/{}.json".format(call)):
                 call = file.split(".")[0]
                 print("Starting get function on file - {}".format(file))
                 function_dict[call](file, json_onedown)
@@ -142,7 +145,7 @@ def races_translation(file, json_data):
     for i in json_data:
         print("Json dict {} - {}".format(x + 1, i))
         x = x + 1
-        #TODO: Unspool entries 
+        #TODO: Unspool entries
 def language_translation(file, json_data):
     file_name = file.split(".")[0].split("-")[-1]
     #file has fluff as prefix
