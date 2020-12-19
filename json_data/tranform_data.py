@@ -124,6 +124,7 @@ def translate_json():
                 print("File already exists at translated_data/{}".format(file))
         except Exception as e:
             print("The dictionary get function didnt work because of : ", e)
+            pass
         # if "deities" in file and not os.path.exists("translated_data/deities.json"):
         #     deities_translation(file, json_onedown)
         #     pass
@@ -149,13 +150,16 @@ def races_translation(file, json_data):
         x = x + 1
         #TODO: build modular function to search down the "entries" trees that exist
 
-        json_1 = i["entries"][0]
-        json_2 = json_1["entries"][0]
-        json_3 = json_2["entries"]
-        json_4 = unspool_key(i)
-        print(type(json_3), json_2)
         try:
-            i = {"race_code": "{} {}".format(i["name"].upper(), i["source"].upper()), "race_info": i}
+            key_out = unspool_key(i)
+            print("Type is : ", type(key_out))
+            if key_out is None:
+                pass
+            else:
+                print("This is the key out section : ", key_out)
+                valuable_out = key_out
+
+            i = {"race_code": "{} {}".format(i["name"].upper(), i["source"].upper()), "race_info": valuable_out}
             #print(i)
         except Exception as e:
             print(e)
@@ -163,32 +167,28 @@ def races_translation(file, json_data):
         #TODO: Unspool entries
 
 def unspool_key(json_data):
-    print(json_data)
     #Function checks json keys, if no keys exist then it returns the final output
-    print("Json keys are {}".format(json_data.keys()), " Json length {}".format(len(json_data)))
+    #print("Json keys are {}".format(json_data.keys()), " Json length {}".format(len(json_data)))
     if "entries" in json_data.keys():
         try:
             current_section = json_data["entries"]
-            print("Current section is ", current_section)
-            print(len(current_section))
-            #TODO: Check if dict is final dict with type entries and entries section, if it is return it
+            #TODO: Fix the issues arrising from the return values
             if type(current_section) is list and len(current_section) == 1:
-                print(len(current_section))
-                print("Current section is a list")
                 current_section = current_section[0]
-                print(current_section)
-                unspool_key(current_section)
+                return unspool_key(current_section)
             elif type(current_section) is dict:
-                reserve_section = current_section
                 current_section = current_section["entries"]
-                print("Current section is a dict")
                 unspool_key(current_section)
+            elif type(current_section) is list and len(current_section) > 3:
+                print("Current section is the final part ", json_data)
+                print(type(json_data))
+                return json_data
 
-        except:
+        except Exception as e:
+            print("Problem caused by {}".format(e))
             pass
 
 
-    return json_data
 
 def language_translation(file, json_data):
     file_name = file.split(".")[0].split("-")[-1]
