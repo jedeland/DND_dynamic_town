@@ -171,6 +171,7 @@ def unspool_key(json_data):
             current_section = json_data["entries"]
             print("Current section is ", current_section)
             print(len(current_section))
+            #TODO: Check if dict is final dict with type entries and entries section, if it is return it
             if type(current_section) is list and len(current_section) == 1:
                 print(len(current_section))
                 print("Current section is a list")
@@ -178,9 +179,10 @@ def unspool_key(json_data):
                 print(current_section)
                 unspool_key(current_section)
             elif type(current_section) is dict:
+                reserve_section = current_section
                 current_section = current_section["entries"]
                 print("Current section is a dict")
-                unspool_key(json_data)
+                unspool_key(current_section)
 
         except:
             pass
