@@ -148,9 +148,11 @@ def races_translation(file, json_data):
         #print("Json dict {} - {} \n\n".format(x + 1, i))
         x = x + 1
         #TODO: build modular function to search down the "entries" trees that exist
+
         json_1 = i["entries"][0]
         json_2 = json_1["entries"][0]
         json_3 = json_2["entries"]
+        json_4 = unspool_key(i)
         print(type(json_3), json_2)
         try:
             i = {"race_code": "{} {}".format(i["name"].upper(), i["source"].upper()), "race_info": i}
@@ -159,6 +161,26 @@ def races_translation(file, json_data):
             print(e)
             pass
         #TODO: Unspool entries
+
+def unspool_key(json_data):
+    print(json_data)
+    #Function checks json keys, if no keys exist then it returns the final output
+    print("Json keys are {}".format(json_data.keys()), " Json length {}".format(len(json_data)))
+    if "entries" in json_data.keys():
+        #Go down entries tree
+        g = False
+        while not g:
+            try:
+                current_section = json_data["entries"]
+                print("Current section is ", current_section)
+                if current_section is list and len(current_section) == 1:
+                    current_section = current_section[0]
+                    
+            except:
+                pass
+
+
+    return json_data
 
 def language_translation(file, json_data):
     file_name = file.split(".")[0].split("-")[-1]
