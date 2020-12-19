@@ -167,17 +167,23 @@ def unspool_key(json_data):
     #Function checks json keys, if no keys exist then it returns the final output
     print("Json keys are {}".format(json_data.keys()), " Json length {}".format(len(json_data)))
     if "entries" in json_data.keys():
-        #Go down entries tree
-        g = False
-        while not g:
-            try:
-                current_section = json_data["entries"]
-                print("Current section is ", current_section)
-                if current_section is list and len(current_section) == 1:
-                    current_section = current_section[0]
-                    
-            except:
-                pass
+        try:
+            current_section = json_data["entries"]
+            print("Current section is ", current_section)
+            print(len(current_section))
+            if type(current_section) is list and len(current_section) == 1:
+                print(len(current_section))
+                print("Current section is a list")
+                current_section = current_section[0]
+                print(current_section)
+                unspool_key(current_section)
+            elif type(current_section) is dict:
+                current_section = current_section["entries"]
+                print("Current section is a dict")
+                unspool_key(json_data)
+
+        except:
+            pass
 
 
     return json_data
