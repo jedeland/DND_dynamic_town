@@ -160,12 +160,14 @@ def races_translation(file, json_data):
                 valuable_out = key_out
 
             i = {"race_code": "{} {}".format(i["name"].upper(), i["source"].upper()), "race_info": valuable_out}
+            json_race_list["{}".format(file_name)].append(i)
             #print(i)
         except Exception as e:
             print(e)
             pass
         #TODO: Unspool entries
-
+    print("Sending {} to translated".format(file))
+    send_to_translated(file, "races", json_race_list)
 def unspool_key(json_data):
     #Function checks json keys, if no keys exist then it returns the final output
     #print("Json keys are {}".format(json_data.keys()), " Json length {}".format(len(json_data)))
