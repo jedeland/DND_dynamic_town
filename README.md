@@ -10,9 +10,9 @@
  
  The town is inhabbited by regualr npcs (numeric values) and notable npcs (actual characters)
  
- The town changes over time, each day, week or year depending on user input
+ The town changes over time, each day, week or year depending on user input and includes the effects of resident hero's that use the town as a central base
  
- The town and its history is documented
+ The town and its history is documented, along with previous NPC actions that affect modern day relations
  
  The town is exportable and can be read in a fancy pdf format or a simple yaml / json format
 
