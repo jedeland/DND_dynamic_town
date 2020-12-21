@@ -10,39 +10,32 @@ import re
 
 def clean_files():
     files = []
-    for file in os.listdir("raw_data"):
+    for file in os.listdir("translated_data"):
         print(file)
         files.append(file)
     #Relevant objects only contains objects with entries
     relevant_objects = []
     json_file_names = {}
     for json_file in files:
-        file_path = 'raw_data/{}'.format(json_file)
+        file_path = 'translated_data/{}'.format(json_file)
 
-        print("raw_data/{}".format(json_file))
+        print("translated_data/{}".format(json_file))
 
         f = open(file_path, encoding='utf-8')
         print("IO Wrapper is", f)
         data = json.load(f)
         print("Data starts here ... " , data)
-        if "fluff" in json_file:
-            #Fluff files first object contain all info
-            #print(json_file)
-            json_key = list(data.keys())[0]
-        else:
-            #Non fluff files contain metadata in first position, aka 0
-            #print("Not fluff file")
-            json_key = list(data.keys())[1]
         try:
             data.pop("_meta", None)
             convert_to_yaml(data, file_path)
         except:
+            convert_to_yaml(data, file_path)
             pass
         #print(data)
         #print(data)
         #print("Printing keys - " , data.keys())
         #Should only load the first key
-
+        json_key = list(data.keys())[0]
         #print("Main Json Key is - ", json_key)
         target_data = data[json_key]
         print(type(target_data))
@@ -106,6 +99,7 @@ def translate_json():
         print(type(json_onedown), len(json_onedown))
         print("Moving onto dict call translated_data/{}".format(file))
         #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
+        #TODO: Standardise the data trees to all use the same rule for entries
         function_dict = {"deities": deities_translation, "items": items_translation, "fluff_backgrounds": background_translation,
                          "fluff-languages": language_translation, "fluff-races": races_translation}
         print("Moving to function call")
@@ -288,3 +282,4 @@ def send_to_translated(file, name_input, json_list):
             json.dump(json_list, f)
 
 translate_json()
+clean_files()
