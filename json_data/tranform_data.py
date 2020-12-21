@@ -99,6 +99,7 @@ def translate_json():
         print(type(json_onedown), len(json_onedown))
         print("Moving onto dict call translated_data/{}".format(file))
         #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
+        #TODO: Standardise the data trees to all use the same rule for entries
         function_dict = {"deities": deities_translation, "items": items_translation, "fluff_backgrounds": background_translation,
                          "fluff-languages": language_translation, "fluff-races": races_translation}
         print("Moving to function call")
