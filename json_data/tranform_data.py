@@ -3,6 +3,7 @@ import os
 import time
 import yaml
 import re
+import pandas as pd
 
 #This file is used to unspool and transorm the json data into usable sql or json files using my own format
 
@@ -274,6 +275,13 @@ def deities_translation(file, json_onedown):
     print(json_deities_list)
     send_to_translated(file, "deities", json_deities_list)
 
+def move_yaml_to_sql():
+    for i in os.listdir("cleaned_data"):
+        print(i)
+        temp_df = pd.read_yaml(i)
+        print(temp_df)
+
+
 def send_to_translated(file, name_input, json_list):
     if "{}".format(name_input) in file:
         with open("translated_data/{}.json".format(name_input), "w+") as f:
@@ -281,5 +289,4 @@ def send_to_translated(file, name_input, json_list):
             print(json_list)
             json.dump(json_list, f)
 
-translate_json()
-clean_files()
+move_yaml_to_sql()
