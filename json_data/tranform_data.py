@@ -276,10 +276,12 @@ def deities_translation(file, json_onedown):
     send_to_translated(file, "deities", json_deities_list)
 
 def move_yaml_to_sql():
-    for i in os.listdir("cleaned_data"):
+    dir_root = "cleaned_data"
+    for i in os.listdir(dir_root):
         print(i)
-        temp_df = pd.read_yaml(i)
-        print(temp_df)
+        with open("{}/{}".format(dir_root, i), "r+") as f:
+            yaml_file = yaml.safe_load(f)
+            print(yaml_file)
 
 
 def send_to_translated(file, name_input, json_list):
