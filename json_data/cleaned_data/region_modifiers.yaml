@@ -1,0 +1,12 @@
+region_modifiers:
+  modifier_code: PROSPEROUS
+  modifier_info:
+    name: Prosperous Region
+    source: Homebrew
+    entries:
+      "The {:type:} of {:name:} is filled with wonderous peoples, places and treasures, its lands are bountiful and provide great
+      wealth to all of its citizens, atleast that is the opion outside of the region. {:name:} is renowned for its bustling cities,
+      massive castles and decadent rulers, that uphold a sea of tranquility in a world of madness"
+    class_modifiers:
+      economy_points: 500
+      population_points: 500000
