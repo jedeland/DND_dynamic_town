@@ -86,9 +86,9 @@ def translate_json():
             os.mkdir("translated_data")
         except:
             print("Already exists")
-    for file in os.listdir("raw_data"):
+    for file in os.listdir("raw_5e_data"):
         print(file)
-        f =  open("raw_data/{}".format(file), encoding="UTF-8")
+        f =  open("raw_5e_data/{}".format(file), encoding="UTF-8")
         json_version = json.load(f)
         try:
             json_version.pop("_meta", None)
