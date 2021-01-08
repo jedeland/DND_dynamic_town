@@ -288,17 +288,3 @@ def send_to_translated(file, name_input, json_list):
             print("writing to {}.json".format(name_input))
             print(json_list)
             json.dump(json_list, f)
-
-def create_store_combined_file_yaml():
-    #Creates two directories inside of cleaned data, one for regular stores, the other for "adventurer" stores (aka. blacksmith, alchemist ect.)
-    print("Creating store data")
-    if not os.path.exists("cleaned_data/citizen_store_data") and not os.path.exists("cleaned_data/hero_store_data"):
-        os.mkdir("cleaned_data/citizen_store_data")
-        os.mkdir("cleaned_data/hero_store_data")
-
-    print("Reading relevant data")
-    relevant_data = os.listdir("cleaned_data")
-    print(relevant_data, "\n", type(relevant_data))
-
-
-create_store_combined_file_yaml()
