@@ -34,7 +34,7 @@ class Location:
                              "Small": [3000, 21999],
                              "Tiny": [1, 2999]}
         print("break")
-        modifier_range = {"Large": [-500, 1500],
+        modifier_range = {"Large": [-300, 1200],
                           "Medium": [100, 900],
                           "Small": [-300, 600],
                           "Tiny": [-600, 300]}
@@ -47,29 +47,33 @@ class Location:
                 numeric_modifier = modifier_range.get(i)
                 pop_modifier = random.randint(numeric_modifier[0], numeric_modifier[1])
                 break
-        print(pop_modifier)
+        
         economic_value = random.randint(0, 2000)
         pop_modifier = pop_modifier + economic_value
-        economic_status = {"Affluent": [2700, 3000],
-                           "Prosperous": [2200, 2699],
-                           "Rich": [2000, 2199],
-                           "Strong": [1700, 1999],
-                           "Stable": [1000, 1699],
-                           "Average": [700, 999],
-                           "Struggling": [400, 699],
-                           "Poor": [250, 399],
+        economic_status = {"Affluent": [3900, 4200],
+                           "Prosperous": [3500, 3899],
+                           "Rich": [3000, 3499],
+                           "Strong": [2300, 2999],
+                           "Stable": [1700, 2299],
+                           "Average": [900, 1699],
+                           "Struggling": [500, 899],
+                           "Poor": [250, 499],
                            "Impoverished": [100, 249],
                            "Desolate": [0, 99]
                            }
         if pop_modifier < 0:
-            economic_modifier = "Desolate"
+            return "Desolate"
         else:
             for g in economic_status:
                 economic_tag = economic_status.get(g)
-                
-        return "Hello"
+                if economic_tag[0] <= pop_modifier <= economic_tag[1]:
+                    print("Economic Status is {}".format(g))
+                    status = g
+                    return g
 
-    def determine_population_ration(self, location, size):
+
+
+    def determine_npc_ratio(self, loc_size, pop_economy):
         print("Starting")
 
 def populate_region():
