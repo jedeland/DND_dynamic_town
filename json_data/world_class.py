@@ -2,20 +2,22 @@ import random
 
 
 class Location:
-    def __init__(self):
-        location_size = self.determine_size()
+    def __init__(self, *args):
+        #Pop input should be introduced in the region class
+        pop_input = random.randint(0, 100000)
+        location_size = self.determine_size(pop_input)
         self.location_size = location_size
         self.economic_situation = self.determine_economy(location_size)
         print(location_size)
 
-    def determine_size(self):
+    def determine_size(self, population):
         #Reused this from lig
-        population = random.randint(0 , 1500000)
         region_types = {"Large": ["City", "Grand Fortress", "Grand Library", "Grand City", "Imperial Free City"],
                              "Medium": ["Town", "Castle", "University Town", "Market Town", "Grand Harbour"],
                              "Small": ["Village", "Fief", "Abbey", "Fortification", "Barony", "Barracks"],
                              "Tiny": ["Hamlet", "Settlement", "Hunter's Post", "Outpost", "Chapel"]}
-        region_population = {"Large": [80000,1500000],
+        #Regional population should range from 80,000 to 3 million, for now it is 10k maximum to use randint more effectively
+        region_population = {"Large": [80000, 100000],
                              "Medium": [22000, 79999],
                              "Small": [3000, 21999],
                              "Tiny": [1 , 2999]}
@@ -29,7 +31,7 @@ class Location:
         pop_size = loc_size.get(list(loc_size.keys())[0])
         #Should add region modifier to economy after the fact
         #TODO: Modify population modifier to add economic value points
-        population_modifier = {"Large": [80000, 1500000],
+        population_modifier = {"Large": [80000, 160000],
                              "Medium": [22000, 79999],
                              "Small": [3000, 21999],
                              "Tiny": [1, 2999]}
@@ -47,7 +49,7 @@ class Location:
                 numeric_modifier = modifier_range.get(i)
                 pop_modifier = random.randint(numeric_modifier[0], numeric_modifier[1])
                 break
-        
+
         economic_value = random.randint(0, 2000)
         pop_modifier = pop_modifier + economic_value
         economic_status = {"Affluent": [3900, 4200],
