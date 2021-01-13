@@ -5,10 +5,12 @@ class Location:
     def __init__(self, *args):
         #Pop input should be introduced in the region class
         pop_input = random.randint(0, 100000)
-        location_size = self.determine_size(pop_input)
-        self.location_size = location_size
-        self.economic_situation = self.determine_economy(location_size)
-        print(location_size)
+
+        self.location_size = self.determine_size(pop_input)
+        loc_size = self.location_size.get(list(self.location_size.keys())[0])
+        self.economic_situation = self.determine_economy(self.location_size)
+        self.npc_ratio = self.determine_npc_ratio(loc_size, self.economic_situation)
+        print(loc_size)
 
     def determine_size(self, population):
         #Reused this from lig
@@ -76,6 +78,9 @@ class Location:
 
 
     def determine_npc_ratio(self, loc_size, pop_economy):
+        #Usable NPC's should range from 40 - 500 with a reserve amount of 2x the chosen amount
+        #TODO: Load npc ration with NPC objects, using a future npc_class.py
+        print(loc_size)
         print("Starting")
 
 def populate_region():
