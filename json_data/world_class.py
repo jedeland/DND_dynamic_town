@@ -6,10 +6,10 @@ class Location:
         #Pop input should be introduced in the region class
         pop_input = random.randint(0, 100000)
 
-        self.location_size = self.determine_size(pop_input)
+        self.location_size, self.size_description = self.determine_size(pop_input)
         loc_size = self.location_size.get(list(self.location_size.keys())[0])
         self.economic_situation = self.determine_economy(self.location_size)
-        self.npc_ratio = self.determine_npc_ratio(loc_size, self.economic_situation)
+        self.npc_ratio = self.determine_npc_ratio(loc_size, self.size_description, self.economic_situation)
         print(loc_size)
 
     def determine_size(self, population):
@@ -27,7 +27,7 @@ class Location:
             pop_range = region_population[i]
             if pop_range[0] <= population <= pop_range[1]:
                 location_size = {region_types[i][random.randint(0, len(region_types[i])-1)] : population}
-        return location_size
+                return location_size, i
     def determine_economy(self, loc_size):
         #Pop size is determined by getting first result from individual location size, holding the numeric value
         pop_size = loc_size.get(list(loc_size.keys())[0])
@@ -77,10 +77,17 @@ class Location:
 
 
 
-    def determine_npc_ratio(self, loc_size, pop_economy):
+    def determine_npc_ratio(self, loc_size, loc_details, pop_economy):
         #Usable NPC's should range from 40 - 500 with a reserve amount of 2x the chosen amount
         #TODO: Load npc ration with NPC objects, using a future npc_class.py
-        print(loc_size)
+        print(loc_size, pop_economy, loc_details)
+        if loc_details in ["Large", "Medium"]:
+            #TODO: figure out percentage rates that works with 22k +
+            print("The settlement has more than 22k people in it")
+        else:
+            #TODO: figure out percentage rates that work with 22k -
+            print("The settlement is smaller than 22k people")
+        print(round(loc_size/500))
         print("Starting")
 
 def populate_region():
