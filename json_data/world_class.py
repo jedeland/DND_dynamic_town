@@ -10,6 +10,7 @@ class Location:
         loc_size = self.location_size.get(list(self.location_size.keys())[0])
         self.economic_situation = self.determine_economy(self.location_size)
         self.npc_ratio = self.determine_npc_ratio(loc_size, self.size_description, self.economic_situation)
+        print(self.npc_ratio)
         print(loc_size)
 
     def determine_size(self, population):
@@ -81,22 +82,25 @@ class Location:
         #Usable NPC's should range from 40 - 500 with a reserve amount of 2x the chosen amount
         #TODO: Load npc ration with NPC objects, using a future npc_class.py
         print(loc_size, pop_economy, loc_details)
-        npc_ratio = {}
+
         if loc_details in ["Large", "Medium"]:
-            #TODO: figure out percentage rates that works with 22k +
-            print("The settlement has more than 22k people in it")
-            print(loc_size/500)
-            print(loc_size/800)
-            print(loc_size/1000)
-        else:
-            #TODO: figure out percentage rates that work with 22k -
-            print("The settlement is smaller than 22k people")
-            print(loc_size/150)
-            print(loc_size/300)
-            print(loc_size/500)
-            print(loc_size/600)
-        print(round(loc_size/500))
-        print("Starting")
+            #print("The settlement has more than 22k people in it")
+            important_npcs = round(loc_size/random.randint(500, 800))
+            reserve_npcs = round(loc_size/random.randint(400, 700))
+            #print(loc_size == important_npcs + reserve_npcs)
+
+            return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
+        elif loc_details == "Small":
+            important_npcs = round(loc_size/random.randint(200, 400))
+            reserve_npcs = round(loc_size/random.randint(150, 350))
+
+            return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
+        elif loc_details == "Tiny":
+            important_npcs = round(loc_size/random.randint(50, 150))
+            reserve_npcs = round(loc_size/random.randint(80, 150))
+
+            return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
+
 
 def populate_region():
     print("Populating region")
