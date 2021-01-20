@@ -18,14 +18,16 @@ def create_store_combined_file_yaml():
     path = "raw_pathfinder_data/store_data"
     relevant_data_list = os.listdir(path)
     path_list = []
+    irrelevant_list = ["itemcategories.yaml", "items-staves.yaml", "weapongroups.yaml"]
     for i in relevant_data_list:
-        print(i,"\n", path)
-        x = "{}/{}".format(path, i)
-        print(x)
-        path_list.append(x)
+        if i not in irrelevant_list:
+            print(i,"\n", path)
+            x = "{}/{}".format(path, i)
+            print(x)
+            path_list.append(x)
     print(path_list, "\n",type(path_list))
     path_list.append("cleaned_data/items.yaml")
-    path_list.remove("raw_pathfinder_data/store_data/items-staves.yaml")
+    
     relevant_data = path_list
     print(relevant_data)
 

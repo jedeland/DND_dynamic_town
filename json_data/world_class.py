@@ -97,7 +97,7 @@ class Location:
             return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
         elif loc_details == "Tiny":
             important_npcs = round(loc_size/random.randint(50, 150))
-            reserve_npcs = round(loc_size/random.randint(80, 150))
+            reserve_npcs = round(loc_size/random.randint(30, 120))
 
             return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
 
