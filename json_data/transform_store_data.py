@@ -35,21 +35,22 @@ def create_store_combined_file_yaml():
     #TODO: go through each file and try to standardise item tags, use this to create two files which hold data about
     # both types of stores to be used in conjunction with store_class.py
     path_items_details = {}
-    for path_item in path_list[2:-1]:
-        with open(path_item, "r+") as f:
+    for path_item in path_list[2:]:
+        with open(path_item, "r+", encoding="utf-8") as f:
             print(f)
 
             store_file = yaml.safe_load(f)
-            print(store_file)
-            print(store_file.keys())
-            print(next(iter(store_file.values())))
+            # print(store_file)
+            # print(store_file.keys())
+            # print(next(iter(store_file.values())))
             list_of_dicts = next(iter(store_file.values()))
             print(len(list_of_dicts))
-            item_list = [f, len(list_of_dicts), ]
+            item_list = [store_file.keys(), len(list_of_dicts), ]
             path_items_details["{}_itemlist".format(path_item)] = item_list
-            print("\n"*10)
-            time.sleep(10)
+            print("\n"*5)
+            time.sleep(1)
     #explore_differences(relevant_data)
+    print(path_items_details)
 
 
 
