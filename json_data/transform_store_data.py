@@ -26,21 +26,30 @@ def create_store_combined_file_yaml():
             print(x)
             path_list.append(x)
     print(path_list, "\n",type(path_list))
+    #The appended value lays inside of a different directory
     path_list.append("cleaned_data/items.yaml")
-    
+
     relevant_data = path_list
     print(relevant_data)
 
     #TODO: go through each file and try to standardise item tags, use this to create two files which hold data about
     # both types of stores to be used in conjunction with store_class.py
+    path_items_details = {}
+    for path_item in path_list[2:-1]:
+        with open(path_item, "r+") as f:
+            print(f)
 
-    # for path_item in path_list:
-    #     with open(path_item, "r+") as f:
-    #         store_file = yaml.safe_load(f)
-    #         print(store_file)
-    #         print("\n"*10)
-    #         time.sleep(10)
-    explore_differences(relevant_data)
+            store_file = yaml.safe_load(f)
+            print(store_file)
+            print(store_file.keys())
+            print(next(iter(store_file.values())))
+            list_of_dicts = next(iter(store_file.values()))
+            print(len(list_of_dicts))
+            item_list = [f, len(list_of_dicts), ]
+            path_items_details["{}_itemlist".format(path_item)] = item_list
+            print("\n"*10)
+            time.sleep(10)
+    #explore_differences(relevant_data)
 
 
 
