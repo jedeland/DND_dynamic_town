@@ -36,32 +36,40 @@ def create_store_combined_file_yaml():
     # both types of stores to be used in conjunction with store_class.py
     path_items_details = {}
     unique_keys = set()
+    list_of_uniques = []
     #Skips the first 2 results as they are inconsequential
     for path_item in path_list[2:]:
         with open(path_item, "r+", encoding="utf-8") as f:
             #print(f)
             store_file = yaml.safe_load(f)
-            # print(store_file)
-            # print(store_file.keys())
-            # print(next(iter(store_file.values())))
+            print("Store file : ", f, path_item)
             list_of_dicts = next(iter(store_file.values()))
             print(len(list_of_dicts))
-            #TODO: Find individual values relating to keys, and tag them as being from xyz file
+            #TODO: Find individual values relating to keys, and tag them as being from xyz fil
+            # Set isnt working, it is updating using 2nd set of values
+            # Need to make seperate function for items.yaml
             #print([i.keys() for i in list_of_dicts])
+
             for i in list_of_dicts:
+                if path_item == "cleaned_data/items.yaml":
+                    i = i["item_info"]
+                    #print(i)
                 #print(i.keys())
                 unique_keys.update(i.keys())
             print("Unique Keys = ", unique_keys)
+            list_of_uniques.append(unique_keys)
 
 
-            item_list = [store_file.keys(), len(list_of_dicts), unique_keys]
-            path_items_details["{}_itemlist".format(f)] = item_list
+            item_list = [len(list_of_dicts), unique_keys]
+            path_items_details["{}_itemlist".format(f), "unique_keys"] = item_list[0], item_list[1]
             print("\n"*2)
             time.sleep(1)
     #explore_differences(relevant_data)
-    print(path_items_details)
+    print(path_items_details, type(path_items_details))
     print(unique_keys)
-
+    for k in path_items_details:
+        print(path_items_details[k])
+    print(list_of_uniques)
 
 
 def explore_differences(difference_list):
