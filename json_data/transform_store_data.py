@@ -69,8 +69,7 @@ def create_store_combined_file_yaml():
     print(unique_keys)
     for k in path_items_details:
         print(path_items_details[k])
-    print(list_of_uniques)
-
+    print("List of uniques : ", list_of_uniques)
 
 def explore_differences(difference_list):
     with open(difference_list[-1], "r+", encoding="utf-8") as file_1:
@@ -84,5 +83,29 @@ def explore_differences(difference_list):
     print(list(enumerate(head)), sep="\n")
     print(json_translated_yaml.keys())
 
+def conform_data_items():
+    cleaned_dict = {}
+    irrelevant_tags = ["otherSources", "containerCapacity", "staff", 'bonusWeapon',
+                       'additionalSources', 'weaponCategory', 'bonusWeaponDamage',
+                       'sentient', 'age','ability', "capPassenger", "reqAttuneAlt", "baseItem",
+                       'capCargo', 'carryingCapacity', 'dmg2', 'ammoType', 'bonusSavingThrow', 'axe',
+                       'lootTables', 'crew', 'bonusAc', 'packContents', 'crewMin',
+                       "scfType", "grantsProficiency", "vehSpeed", 'vehDmgThresh', 'crewMax']
+    standarisable_tags = {'dmgType': 'damagetype', "weaponCategory": "weaponcategory", "dmg1": "dice_size", "weightNote": "weight"}
+    naughty_tags = ["curse", "tattoo"]
+    with open("cleaned_data/items.yaml", "r+", encoding="utf-8") as f:
+        store_file = yaml.safe_load(f)
+        list_of_dicts = next(iter(store_file.values()))
+        for i in list_of_dicts:
+            i = i["item_info"]
+            #TODO: drop all tags in irrelelvant tags, change standarisable tags to their value, and remove items with naughty tags
+conform_data_items()
 
-create_store_combined_file_yaml()
+"""{'curse', 'property', 'color', 'otherSources', 'poison', 'containerCapacity', 'staff',
+ 'resist', 'bonusWeapon', 'value', 'additionalSources', 'speed', 'weaponCategory', 'bonusWeaponDamage', 
+ 'sentient', 'age', 'charges', 'rarity', 'ability', 'attachedSpells', 'capPassenger', 'bonusSpellAttack', 'weaponcategory', 'reqAttuneAlt', 
+ 'sword', 'source', 'weapon', 'reqAttune', 'reload', 'capCargo', 'carryingCapacity', 'baseItem', 'dmg2', 'ammoType', 'stealth', 'bonusSavingThrow', 
+ 'level', 'bulk', 'weapongroup', 'axe', 'lootTables', 'crew', 'name', 'bonusAc', 'hands', 'packContents', 'crewMin', 'entries', 'wondrous', 'strength', 
+ 'dmgType', 'weightNote', 'descr', 'scfType', 'page', 'dmg1', 'grantsProficiency', 'type', 'vehSpeed', 'weight', 'damagetype', 'tattoo', 'ac', 
+ 'vehDmgThresh', 'crewMax', 'tier', 'focus', 'recharge', 'price_gp', 
+'dice_size', 'srd', 'bonusWeaponAttack', 'vehAc', 'vehHp', 'range', 'additionalEntries', 'traits', 'poisonTypes', 'travelCost', 'price_cp', 'shippingCost'}"""
