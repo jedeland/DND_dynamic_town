@@ -96,9 +96,19 @@ def conform_data_items():
     with open("cleaned_data/items.yaml", "r+", encoding="utf-8") as f:
         store_file = yaml.safe_load(f)
         list_of_dicts = next(iter(store_file.values()))
+
         for i in list_of_dicts:
             i = i["item_info"]
+            temp_i = i
             #TODO: drop all tags in irrelelvant tags, change standarisable tags to their value, and remove items with naughty tags
+            print(i.keys())
+
+            for k, v in temp_i.items():
+                if k in irrelevant_tags:
+                    del i[k]
+                    print("Deleted : ", k)
+
+
 conform_data_items()
 
 """{'curse', 'property', 'color', 'otherSources', 'poison', 'containerCapacity', 'staff',
