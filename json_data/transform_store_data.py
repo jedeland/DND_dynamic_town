@@ -103,8 +103,9 @@ def conform_data_items():
             #TODO: drop all tags in irrelelvant tags, change standarisable tags to their value, and remove items with naughty tags
             print(i.keys())
 
-            for k, v in temp_i.items():
-                if k in irrelevant_tags:
+            for k in irrelevant_tags:
+                if k in i:
+                    print(k)
                     del i[k]
                     print("Deleted : ", k)
 
