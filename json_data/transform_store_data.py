@@ -95,11 +95,12 @@ def conform_data_items():
     naughty_tags = ["curse", "tattoo"]
     with open("cleaned_data/items.yaml", "r+", encoding="utf-8") as f:
         store_file = yaml.safe_load(f)
+        print(len(store_file["items"]))
         list_of_dicts = next(iter(store_file.values()))
-
+        temp_dict = {"items": []}
         for i in list_of_dicts:
+            temp_code = i["item_code"]
             i = i["item_info"]
-            temp_i = i
             #TODO: drop all tags in irrelelvant tags, change standarisable tags to their value, and remove items with naughty tags
             print(i.keys())
 
@@ -108,6 +109,12 @@ def conform_data_items():
                     print(k)
                     del i[k]
                     print("Deleted : ", k)
+            dict_info = [{"item_code": temp_code, "item_info": i}]
+            temp_dict["items"] = temp_dict["items"] + dict_info
+
+        print(temp_dict, len(temp_dict["items"]))
+        yaml
+
 
 
 conform_data_items()
