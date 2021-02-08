@@ -94,26 +94,32 @@ def conform_data_items():
     standarisable_tags = {'dmgType': 'damagetype', "weaponCategory": "weaponcategory", "dmg1": "dice_size", "weightNote": "weight"}
     naughty_tags = ["curse", "tattoo"]
     with open("cleaned_data/items.yaml", "r+", encoding="utf-8") as f:
+
         store_file = yaml.safe_load(f)
         print(len(store_file["items"]))
-        list_of_dicts = next(iter(store_file.values()))
-        temp_dict = {"items": []}
-        for i in list_of_dicts:
-            temp_code = i["item_code"]
-            i = i["item_info"]
-            #TODO: drop all tags in irrelelvant tags, change standarisable tags to their value, and remove items with naughty tags
-            print(i.keys())
+        try:
+            list_of_dicts = next(iter(store_file.values()))
+            temp_dict = {"items": []}
+            for i in list_of_dicts:
+                temp_code = i["item_code"]
+                i = i["item_info"]
+                #TODO: drop all tags in irrelelvant tags, change standarisable tags to their value, and remove items with naughty tags
+                print(i.keys())
 
-            for k in irrelevant_tags:
-                if k in i:
-                    print(k)
-                    del i[k]
-                    print("Deleted : ", k)
-            dict_info = [{"item_code": temp_code, "item_info": i}]
-            temp_dict["items"] = temp_dict["items"] + dict_info
+                for k in irrelevant_tags:
+                    if k in i:
+                        print(k)
+                        del i[k]
+                        print("Deleted : ", k)
+                dict_info = [{"item_code": temp_code, "item_info": i}]
+                temp_dict["items"] = temp_dict["items"] + dict_info
 
-        print(temp_dict, len(temp_dict["items"]))
-        yaml
+            print(temp_dict, len(temp_dict["items"]))
+
+            updated_yaml = yaml.dump(temp_dict, f)
+            print(updated_yaml)
+        except Exception as e:
+            print("There was an error, or this has already been executed")
 
 
 
