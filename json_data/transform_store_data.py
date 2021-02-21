@@ -126,11 +126,26 @@ def conform_data_items():
 
 def sort_data_to_stores(new_yaml):
     list_of_dicts = next(iter(new_yaml.values()))
-    store_types = ["General Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]
+    #Generic bins to classify data
+    store_types = ["General Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter", "Scribe"]
+    assign_types = [{"civilian stores": ["General Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe"],
+                     "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}]
+    #Scope limited to 3 words to test types
+    print(len(new_yaml["items"]))
+    print("printing weapons")
     for i in list_of_dicts:
-        print(i)
+        i = i["item_info"]
+        #TODO: need to find a way to decide if i goes into the "bins" assigned above
+        #Best bet is to make a classification system using simple inputs
+        try:
+            print(i["weapon"], type(i["weapon"]))
+            if i["weapon"]:
+                print(i, type(i))
+        except:
+            pass
+        #values = input()
         #Makes checking output easier, to see loop more clearly
-        time.sleep(0.3)
+        #time.sleep(0.3)
 
 
 conform_data_items()
