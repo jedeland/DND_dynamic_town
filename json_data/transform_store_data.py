@@ -125,7 +125,12 @@ def conform_data_items():
             print("There was an error, or this has already been executed \nError was {}".format(e))
 
 def sort_data_to_stores(new_yaml):
-    print(new_yaml.keys())
+    list_of_dicts = next(iter(new_yaml.values()))
+    store_types = ["General Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]
+    for i in list_of_dicts:
+        print(i)
+        #Makes checking output easier, to see loop more clearly
+        time.sleep(0.3)
 
 
 conform_data_items()
