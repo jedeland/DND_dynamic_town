@@ -116,11 +116,16 @@ def conform_data_items():
 
             print(temp_dict, len(temp_dict["items"]))
 
-            updated_yaml = yaml.dump(temp_dict, f)
-            print(updated_yaml)
-        except Exception as e:
-            print("There was an error, or this has already been executed")
+            updated_yaml = yaml.dump(temp_dict)
+            print("This is the start of updated yaml, {} - {} , this is the end".format(updated_yaml, temp_dict))
+            sort_data_to_stores(temp_dict)
 
+
+        except Exception as e:
+            print("There was an error, or this has already been executed \nError was {}".format(e))
+
+def sort_data_to_stores(new_yaml):
+    print(new_yaml.keys())
 
 
 conform_data_items()
