@@ -131,6 +131,8 @@ def sort_data_to_stores(new_yaml):
     assign_types = [{"civilian stores": ["General Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe"],
                      "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}]
     #Scope limited to 3 words to test types
+    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": []}
+    key_words = {"Blacksmith" : ["weapon", "armor", "shield", "bow", "tool"], "Scribe": ["book", "tome", "scroll", "ink"]}
     print(len(new_yaml["items"]))
     print("printing weapons")
     for i in list_of_dicts:
@@ -138,14 +140,23 @@ def sort_data_to_stores(new_yaml):
         #TODO: need to find a way to decide if i goes into the "bins" assigned above
         #Best bet is to make a classification system using simple inputs
         try:
-            print(i["weapon"], type(i["weapon"]))
+            #print(i["weapon"], type(i["weapon"]))
+            #print([e for e in key_words["Blacksmith"] if e in i.values()])
+
+            #Fixed issue with keywords
             if i["weapon"]:
                 print(i, type(i))
+                stores["Blacksmith"].append(i)
+            if any(word in str(i) for word in key_words["Blacksmith"]):
+                print("Found keyword!")
+                return "Keyword is"
         except:
             pass
         #values = input()
         #Makes checking output easier, to see loop more clearly
         #time.sleep(0.3)
+    print(stores)
+    print(len(stores["Blacksmith"]))
 
 
 conform_data_items()
