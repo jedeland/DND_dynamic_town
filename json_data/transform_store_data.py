@@ -132,11 +132,12 @@ def sort_data_to_stores(new_yaml):
                      "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}]
     #Scope limited to 3 words to test types
     stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": []}
-    key_words = {"Blacksmith" : ["weapon", "armor", "shield", "bow", "tool"], "Scribe": ["book", "tome", "scroll", "ink"]}
+    key_words = {"Blacksmith" : blacksmith_list, "Scribe": ["book", "tome", "scroll", "ink"]}
     print(len(new_yaml["items"]))
     print("printing weapons")
     for i in list_of_dicts:
         i = i["item_info"]
+        print("String at lower = ", str(i).lower())
         #TODO: need to find a way to decide if i goes into the "bins" assigned above
         #Best bet is to make a classification system using simple inputs
         try:
@@ -144,22 +145,28 @@ def sort_data_to_stores(new_yaml):
             #print([e for e in key_words["Blacksmith"] if e in i.values()])
 
             #Fixed issue with keywords
+
             if i["weapon"]:
                 print(i, type(i))
                 stores["Blacksmith"].append(i)
-            if any(word in str(i) for word in key_words["Blacksmith"]):
+            if any(word in str(i).lower() for word in key_words["Blacksmith"]):
                 stores["Blacksmith"].append(i)
-        except:
+        except Exception as e:
+            print(e)
             pass
         #values = input()
         #Makes checking output easier, to see loop more clearly
         #time.sleep(0.3)
+
     print(stores)
     print(len(stores["Blacksmith"]))
 
 
 conform_data_items()
 
+
+blacksmith_list = ["weapon", "armor", "shield", "bow", "tool", "axe", "sword", "spear", "plate",
+                   "piercing", "bludgeoning", "slashing"]
 """{'curse', 'property', 'color', 'otherSources', 'poison', 'containerCapacity', 'staff',
  'resist', 'bonusWeapon', 'value', 'additionalSources', 'speed', 'weaponCategory', 'bonusWeaponDamage', 
  'sentient', 'age', 'charges', 'rarity', 'ability', 'attachedSpells', 'capPassenger', 'bonusSpellAttack', 'weaponcategory', 'reqAttuneAlt', 
