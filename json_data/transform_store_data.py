@@ -148,8 +148,7 @@ def sort_data_to_stores(new_yaml):
                 print(i, type(i))
                 stores["Blacksmith"].append(i)
             if any(word in str(i) for word in key_words["Blacksmith"]):
-                print("Found keyword!")
-                return "Keyword is"
+                stores["Blacksmith"].append(i)
         except:
             pass
         #values = input()
