@@ -1,8 +1,14 @@
 import os
 import time
+from pprint import pprint
 
 import yaml
 import json
+
+#Global Variables
+blacksmith_list = ["weapon", "armor", "tool", "shield", "bow", "axe", "sword", "spear", "plate",
+                   "piercing", "bludgeoning", "slashing"]
+
 
 
 def create_store_combined_file_yaml():
@@ -136,8 +142,9 @@ def sort_data_to_stores(new_yaml):
     print(len(new_yaml["items"]))
     print("printing weapons")
     for i in list_of_dicts:
-        i = i["item_info"]
-        print("String at lower = ", str(i).lower())
+        item_info = i["item_info"]
+        print("Original I ", i)
+        print(item_info, type(item_info))
         #TODO: need to find a way to decide if i goes into the "bins" assigned above
         #Best bet is to make a classification system using simple inputs
         try:
@@ -146,11 +153,15 @@ def sort_data_to_stores(new_yaml):
 
             #Fixed issue with keywords
 
-            if i["weapon"]:
-                print(i, type(i))
-                stores["Blacksmith"].append(i)
-            if any(word in str(i).lower() for word in key_words["Blacksmith"]):
-                stores["Blacksmith"].append(i)
+            for k, v in item_info.items():
+                print(k,v)
+                if k == "weapon" and v == True:
+                    stores["Blacksmith"].append(i)
+                    break
+                if any(word in str(v).lower() for word in key_words["Blacksmith"]):
+                    print("Later I ", i)
+                    stores["Blacksmith"].append(i)
+                    break
         except Exception as e:
             print(e)
             pass
@@ -158,15 +169,12 @@ def sort_data_to_stores(new_yaml):
         #Makes checking output easier, to see loop more clearly
         #time.sleep(0.3)
 
-    print(stores)
+    pprint(stores)
     print(len(stores["Blacksmith"]))
 
 
 conform_data_items()
 
-
-blacksmith_list = ["weapon", "armor", "shield", "bow", "tool", "axe", "sword", "spear", "plate",
-                   "piercing", "bludgeoning", "slashing"]
 """{'curse', 'property', 'color', 'otherSources', 'poison', 'containerCapacity', 'staff',
  'resist', 'bonusWeapon', 'value', 'additionalSources', 'speed', 'weaponCategory', 'bonusWeaponDamage', 
  'sentient', 'age', 'charges', 'rarity', 'ability', 'attachedSpells', 'capPassenger', 'bonusSpellAttack', 'weaponcategory', 'reqAttuneAlt', 
