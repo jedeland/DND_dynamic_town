@@ -3,11 +3,12 @@ import time
 from pprint import pprint
 
 import yaml
-import json
 
 #Global Variables
 blacksmith_list = ["weapon", "armor", "tool", "shield", "bow", "axe", "sword", "spear", "plate",
-                   "piercing", "bludgeoning", "slashing"]
+                   "piercing", "bludgeoning", "slashing", "mail", "chain"]
+general_list = ["potion", "tools", "saddle", "ink", "mining", "fishing", "book", "bag", "drink", "eat", "food"]
+
 
 
 
@@ -27,9 +28,9 @@ def create_store_combined_file_yaml():
     irrelevant_list = ["itemcategories.yaml", "items-staves.yaml", "weapongroups.yaml"]
     for i in relevant_data_list:
         if i not in irrelevant_list:
-            print(i,"\n", path)
+            #print(i,"\n", path)
             x = "{}/{}".format(path, i)
-            print(x)
+            #print(x)
             path_list.append(x)
     print(path_list, "\n",type(path_list))
     #The appended value lays inside of a different directory
@@ -62,7 +63,7 @@ def create_store_combined_file_yaml():
                     #print(i)
                 #print(i.keys())
                 unique_keys.update(i.keys())
-            print("Unique Keys = ", unique_keys)
+            #print("Unique Keys = ", unique_keys)
             list_of_uniques.append(unique_keys)
 
 
@@ -71,11 +72,11 @@ def create_store_combined_file_yaml():
             print("\n"*2)
             time.sleep(1)
     #explore_differences(relevant_data)
-    print(path_items_details, type(path_items_details))
-    print(unique_keys)
+    #print(path_items_details, type(path_items_details))
+    #print(unique_keys)
     for k in path_items_details:
         print(path_items_details[k])
-    print("List of uniques : ", list_of_uniques)
+    #print("List of uniques : ", list_of_uniques)
 
 def explore_differences(difference_list):
     with open(difference_list[-1], "r+", encoding="utf-8") as file_1:
@@ -120,7 +121,7 @@ def conform_data_items():
                 dict_info = [{"item_code": temp_code, "item_info": i}]
                 temp_dict["items"] = temp_dict["items"] + dict_info
 
-            print(temp_dict, len(temp_dict["items"]))
+            # print(temp_dict, len(temp_dict["items"]))
 
             updated_yaml = yaml.dump(temp_dict)
             print("This is the start of updated yaml, {} - {} , this is the end".format(updated_yaml, temp_dict))
@@ -137,14 +138,14 @@ def sort_data_to_stores(new_yaml):
     assign_types = [{"civilian stores": ["General Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe"],
                      "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}]
     #Scope limited to 3 words to test types
-    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": []}
-    key_words = {"Blacksmith" : blacksmith_list, "Scribe": ["book", "tome", "scroll", "ink"]}
+    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General Store": []}
+    key_words = {"Blacksmith" : blacksmith_list, "General Store": general_list, "Scribe": ["book", "tome", "scroll", "ink"]}
     print(len(new_yaml["items"]))
     print("printing weapons")
     for i in list_of_dicts:
         item_info = i["item_info"]
-        print("Original I ", i)
-        print(item_info, type(item_info))
+        # print("Original I ", i)
+        # print(item_info, type(item_info))
         #TODO: need to find a way to decide if i goes into the "bins" assigned above
         #Best bet is to make a classification system using simple inputs
         try:
@@ -162,15 +163,22 @@ def sort_data_to_stores(new_yaml):
                     print("Later I ", i)
                     stores["Blacksmith"].append(i)
                     break
+                if any(word in str(v).lower() for word in key_words["General Store"]):
+                    print("Later I ", i)
+                    stores["General Store"].append(i)
+                    break
+
         except Exception as e:
-            print(e)
+            print(e, e.args)
             pass
         #values = input()
         #Makes checking output easier, to see loop more clearly
         #time.sleep(0.3)
 
-    pprint(stores)
+    pprint([i['item_code'] for i in stores["Blacksmith"]])
     print(len(stores["Blacksmith"]))
+    print([g["item_code"] for g in stores["General Store"]])
+    print(len(stores["General Store"]))
 
 
 conform_data_items()
