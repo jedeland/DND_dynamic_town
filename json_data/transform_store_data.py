@@ -8,6 +8,9 @@ import yaml
 blacksmith_list = ["weapon", "armor", "tool", "shield", "bow", "axe", "sword", "spear", "plate",
                    "piercing", "bludgeoning", "slashing", "mail", "chain"]
 general_list = ["potion", "tools", "saddle", "ink", "mining", "fishing", "book", "bag", "drink", "eat", "food"]
+enchanter_list = ["potion", "wand", "can cast", "book", "bottle",
+                  "scroll", "clothing", "staff", "ring", "token", "gem", "cloak", "talisman", "healing"]
+scribe_list = ["ink", "robe", "cloak", "scroll", "book", "tome", "bottle"]
 
 
 
@@ -139,7 +142,8 @@ def sort_data_to_stores(new_yaml):
                      "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}]
     #Scope limited to 3 words to test types
     stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General Store": []}
-    key_words = {"Blacksmith" : blacksmith_list, "General Store": general_list, "Scribe": ["book", "tome", "scroll", "ink"]}
+    key_words = {"Blacksmith" : blacksmith_list, "General Store": general_list, "Enchanter": enchanter_list,
+                 "Scribe": scribe_list}
     print(len(new_yaml["items"]))
     print("printing weapons")
     for i in list_of_dicts:
@@ -167,6 +171,18 @@ def sort_data_to_stores(new_yaml):
                     print("Later I ", i)
                     stores["General Store"].append(i)
                     break
+                if k == "wondrous" and v == True:
+                    stores["Enchanter"].append(i)
+                    break
+                if any(word in str(v).lower() for word in key_words["Enchanter"]):
+                    print("Later I ", i)
+                    stores["Enchanter"].append(i)
+                    break
+                if any(word in str(v).lower() for word in key_words["Scribe"]):
+                    print("Later I ", i)
+                    stores["Scribe"].append(i)
+                    break
+
 
         except Exception as e:
             print(e, e.args)
