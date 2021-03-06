@@ -191,6 +191,11 @@ def sort_data_to_stores(new_yaml):
         #time.sleep(0.3)
 
     #pprint([i['item_code'] for i in stores["Blacksmith"]])
+    a_set = set(stores["Blacksmith"])
+
+    contains_duplicates = len(stores["Blacksmith"]) != len(a_set)
+    print("Does this list contain duplicates? ", contains_duplicates)
+
     print(len(stores["Blacksmith"]))
     #print([g["item_code"] for g in stores["General Store"]])
     print(len(stores["General Store"]))
