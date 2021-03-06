@@ -162,26 +162,25 @@ def sort_data_to_stores(new_yaml):
                 print(k,v)
                 if k == "weapon" and v == True:
                     stores["Blacksmith"].append(i)
-                    break
+
                 if any(word in str(v).lower() for word in key_words["Blacksmith"]):
                     print("Later I ", i)
                     stores["Blacksmith"].append(i)
-                    break
                 if any(word in str(v).lower() for word in key_words["General Store"]):
                     print("Later I ", i)
                     stores["General Store"].append(i)
-                    break
-                if k == "wondrous" and v == True:
-                    stores["Enchanter"].append(i)
-                    break
+
+                # if k == "wondrous" and v == True:
+                #     stores["Enchanter"].append(i)
+
                 if any(word in str(v).lower() for word in key_words["Enchanter"]):
                     print("Later I ", i)
                     stores["Enchanter"].append(i)
-                    break
+
                 if any(word in str(v).lower() for word in key_words["Scribe"]):
                     print("Later I ", i)
                     stores["Scribe"].append(i)
-                    break
+
 
 
         except Exception as e:
@@ -191,10 +190,13 @@ def sort_data_to_stores(new_yaml):
         #Makes checking output easier, to see loop more clearly
         #time.sleep(0.3)
 
-    pprint([i['item_code'] for i in stores["Blacksmith"]])
+    #pprint([i['item_code'] for i in stores["Blacksmith"]])
     print(len(stores["Blacksmith"]))
-    print([g["item_code"] for g in stores["General Store"]])
+    #print([g["item_code"] for g in stores["General Store"]])
     print(len(stores["General Store"]))
+    print(len(stores["Enchanter"]))
+    print(len(stores["Scribe"]))
+   # print(stores["Scribe"])
 
 
 conform_data_items()
