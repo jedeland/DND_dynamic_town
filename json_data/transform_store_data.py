@@ -146,6 +146,7 @@ def sort_data_to_stores(new_yaml):
                  "Scribe": scribe_list}
     print(len(new_yaml["items"]))
     print("printing weapons")
+
     for i in list_of_dicts:
         item_info = i["item_info"]
         # print("Original I ", i)
@@ -153,9 +154,6 @@ def sort_data_to_stores(new_yaml):
         #TODO: need to find a way to decide if i goes into the "bins" assigned above
         #Best bet is to make a classification system using simple inputs
         try:
-            #print(i["weapon"], type(i["weapon"]))
-            #print([e for e in key_words["Blacksmith"] if e in i.values()])
-
             #Fixed issue with keywords
 
             for k, v in item_info.items():
@@ -164,44 +162,44 @@ def sort_data_to_stores(new_yaml):
                     stores["Blacksmith"].append(i)
 
                 if any(word in str(v).lower() for word in key_words["Blacksmith"]):
-                    print("Later I ", i)
+                    #print("Later I ", i)
                     stores["Blacksmith"].append(i)
                 if any(word in str(v).lower() for word in key_words["General Store"]):
-                    print("Later I ", i)
+                    #print("Later I ", i)
                     stores["General Store"].append(i)
 
                 # if k == "wondrous" and v == True:
                 #     stores["Enchanter"].append(i)
 
                 if any(word in str(v).lower() for word in key_words["Enchanter"]):
-                    print("Later I ", i)
+                    #print("Later I ", i)
                     stores["Enchanter"].append(i)
 
                 if any(word in str(v).lower() for word in key_words["Scribe"]):
-                    print("Later I ", i)
+                    #print("Later I ", i)
                     stores["Scribe"].append(i)
-
-
 
         except Exception as e:
             print(e, e.args)
             pass
+
+
         #values = input()
         #Makes checking output easier, to see loop more clearly
         #time.sleep(0.3)
 
     #pprint([i['item_code'] for i in stores["Blacksmith"]])
-    try:
-        temp_set_comp = stores["Blacksmith"]
-        print(temp_set_comp, type(temp_set_comp))
-        new_set = set(temp_set_comp)
-        print(new_set)
-
-        contains_duplicates = any(temp_set_comp.count(element) > 1 for element in temp_set_comp)
-        print("Does this list contain duplicates? ", contains_duplicates)
-    except Exception as e:
-        print(e)
-        pass
+    # try:
+    #     temp_set_comp = stores["Blacksmith"]
+    #     print(temp_set_comp, type(temp_set_comp))
+    #     new_set = set(temp_set_comp)
+    #     print(new_set)
+    #
+    #     contains_duplicates = any(temp_set_comp.count(element) > 1 for element in temp_set_comp)
+    #     print("Does this list contain duplicates? ", contains_duplicates)
+    # except Exception as e:
+    #     print(e)
+    #     pass
 
     print(len(stores["Blacksmith"]))
     #print([g["item_code"] for g in stores["General Store"]])
