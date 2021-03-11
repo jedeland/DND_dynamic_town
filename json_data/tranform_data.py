@@ -100,7 +100,7 @@ def translate_json():
         #The if elif clauses for deities and items check for existing versions, as their file size and data size is greater and ought to be skipped
         #TODO: Standardise the data trees to all use the same rule for entries
         function_dict = {"deities": deities_translation, "items": items_translation, "fluff_backgrounds": background_translation,
-                         "fluff-languages": language_translation, "fluff-races": races_translation}
+                         "fluff-languages": language_translation, "fluff-races": races_translation, "items-base": items_base_translation}
         print("Moving to function call")
         try:
 
@@ -161,6 +161,7 @@ def races_translation(file, json_data):
         #TODO: Unspool entries
     print("Sending {} to translated".format(file))
     send_to_translated(file, "races", json_race_list)
+
 def unspool_key(json_data):
     #Function checks json keys, if no keys exist then it returns the final output
     #print("Json keys are {}".format(json_data.keys()), " Json length {}".format(len(json_data)))
@@ -260,6 +261,29 @@ def items_translation(file, json_data):
     print(json_items_list)
     send_to_translated(file, "items", json_items_list)
 
+
+def items_base_translation(file, json_data):
+    #Using a standardised translation service is ineffective, as the json files are formatted differently
+    print("translating items")
+    json_items_list = {"items" : []}
+    for i in json_data:
+        if "entries" in i:
+            print("Json dict - {}".format(i))
+            print(type(i))
+        try:
+            clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
+            clean_name = clean_name.replace("'", "")
+            clean_name = re.sub(r"^\s", "", clean_name)
+            print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
+            i = {"item_code": "{}_{}_{}".format(clean_name.replace(" ", "-"), i["source"], i["rarity"].replace(" ", "-")).upper(), "item_info": i}
+            json_items_list["items"].append(i)
+        except Exception as e:
+            print("Exception is " , e)
+            pass
+    print(json_items_list)
+    send_to_translated(file, "items-base", json_items_list)
+
+
 def deities_translation(file, json_onedown):
     json_deities_list = {"deities": []}
     # TODO: Refactor sub functions into specific translation cases
@@ -288,3 +312,5 @@ def send_to_translated(file, name_input, json_list):
             print("writing to {}.json".format(name_input))
             print(json_list)
             json.dump(json_list, f)
+
+translate_json()
