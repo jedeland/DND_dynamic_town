@@ -68,12 +68,14 @@ def convert_to_yaml(json_file, old_path):
         print("Successfully transformed {} with {}".format(file_name, dump))
 
 def load_yaml():
-
-    for file in os.listdir("cleaned_data"):
-        print(file)
-        with open("cleaned_data/{}".format(file), "r") as out:
-            output = yaml.safe_load(out)
-            print(output)
+    try:
+        for file in os.listdir("cleaned_data"):
+            print(file)
+            with open("cleaned_data/{}".format(file), "r") as out:
+                output = yaml.safe_load(out)
+                print(output)
+    except:
+        pass
 
 def translate_json():
     print("Trying to simplify json data")
@@ -313,4 +315,4 @@ def send_to_translated(file, name_input, json_list):
             print(json_list)
             json.dump(json_list, f)
 
-translate_json()
+clean_files()
