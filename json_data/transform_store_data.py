@@ -7,9 +7,9 @@ import yaml
 #Global Variables
 blacksmith_list = ["weapon", "armor", "tool", "shield", "bow", "axe", "sword", "spear", "plate",
                    "piercing", "bludgeoning", "slashing", "mail", "chain"]
-general_list = ["potion", "tools", "saddle", "ink", "mining", "fishing", "book", "bag", "drink", "eat", "food"]
+general_list = ["potion", "tools", "saddle", "ink", "mining", "fishing", "book", "bag", "drink", "clothing" "eat", "food"]
 enchanter_list = ["potion", "wand", "can cast", "book", "bottle",
-                  "scroll", "clothing", "staff", "ring", "token", "gem", "cloak", "talisman", "healing"]
+                  "scroll", "staff", "ring", "token", "gem", "cloak", "talisman", "healing"]
 scribe_list = ["ink", "robe", "cloak", "scroll", "book", "tome", "bottle"]
 
 
@@ -144,8 +144,8 @@ def sort_data_to_stores(new_yaml):
     stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General Store": []}
     key_words = {"Blacksmith" : blacksmith_list, "General Store": general_list, "Enchanter": enchanter_list,
                  "Scribe": scribe_list}
-    print(len(new_yaml["items"]))
-    print("printing weapons")
+    #print(len(new_yaml["items"]))
+    #print("printing weapons")
 
     for i in list_of_dicts:
         item_info = i["item_info"]
@@ -157,7 +157,7 @@ def sort_data_to_stores(new_yaml):
             #Fixed issue with keywords
 
             for k, v in item_info.items():
-                print(k,v)
+                #print(k,v)
                 if k == "weapon" and v == True:
                     stores["Blacksmith"].append(i)
 
@@ -166,13 +166,17 @@ def sort_data_to_stores(new_yaml):
                     stores["Blacksmith"].append(i)
                 if any(word in str(v).lower() for word in key_words["General Store"]):
                     #print("Later I ", i)
+
                     stores["General Store"].append(i)
+                    if i['item_info']['rarity'] in ["artifact", "legendary", "very rare"]:
+                        stores["General Store"].remove(i)
 
                 # if k == "wondrous" and v == True:
                 #     stores["Enchanter"].append(i)
 
                 if any(word in str(v).lower() for word in key_words["Enchanter"]):
                     #print("Later I ", i)
+
                     stores["Enchanter"].append(i)
 
                 if any(word in str(v).lower() for word in key_words["Scribe"]):
@@ -180,7 +184,7 @@ def sort_data_to_stores(new_yaml):
                     stores["Scribe"].append(i)
 
         except Exception as e:
-            print(e, e.args)
+            print("There was an exception: ", e, e.args)
             pass
 
 
