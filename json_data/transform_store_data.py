@@ -134,6 +134,16 @@ def conform_data_items():
         except Exception as e:
             print("There was an error, or this has already been executed \nError was {}".format(e))
 
+def assign_store_category(store_list):
+    print("Assigning stores to categories")
+    print("Checking stores exist")
+    if os.path.exists("cleaned_data/citizen_store_data") and os.path.exists("cleaned_data/hero_store_data"):
+        print("The folders exist!")
+    else:
+        print("The folder couldnt be found, creating folders")
+        os.mkdir("cleaned_data/citizen_store_data")
+        os.mkdir("cleaned_data/hero_store_data")
+
 def sort_data_to_stores(new_yaml):
     list_of_dicts = next(iter(new_yaml.values()))
     #Generic bins to classify data
@@ -210,6 +220,7 @@ def sort_data_to_stores(new_yaml):
     print(len(stores["General Store"]))
     print(len(stores["Enchanter"]))
     print(len(stores["Scribe"]))
+    assign_store_category(stores)
    # print(stores["Scribe"])
 
 
