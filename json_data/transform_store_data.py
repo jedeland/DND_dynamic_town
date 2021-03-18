@@ -134,11 +134,24 @@ def conform_data_items():
         except Exception as e:
             print("There was an error, or this has already been executed \nError was {}".format(e))
 
-def assign_store_category(store_list):
+def assign_store_category(store_list, types):
     print("Assigning stores to categories")
     print("Checking stores exist")
     if os.path.exists("cleaned_data/citizen_store_data") and os.path.exists("cleaned_data/hero_store_data"):
         print("The folders exist!")
+        #Assign stores to correct dirs
+        print(type(store_list))
+        print(store_list)
+        for i in store_list:
+            print(i)
+            print("This is the start of the store list: ", store_list.get(i))
+            if i in types["civilian stores"]:
+                with open(r"cleaned_data/citizen_store_data/{}.yaml".format(i), "w+") as f:
+                    data = yaml.dump(store_list.get(i), f, sort_keys=False)
+                    print(data)
+
+
+
     else:
         print("The folder couldnt be found, creating folders")
         os.mkdir("cleaned_data/citizen_store_data")
@@ -147,12 +160,12 @@ def assign_store_category(store_list):
 def sort_data_to_stores(new_yaml):
     list_of_dicts = next(iter(new_yaml.values()))
     #Generic bins to classify data
-    store_types = ["General Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter", "Scribe"]
-    assign_types = [{"civilian stores": ["General Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe"],
-                     "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}]
+    store_types = ["General_Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter", "Scribe"]
+    assign_types = {"civilian stores": ["General_Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe"],
+                     "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}
     #Scope limited to 3 words to test types
-    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General Store": []}
-    key_words = {"Blacksmith" : blacksmith_list, "General Store": general_list, "Enchanter": enchanter_list,
+    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General_Store": []}
+    key_words = {"Blacksmith" : blacksmith_list, "General_Store": general_list, "Enchanter": enchanter_list,
                  "Scribe": scribe_list}
     #print(len(new_yaml["items"]))
     #print("printing weapons")
@@ -174,12 +187,12 @@ def sort_data_to_stores(new_yaml):
                 if any(word in str(v).lower() for word in key_words["Blacksmith"]):
                     #print("Later I ", i)
                     stores["Blacksmith"].append(i)
-                if any(word in str(v).lower() for word in key_words["General Store"]):
+                if any(word in str(v).lower() for word in key_words["General_Store"]):
                     #print("Later I ", i)
 
-                    stores["General Store"].append(i)
+                    stores["General_Store"].append(i)
                     if i['item_info']['rarity'] in ["artifact", "legendary", "very rare"]:
-                        stores["General Store"].remove(i)
+                        stores["General_Store"].remove(i)
 
                 # if k == "wondrous" and v == True:
                 #     stores["Enchanter"].append(i)
@@ -217,10 +230,10 @@ def sort_data_to_stores(new_yaml):
 
     print(len(stores["Blacksmith"]))
     #print([g["item_code"] for g in stores["General Store"]])
-    print(len(stores["General Store"]))
+    print(len(stores["General_Store"]))
     print(len(stores["Enchanter"]))
     print(len(stores["Scribe"]))
-    assign_store_category(stores)
+    assign_store_category(stores, assign_types)
    # print(stores["Scribe"])
 
 
