@@ -139,16 +139,32 @@ def assign_store_category(store_list, types):
     print("Checking stores exist")
     if os.path.exists("cleaned_data/citizen_store_data") and os.path.exists("cleaned_data/hero_store_data"):
         print("The folders exist!")
-        #Assign stores to correct dirs
-        print(type(store_list))
-        print(store_list)
-        for i in store_list:
-            print(i)
-            print("This is the start of the store list: ", store_list.get(i))
+        #Change replace to overwrite files
+
+        replace = False
+        #Note: the id tags in thr yaml do not affect the output
+        for i in store_list.keys():
+            print(store_list.keys())
+            print("This is i ", i)
+            #print("This is the start of the store list: ", store_list.get(i))
             if i in types["civilian stores"]:
-                with open(r"cleaned_data/citizen_store_data/{}.yaml".format(i), "w+") as f:
-                    data = yaml.dump(store_list.get(i), f, sort_keys=False)
-                    print(data)
+                print("{} is in civ stores".format(i))
+                if not os.path.exists(r"cleaned_data/citizen_store_data/{}.yaml".format(i)) or replace:
+                    with open(r"cleaned_data/citizen_store_data/{}.yaml".format(i), "w+") as f:
+                        data = yaml.dump(store_list.get(i), f, sort_keys=False)
+                        #print(data)
+                else:
+                    print("Data {} was not uploaded, as it already exists".format(i))
+            if i in types["hero stores"]:
+                if not os.path.exists(r"cleaned_data/hero_store_data/{}.yaml".format(i)) or replace:
+                    with open(r"cleaned_data/hero_store_data/{}.yaml".format(i), "w+") as fil:
+                        data = yaml.dump(store_list.get(i), fil, sort_keys=False)
+                        #print(data)
+                else:
+                    print("Data {} was not uploaded, as it already exists".format(i))
+        with open(r"cleaned_data/hero_store_data/Blacksmith.yaml", "r+") as file:
+            blacksmith_data = yaml.safe_load(file)
+            print(blacksmith_data)
 
 
 
@@ -181,8 +197,8 @@ def sort_data_to_stores(new_yaml):
 
             for k, v in item_info.items():
                 #print(k,v)
-                if k == "weapon" and v == True:
-                    stores["Blacksmith"].append(i)
+                # if k == "weapon" and v == True:
+                #     stores["Blacksmith"].append(i)
 
                 if any(word in str(v).lower() for word in key_words["Blacksmith"]):
                     #print("Later I ", i)
@@ -233,6 +249,7 @@ def sort_data_to_stores(new_yaml):
     print(len(stores["General_Store"]))
     print(len(stores["Enchanter"]))
     print(len(stores["Scribe"]))
+    #Replace is a boolean asking to overwrite currently existing files or not
     assign_store_category(stores, assign_types)
    # print(stores["Scribe"])
 
