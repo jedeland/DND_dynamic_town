@@ -164,7 +164,10 @@ def assign_store_category(store_list, types):
                     print("Data {} was not uploaded, as it already exists".format(i))
         with open(r"cleaned_data/hero_store_data/Blacksmith.yaml", "r+") as file:
             blacksmith_data = yaml.safe_load(file)
-            print(blacksmith_data)
+            print(blacksmith_data[0:100])
+            print(type(blacksmith_data), " : ")
+            for g in blacksmith_data:
+                print(g['item_code'])
 
 
 
