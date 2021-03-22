@@ -8,6 +8,7 @@ class Store:
     def __init__(self, *args):
         self.name = self.find_valid_name(self.culture)
         self.store_type = self.determine_store_type(self.remaining_stores)
+        self.store_wealth = self.determine_regional_wealth(self.region_wealth)
     print("Creating store class")
 
     def find_valid_name(self, culture):
@@ -19,3 +20,14 @@ class Store:
     def determine_store_type(self, stores):
         #This function will use stores (called in world class) to determine which types of stores are still needed, it will take the first call and set up the store
         return "Blacksmith"
+
+    def determine_regional_wealth(self, local_wealth):
+        #This will set out how wealthy the local area is, and add in some variance to determine how wealthy the store is
+        outclasses_area = False
+        #Populate stock uses the wealth calculation to make a reasonable inventory for the store
+        inventory = self.populate_stock(local_wealth, outclasses_area)
+        return "Stable"
+    def populate_stock(self, local_wealth, outclasses_area):
+        #Calculates what could be available
+        stock = ["Sword", "Dagger", "Horse"]
+        print(stock)
