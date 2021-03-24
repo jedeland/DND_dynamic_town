@@ -47,3 +47,5 @@ class Store:
     def find_quests(self, npcs, local_wealth):
 
         return "There are no quests"
+
+# new_store = Store()
