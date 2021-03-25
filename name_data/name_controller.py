@@ -12,8 +12,11 @@ def get_cultures():
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT origin FROM NAMES")
     origins = cur.fetchall()
+    culture_list = []
     for i in origins:
-        print(i[0])
+        if i[0] != "Unisex":
+            culture_list.append(i[0])
+    return culture_list
 
 def get_names(culture):
 
@@ -54,4 +57,5 @@ def explore_sql():
         #     #Use name and origin
 explore_sql()
 get_names("France")
-get_cultures()
+possible_cultures = get_cultures()
+pprint(possible_cultures)
