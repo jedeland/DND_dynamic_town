@@ -6,7 +6,17 @@ import yaml
 import re
 import sqlite3
 
+def get_cultures():
+    print("Finding cultures")
+    conn = sqlite3.connect("names_merged.db")
+    cur = conn.cursor()
+    cur.execute("SELECT DISTINCT origin FROM NAMES")
+    origins = cur.fetchall()
+    for i in origins:
+        print(i[0])
+
 def get_names(culture):
+
     print("Calling the get_names function")
     print(culture)
     conn = sqlite3.connect("names_merged.db")
@@ -16,6 +26,10 @@ def get_names(culture):
     #names = cur.execute("""SELECT * FROM NAMES""")
 
     print(tables)
+
+    cur.execute("SELECT * FROM NAMES WHERE origin = '{}'".format(culture))
+    names = cur.fetchall()
+    pprint(names)
 
 def explore_sql():
     #This function explores the SQL files
@@ -39,3 +53,5 @@ def explore_sql():
         # else:
         #     #Use name and origin
 explore_sql()
+get_names("France")
+get_cultures()
