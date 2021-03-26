@@ -11,7 +11,7 @@ class Location:
         loc_size = self.location_size.get(list(self.location_size.keys())[0])
         self.economic_situation = self.determine_economy(self.location_size)
         self.npc_ratio = self.determine_npc_ratio(loc_size, self.size_description, self.economic_situation)
-        self.npc_ratio = self.determine_region_culture(get_cultures())
+        self.culture = self.determine_region_culture(get_cultures())
         print(self.npc_ratio)
         print(loc_size)
 
