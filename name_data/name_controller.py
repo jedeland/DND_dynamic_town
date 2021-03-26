@@ -5,10 +5,14 @@ from pprint import pprint
 import yaml
 import re
 import sqlite3
+import sqlalchemy
+
+def get_cultures_relative():
+    print()
 
 def get_cultures():
     print("Finding cultures")
-    conn = sqlite3.connect("names_merged.db")
+    conn = sqlite3.connect(r"C:\Users\jedel\PycharmProjects\DND_dynamic_town\name_data\names_merged.db")
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT origin FROM NAMES")
     origins = cur.fetchall()
@@ -36,7 +40,7 @@ def get_names(culture):
 
 def explore_sql():
     #This function explores the SQL files
-    sql_list = ["gen_townnames.db", "names_merged.db"]
+    sql_list = ["name_data/gen_townnames.db", "name_data/names_merged.db"]
     for i in range(2):
         print("On a fact finding mission! Iteration : {}".format(i))
         facts_dict = {}
@@ -55,7 +59,6 @@ def explore_sql():
         #     #Use Name and Origin
         # else:
         #     #Use name and origin
-explore_sql()
-get_names("France")
-possible_cultures = get_cultures()
-pprint(possible_cultures)
+
+output = get_cultures()
+print(output)

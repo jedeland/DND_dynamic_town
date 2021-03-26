@@ -1,4 +1,5 @@
 import random
+from name_data.name_controller import *
 
 
 class Location:
@@ -10,8 +11,15 @@ class Location:
         loc_size = self.location_size.get(list(self.location_size.keys())[0])
         self.economic_situation = self.determine_economy(self.location_size)
         self.npc_ratio = self.determine_npc_ratio(loc_size, self.size_description, self.economic_situation)
+        self.npc_ratio = self.determine_region_culture(get_cultures())
         print(self.npc_ratio)
         print(loc_size)
+
+
+    def determine_region_culture(self, culture_list):
+        print(culture_list)
+        culture = random.choice(culture_list)
+        return culture
 
     def determine_size(self, population):
         #Reused this from lig
@@ -103,6 +111,7 @@ class Location:
 
 
 def populate_region():
+
     print("Populating region")
     #TODO: create 5-7 regions, add to them a set amount of each size (6 cities, 15 towns, 25+ villages, x many tiny)
 town = Location()
