@@ -31,6 +31,11 @@ def check_values():
         print(i)
         if value[0][0] == "N" and len(value) < 2:
             print("Issue found with", i)
+            if i == "Bantu":
+                print("Trying to update names")
+                cur.execute("UPDATE NAMES SET origin = 'African' WHERE origin = 'Bantu'")
+                g = cur.fetchall()
+                print(g)
 
 def get_names(culture):
 
