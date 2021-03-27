@@ -5,10 +5,6 @@ from pprint import pprint
 import yaml
 import re
 import sqlite3
-import sqlalchemy
-
-def get_cultures_relative():
-    print()
 
 def get_cultures():
     print("Finding cultures")
@@ -18,9 +14,23 @@ def get_cultures():
     origins = cur.fetchall()
     culture_list = []
     for i in origins:
-        if i[0] != "Unisex":
+
+        if i[0] not in  ["Unisex", "Hawaiian"]:
             culture_list.append(i[0])
     return culture_list
+
+def check_values():
+    print("Checking values")
+    conn = sqlite3.connect("names_merged.db")
+    cur = conn.cursor()
+    cultures = get_cultures()
+    for i in cultures:
+        cur.execute("SELECT DISTINCT tag FROM NAMES WHERE origin = '{}'".format(i))
+        value = cur.fetchall()
+        print(value)
+        print(i)
+        if value[0][0] == "N" and len(value) < 2:
+            print("Issue found with", i)
 
 def get_names(culture):
 
@@ -32,7 +42,10 @@ def get_names(culture):
     tables = cur.fetchall()[0][0]
     #names = cur.execute("""SELECT * FROM NAMES""")
 
-    print(tables)
+    # print(tables)
+    # cur.execute("""SELECT name FROM PRAGMA_TABLE_INFO('NAMES')""")
+    # out = cur.fetchall()
+    # print(out)
 
     cur.execute("SELECT * FROM NAMES WHERE origin = '{}'".format(culture))
     names = cur.fetchall()
@@ -60,5 +73,4 @@ def explore_sql():
         # else:
         #     #Use name and origin
 
-output = get_cultures()
-print(output)
+check_values()

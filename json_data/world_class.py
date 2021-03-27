@@ -3,7 +3,7 @@ from name_data.name_controller import *
 
 
 class Location:
-    def __init__(self, *args):
+    def __init__(self, parent_culture):
         #Pop input should be introduced in the region class
         pop_input = random.randint(0, 100000)
 
@@ -11,7 +11,7 @@ class Location:
         loc_size = self.location_size.get(list(self.location_size.keys())[0])
         self.economic_situation = self.determine_economy(self.location_size)
         self.npc_ratio = self.determine_npc_ratio(loc_size, self.size_description, self.economic_situation)
-        self.culture = self.determine_region_culture(get_cultures())
+        self.culture = parent_culture
         print(self.npc_ratio)
         print(loc_size)
 
@@ -108,13 +108,20 @@ class Location:
             reserve_npcs = round(loc_size/random.randint(30, 120))
 
             return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
-
+def determine_region_culture(culture_list):
+    print(culture_list)
+    culture = random.choice(culture_list)
+    return culture
 
 def populate_region():
+    parent_culture = determine_region_culture(culture_list=get_cultures())
+    town = Location(parent_culture)
+    print(town.__dict__)
+    print(dir(town))
+    size = town.location_size
 
     print("Populating region")
     #TODO: create 5-7 regions, add to them a set amount of each size (6 cities, 15 towns, 25+ villages, x many tiny)
-town = Location()
-print(town.__dict__)
-print(dir(town))
-size = town.location_size
+
+
+populate_region()
