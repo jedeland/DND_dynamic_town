@@ -31,11 +31,22 @@ def check_values():
         print(i)
         if value[0][0] == "N" and len(value) < 2:
             print("Issue found with", i)
-            if i == "Bantu":
-                print("Trying to update names")
-                cur.execute("UPDATE NAMES SET origin = 'African' WHERE origin = 'Bantu'")
-                g = cur.fetchall()
-                print(g)
+            try:
+                if i == "Bantu":
+                    print("Trying to update names")
+                    cur.execute("SELECT * FROM NAMES")
+                    cur.execute(r"UPDATE NAMES SET origin='African' WHERE origin='Bantu'")
+                    conn.commit()
+                if i == "German":
+                    cur.execute("SELECT * FROM NAMES")
+                    cur.execute(r"UPDATE NAMES SET origin='Germany' WHERE origin='German'")
+                    conn.commit()
+                if i == "Navajo":
+                    cur.execute("SELECT * FROM NAMES")
+                    cur.execute(r"DELETE FROM NAMES WHERE origin = 'Navajo'")
+                    conn.commit()
+            except Exception as e:
+                print("There was an issue with cleaning up the database - {}".format(e))
 
 def get_names(culture):
 
