@@ -5,10 +5,11 @@ from pprint import pprint
 import yaml
 import re
 import sqlite3
+sql_address = r"C:\Users\jedel\PycharmProjects\DND_dynamic_town\name_data\names_merged.db"
 
 def get_cultures():
     print("Finding cultures")
-    conn = sqlite3.connect(r"C:\Users\jedel\PycharmProjects\DND_dynamic_town\name_data\names_merged.db")
+    conn = sqlite3.connect(sql_address)
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT origin FROM NAMES")
     origins = cur.fetchall()
@@ -21,7 +22,7 @@ def get_cultures():
 
 def check_values():
     print("Checking values")
-    conn = sqlite3.connect("names_merged.db")
+    conn = sqlite3.connect(sql_address)
     cur = conn.cursor()
     cultures = get_cultures()
     for i in cultures:
@@ -69,7 +70,7 @@ def get_names(culture):
 
 def explore_sql():
     #This function explores the SQL files
-    sql_list = ["name_data/gen_townnames.db", "name_data/names_merged.db"]
+    sql_list = ["gen_townnames.db", sql_address]
     for i in range(2):
         print("On a fact finding mission! Iteration : {}".format(i))
         facts_dict = {}
@@ -89,4 +90,12 @@ def explore_sql():
         # else:
         #     #Use name and origin
 
-check_values()
+def get_single_name(culture):
+    print("Getting single name")
+    conn = sqlite3.connect(sql_address)
+    cur = conn.cursor()
+    cur.execute("SELECT name FROM NAMES WHERE origin = '{}' AND tag != 'N' ORDER BY RANDOM() LIMIT 1".format(culture))
+    name = cur.fetchall()[0][0]
+    return name
+
+

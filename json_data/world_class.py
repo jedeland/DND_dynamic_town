@@ -1,4 +1,6 @@
 import random
+
+from json_data.store_class import Store
 from name_data.name_controller import *
 
 
@@ -10,6 +12,8 @@ class Location:
         self.location_size, self.size_description = self.determine_size(pop_input)
         loc_size = self.location_size.get(list(self.location_size.keys())[0])
         self.economic_situation = self.determine_economy(self.location_size)
+        self.number_of_stores = self.determine_merchant_class(self.size_description)
+
         self.npc_ratio = self.determine_npc_ratio(loc_size, self.size_description, self.economic_situation)
         self.culture = parent_culture
         print(self.npc_ratio)
@@ -108,6 +112,18 @@ class Location:
             reserve_npcs = round(loc_size/random.randint(30, 120))
 
             return {"Main NPCs": important_npcs, "Reserved NPCs": reserve_npcs}
+
+    #Finds the number of stores needed
+    @staticmethod
+    def determine_merchant_class(location_size):
+        store_sizes = {"Large": range(5, 8),
+                       "Medium": range(4,6),
+                       "Small": range(2,3),
+                       "Tiny": range(1, 2)}
+        store_range = random.choice(store_sizes[location_size])
+        return store_range
+
+
 def determine_region_culture(culture_list):
     print(culture_list)
     culture = random.choice(culture_list)
@@ -115,7 +131,20 @@ def determine_region_culture(culture_list):
 
 def populate_region():
     parent_culture = determine_region_culture(culture_list=get_cultures())
+    stores = ["General_Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe", "Blacksmith"]
     town = Location(parent_culture)
+    used_stores = []
+    try:
+        for i in range(town.number_of_stores):
+            store_type = random.choice(stores)
+            store = Store(town.culture, store_type, town.economic_situation)
+            used_stores.append(store_type)
+            print("trying to make store", store.__dict__)
+    except Exception as e:
+        print("Issue was ", e)
+    print(used_stores)
+
+
     print(town.__dict__)
     print(dir(town))
     size = town.location_size
