@@ -68,6 +68,14 @@ def get_names(culture):
     names = cur.fetchall()
     pprint(names)
 
+def get_x_names(culture, names_num):
+    conn = sqlite3.connect("names_merged.db")
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT * FROM NAMES WHERE origin = '{}' AND tag != 'N' ORDER BY RANDOM() LIMIT {}".format(culture, names_num))
+    names = cur.fetchall()
+    pprint(names)
+
 def explore_sql():
     #This function explores the SQL files
     sql_list = ["gen_townnames.db", sql_address]
