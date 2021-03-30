@@ -49,9 +49,18 @@ class Store:
     def determine_regional_wealth(self, local_wealth):
         #This will set out how wealthy the local area is, and add in some variance to determine how wealthy the store is
         outclasses_area = False
+        upper_band, lower_band = ["Affluent","Prosperous", "Rich", "Strong"], ["Average", "Struggling", "Poor"]
+        if local_wealth in upper_band:
+            print("This area is quite rich!")
+        elif local_wealth in lower_band:
+            print("This area has potential ...")
+            outclasses_area = random.randint(0, 20)
+            if outclasses_area == 19 or outclasses_area == 20:
+                print("The local store is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region")
+                outclasses_area = True
         #Populate stock uses the wealth calculation to make a reasonable inventory for the store
         #inventory = self.populate_stock(local_wealth, outclasses_area)
-        return "nothing"
+        return local_wealth
 
     @staticmethod
     def populate_stock(local_wealth, outclasses_area):
