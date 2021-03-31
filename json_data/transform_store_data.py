@@ -11,6 +11,7 @@ general_list = ["potion", "tools", "saddle", "ink", "mining", "fishing", "book",
 enchanter_list = ["potion", "wand", "can cast", "book", "bottle",
                   "scroll", "staff", "ring", "token", "gem", "cloak", "talisman", "healing"]
 scribe_list = ["ink", "robe", "cloak", "scroll", "book", "tome", "bottle"]
+alchemist_list = ["potion", "flask", "bag", "poison", "elixir", "powder", "pouch"]
 
 
 
@@ -180,12 +181,12 @@ def sort_data_to_stores(new_yaml):
     list_of_dicts = next(iter(new_yaml.values()))
     #Generic bins to classify data
     store_types = ["General_Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter", "Scribe"]
-    assign_types = {"civilian stores": ["General_Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe"],
+    assign_types = {"civilian stores": ["General_Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe", "Alchemist"],
                      "hero stores": ["Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter"]}
     #Scope limited to 3 words to test types
-    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General_Store": []}
+    stores = {"Blacksmith" :[], "Enchanter": [], "Scribe": [], "General_Store": [], "Alchemist": []}
     key_words = {"Blacksmith" : blacksmith_list, "General_Store": general_list, "Enchanter": enchanter_list,
-                 "Scribe": scribe_list}
+                 "Scribe": scribe_list, "Alchemist": alchemist_list}
     #print(len(new_yaml["items"]))
     #print("printing weapons")
 
@@ -224,6 +225,9 @@ def sort_data_to_stores(new_yaml):
                 if any(word in str(v).lower() for word in key_words["Scribe"]):
                     #print("Later I ", i)
                     stores["Scribe"].append(i)
+
+                if any(word in str(v).lower() for word in key_words["Alchemist"]):
+                    stores["Alchemist"].append(i)
 
         except Exception as e:
             print("There was an exception: ", e, e.args)
