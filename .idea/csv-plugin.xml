@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\json_data\transform_to_sql.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\json_data\world_class.py">
           <value>
             <Attribute>
