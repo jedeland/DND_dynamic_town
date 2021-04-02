@@ -31,7 +31,7 @@ def deconstruct_deities(yaml_file):
     bad_list = ["greek", "egyptian", "norse", "celtic", "egw", "erlw", "mot", "theros"]
     sources_set = set()
     for i in yaml_file:
-        sources_set.add(i["god_info"]["source"])
+
         try:
             if (i["god_info"]["source"].lower() in bad_list) or (i["god_code"].split("_")[-1].lower() in bad_list):
                 fantasy_deities.remove(i)
@@ -39,6 +39,8 @@ def deconstruct_deities(yaml_file):
                 fantasy_deities.remove(i)
                 #source = i["god_info"]["source"]
                 #print("\n", i["god_code"], source, "\n")
+            else:
+                sources_set.add(i["god_info"]["source"])
 
         except Exception as e:
             print("Issue is", e, " ", i)
