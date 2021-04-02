@@ -26,24 +26,27 @@ def separate_values():
 def deconstruct_deities(yaml_file):
     print("")
     print(type(yaml_file))
+    print(len(yaml_file))
     fantasy_deities = yaml_file
     bad_list = ["greek", "egyptian", "norse", "celtic", "egw", "erlw", "mot", "theros"]
     for i in yaml_file:
 
         try:
-            if str(i["god_code"]) == "ODUR_PHB_NORSE":
-                print(i)
-                print(type(i["god_info"]["pantheon"]))
-            if i["god_info"]["pantheon"].lower() in bad_list:
+            print(i["god_code"].split("_")[-1].lower())
+            if (i["god_info"]["source"].lower() in bad_list) or (i["god_code"].split("_")[-1].lower() in bad_list):
+                fantasy_deities.remove(i)
+            elif i["god_info"]["pantheon"].lower() in bad_list:
                 fantasy_deities.remove(i)
                 #source = i["god_info"]["source"]
                 #print("\n", i["god_code"], source, "\n")
 
-            elif i["god_info"]["source"].lower() in bad_list or i["god_code"].split("_")[-1].lower() in bad_list:
+            if i["god_code"] == "THOTH_PHB_EGYPTIAN":
                 fantasy_deities.remove(i)
+                print("i is", i)
         except Exception as e:
-            print("Issue is", e)
+            print("Issue is", e, " ", i)
     print("Here are your fantasy versions")
+    print(len(fantasy_deities))
     #print(fantasy_deities)
 
     #pprint(yaml_file)
