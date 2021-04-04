@@ -55,9 +55,25 @@ def deconstruct_deities(yaml_file):
     new_json = new_json.drop(columns=["altNames", "symbolImg", "_copy", "customExtensionOf"
         , "reprintAlias", "additionalSources", "srd"])
     #pprint(deities_dict)
+    #print(new_json, type(new_json))
+    print(new_json.dtypes)
+    new_json = new_json.astype({"alignment": "string", "domains": "string", "entries": "string"})
     print(new_json, type(new_json))
     print(sources_set)
     #TODO: upload new_json to database table
+    try:
+        #TODO: maybe move to postgresql for list data type?
+        conn = sqlite3.connect("sql_prep_data/region_data.db")
+        cur = conn.cursor()
+        print(sqlite3.version)
+        new_json.to_sql("deities", con=conn, if_exists="replace")
+        cur.execute("SELECT * FROM deities")
+
+        print(cur.fetchall())
+        print(sqlite3.version)
+    except Exception as e:
+        print("Issue is: ", e)
+
     #print(fantasy_deities)
 
     #pprint(yaml_file)
