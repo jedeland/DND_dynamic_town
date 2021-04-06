@@ -60,7 +60,6 @@ def deconstruct_baseitems(yaml_file):
     print(len(yaml_file))
     fantasy_items = yaml_file.copy()
     sources_set = set()
-    non_fantasy = ['futuristic', 'modern', 'renaissance']
     baseitem_dict = {"baseitem": []}
     for i in yaml_file:
         try:
@@ -69,6 +68,7 @@ def deconstruct_baseitems(yaml_file):
             #       print("Item is not fantasy ")
             # elif i["item_info"]["age"] == "renaissance":
             #     print(i)
+            #Checks if age key exists within i
             if "age" not in i["item_info"].keys():
                 print(i)
                 baseitem_dict["baseitem"].append(i)
@@ -78,9 +78,17 @@ def deconstruct_baseitems(yaml_file):
         except:
             print("UHOH")
             pass
-    print(baseitem_dict)
+    print("Here are your fantasy versions")
+    print(len(fantasy_items))
+    if len(fantasy_items) == 68:
+        print("This has already been cleaned, skipping write function!")
+    else:
+        with open("cleaned_data/items-base.yaml", "w+") as f:
+            print("")
+            yaml.dump(baseitem_dict, f)
 
-    print(sources_set)
+def splice_pathfinder_data():
+    print()
 
 
 if __name__ == "__main__":
@@ -89,4 +97,6 @@ if __name__ == "__main__":
     print("New value is ", type(new_values))
     deconstruct_deities(new_values["deities.yaml"])
     deconstruct_baseitems(new_values["items-base.yaml"])
-    #TODO: add way to check rarity, source and other features to be removed before adding to SQL
+    splice_pathfinder_data()
+    #TODO: add way to check rarity, source and other features to be removed be
+    # fore adding to SQL
