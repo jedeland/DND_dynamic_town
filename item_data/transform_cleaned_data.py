@@ -88,6 +88,8 @@ def deconstruct_baseitems(yaml_file):
             yaml.dump(baseitem_dict, f)
 
 def splice_pathfinder_data():
+    for yaml_file in os.listdir("cleaned_data/pathfinder_data"):
+        print(yaml_file)
     print()
 
 
