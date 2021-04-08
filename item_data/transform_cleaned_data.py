@@ -88,8 +88,16 @@ def deconstruct_baseitems(yaml_file):
             yaml.dump(baseitem_dict, f)
 
 def splice_pathfinder_data():
+    with open("cleaned_data/items-base.yaml", "r+") as base:
+        base_yaml = yaml.safe_load(base)
+        base.close()
+    print("Base yaml is : ", base_yaml)
     for yaml_file in os.listdir("cleaned_data/pathfinder_data"):
         print(yaml_file)
+        with open("cleaned_data/pathfinder_data/{}".format(yaml_file), "r", encoding="utf-8") as f:
+            new_yaml = yaml.safe_load(f)
+            print("\n\n")
+            pprint(new_yaml)
     print()
 
 
