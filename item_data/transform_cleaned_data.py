@@ -93,7 +93,8 @@ def splice_pathfinder_data():
         base_yaml = yaml.safe_load(base)
         base.close()
     #print("Base yaml is : ", base_yaml, " {}".format(type(base_yaml)))
-    base_files = base_yaml[list(base_yaml.keys())[0]]
+    first_key = list(base_yaml.keys())[0]
+    base_files = base_yaml[first_key]
     for yaml_file in os.listdir("cleaned_data/pathfinder_data"):
         try:
             with open("cleaned_data/pathfinder_data/{}".format(yaml_file), "r", encoding="utf-8") as f:
@@ -114,10 +115,15 @@ def splice_pathfinder_data():
                         print("I FOUND IT")
                     else:
                         #TODO: add to top dict
+                        base_yaml[first_key].append(i)
                         print()
         except Exception as e:
             print(e)
             pass
+    print("Base yaml is: ")
+    pprint(base_yaml)
+    with open("cleaned_data/items-base.yaml", "w+") as items_file:
+        yaml.dump(base_yaml, items_file)
 
     print()
 
