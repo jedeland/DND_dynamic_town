@@ -16,7 +16,7 @@ class Store:
         self.store_type = store_type
         self.name = self.find_valid_name(culture, self.store_type)
         self.store_wealth = self.determine_store_wealth(region_wealth)
-        self.inventory = self.populate_stock(self.store_wealth, outclasses_area=True)
+        self.inventory = self.populate_stock(self.store_type, self.store_wealth, outclasses_area=True)
         self.notable_npcs = self.create_npcs(culture, self.store_wealth)
     print("Creating store class")
 
@@ -79,7 +79,7 @@ class Store:
         return local_wealth
 
     @staticmethod
-    def populate_stock(local_wealth, outclasses_area):
+    def populate_stock(store_type, local_wealth, outclasses_area):
         #Calculates what could be available
         stock = ["Sword", "Dagger", "Horse"]
         print(stock)
