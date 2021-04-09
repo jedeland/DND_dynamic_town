@@ -99,16 +99,21 @@ def splice_pathfinder_data():
             with open("cleaned_data/pathfinder_data/{}".format(yaml_file), "r", encoding="utf-8") as f:
                 new_yaml = yaml.safe_load(f)
                 print("\n\n")
-                print(yaml_file, new_yaml)
+                #print(yaml_file, new_yaml)
                 new_yaml = translate_yaml(yaml_file=yaml_file, new_yaml=new_yaml)
                 print("The new yaml has been created, it is a {} type, and has {} keys".format(type(new_yaml), new_yaml.keys()))
-                pprint(new_yaml)
+                #pprint(new_yaml)
 
                 new_yaml_flat = new_yaml[list(new_yaml.keys())[0]]
                 #print(new_yaml_flat)
                 for i in new_yaml_flat:
-
-                    if i["name"].lower() in [g["item_code"] for g in base_files]:
+                    # print(i["item_code"])
+                    # print([g["item_code"] for g in base_files])
+                    if any(i["item_code"].split("_")[0] in x["item_code"] for x in base_files):
+                        print(i["item_code"], " was found in base files")
+                        print("I FOUND IT")
+                    else:
+                        #TODO: add to top dict
                         print()
         except Exception as e:
             print(e)
@@ -128,7 +133,7 @@ def translate_yaml(yaml_file, new_yaml):
             clean_name = re.sub(r'[^A-Za-z ]+', '', i["name"])
             clean_name = clean_name.replace("'", "")
             clean_name = re.sub(r"^\s", "", clean_name)
-            print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
+            #print("Cleaned name {} - Old name {}".format(clean_name, i["name"]))
             i = {"item_code": "{}_{}".format(clean_name.replace(" ", "-").upper(), i["source"][0]["abbr"].upper()), "item_info": i}
             json_items_list["{}".format(yaml_file.split(".")[0])].append(i)
         except Exception as e:
