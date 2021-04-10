@@ -4,6 +4,9 @@
 #Pathfinder data can be found here, with minor changes to the files to make the items 5e compatible
 #https://gitlab.com/jrmiller82/pathfinder-2-sqlite/-/blob/master/data/weapons.yaml
 import random
+from pprint import pprint
+
+import yaml
 
 from name_data.name_controller import get_single_name
 
@@ -81,6 +84,12 @@ class Store:
     @staticmethod
     def populate_stock(store_type, local_wealth, outclasses_area):
         #Calculates what could be available
+        with open("cleaned_data/items-base.yaml", "r+") as f:
+            print()
+            items_dict = yaml.safe_load(f)
+        first = list(items_dict.keys())[0]
+        print("First is ", first)
+        items = items_dict[first]
         stock = ["Sword", "Dagger", "Horse"]
         print(stock)
         return stock
