@@ -142,11 +142,11 @@ def assign_store_category(store_list, types):
         print("The folders exist!")
         #Change replace to overwrite files
 
-        replace = False
+        replace = True
         #Note: the id tags in thr yaml do not affect the output
         for i in store_list.keys():
             print(store_list.keys())
-            print("This is i ", i)
+            #print("This is i ", i)
             #print("This is the start of the store list: ", store_list.get(i))
             if i in types["civilian stores"]:
                 print("{} is in civ stores".format(i))
@@ -179,6 +179,14 @@ def assign_store_category(store_list, types):
 
 def sort_data_to_stores(new_yaml):
     list_of_dicts = next(iter(new_yaml.values()))
+    with open("cleaned_data/items-base.yaml", "r") as base_file:
+        base_yaml = yaml.safe_load(base_file)
+        list_of_base_dicts = next(iter(base_yaml.values()))
+        base_file.close()
+    # HE = input()
+    # print("The list of base dicts is ...")
+    # pprint(list_of_base_dicts)
+    # HO = input()
     #Generic bins to classify data
     store_types = ["General_Store", "Wandmaker", "Blacksmith", "Armourer", "Weaponsmith", "Alchemist", "Enchanter", "Scribe"]
     assign_types = {"civilian stores": ["General_Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe", "Alchemist"],
@@ -191,74 +199,57 @@ def sort_data_to_stores(new_yaml):
     #print("printing weapons")
 
     for i in list_of_dicts:
-        item_info = i["item_info"]
-        # print("Original I ", i)
-        # print(item_info, type(item_info))
-        #TODO: need to find a way to decide if i goes into the "bins" assigned above
-        #Best bet is to make a classification system using simple inputs
-        try:
-            #Fixed issue with keywords
-
-            for k, v in item_info.items():
-                #print(k,v)
-                # if k == "weapon" and v == True:
-                #     stores["Blacksmith"].append(i)
-
-                if any(word in str(v).lower() for word in key_words["Blacksmith"]):
-                    #print("Later I ", i)
-                    stores["Blacksmith"].append(i)
-                if any(word in str(v).lower() for word in key_words["General_Store"]):
-                    #print("Later I ", i)
-
-                    stores["General_Store"].append(i)
-                    if i['item_info']['rarity'] in ["artifact", "legendary", "very rare"]:
-                        stores["General_Store"].remove(i)
-
-                # if k == "wondrous" and v == True:
-                #     stores["Enchanter"].append(i)
-
-                if any(word in str(v).lower() for word in key_words["Enchanter"]):
-                    #print("Later I ", i)
-
-                    stores["Enchanter"].append(i)
-
-                if any(word in str(v).lower() for word in key_words["Scribe"]):
-                    #print("Later I ", i)
-                    stores["Scribe"].append(i)
-
-                if any(word in str(v).lower() for word in key_words["Alchemist"]):
-                    stores["Alchemist"].append(i)
-
-        except Exception as e:
-            print("There was an exception: ", e, e.args)
-            pass
-
-
-        #values = input()
-        #Makes checking output easier, to see loop more clearly
-        #time.sleep(0.3)
-
-    #pprint([i['item_code'] for i in stores["Blacksmith"]])
-    # try:
-    #     temp_set_comp = stores["Blacksmith"]
-    #     print(temp_set_comp, type(temp_set_comp))
-    #     new_set = set(temp_set_comp)
-    #     print(new_set)
-    #
-    #     contains_duplicates = any(temp_set_comp.count(element) > 1 for element in temp_set_comp)
-    #     print("Does this list contain duplicates? ", contains_duplicates)
-    # except Exception as e:
-    #     print(e)
-    #     pass
-
+        assign_stores(i, key_words, stores)
+    print("The first size")
     print(len(stores["Blacksmith"]))
-    #print([g["item_code"] for g in stores["General Store"]])
+    # print([g["item_code"] for g in stores["General Store"]])
     print(len(stores["General_Store"]))
     print(len(stores["Enchanter"]))
     print(len(stores["Scribe"]))
+
+    for g in list_of_base_dicts:
+        assign_stores(g, key_words, stores)
+    print("The second size")
+    print(len(stores["Blacksmith"]))
+    # print([g["item_code"] for g in stores["General Store"]])
+    print(len(stores["General_Store"]))
+    print(len(stores["Enchanter"]))
+    print(len(stores["Scribe"]))
+
     #Replace is a boolean asking to overwrite currently existing files or not
     assign_store_category(stores, assign_types)
-   # print(stores["Scribe"])
+
+
+def assign_stores(i, key_words, stores):
+    item_info = i["item_info"]
+    # print("Original I ", i)
+    # print(item_info, type(item_info))
+    # TODO: need to find a way to decide if i goes into the "bins" assigned above
+    # Best bet is to make a classification system using simple inputs
+    try:
+        # Fixed issue with keywords
+        for k, v in item_info.items():
+            if any(word in str(v).lower() for word in key_words["Blacksmith"]):
+                stores["Blacksmith"].append(i)
+            if any(word in str(v).lower() for word in key_words["General_Store"]):
+                stores["General_Store"].append(i)
+
+                if i['item_info']['rarity'] in ["artifact", "legendary", "very rare"]:
+                    stores["General_Store"].remove(i)
+
+            if any(word in str(v).lower() for word in key_words["Enchanter"]):
+                stores["Enchanter"].append(i)
+            if any(word in str(v).lower() for word in key_words["Scribe"]):
+                stores["Scribe"].append(i)
+            if any(word in str(v).lower() for word in key_words["Alchemist"]):
+                stores["Alchemist"].append(i)
+
+    except Exception as e:
+        print("There was an exception: ", e, e.args)
+        pass
+
+
+# print(stores["Scribe"])
 
 
 conform_data_items()
