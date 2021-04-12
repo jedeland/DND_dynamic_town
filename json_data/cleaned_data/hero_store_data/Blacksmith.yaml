@@ -14598,3 +14598,2248 @@
     attachedSpells:
     - lightning bolt
     - globe of invulnerability
+- item_code: BATTLEAXE_PHB_NONE
+  item_info:
+    axe: true
+    dmg1: 1d8
+    dmg2: 1d10
+    dmgType: S
+    name: Battleaxe
+    page: 149
+    property:
+    - V
+    rarity: none
+    source: PHB
+    srd: true
+    type: M
+    value: 1000
+    weapon: true
+    weaponCategory: martial
+    weight: 4
+- &id097
+  item_code: BREASTPLATE_PHB_NONE
+  item_info:
+    ac: 14
+    armor: true
+    entries:
+    - This armor consists of a fitted metal chest piece worn with supple leather.
+      Although it leaves the legs and arms relatively unprotected, this armor provides
+      good protection for the wearer's vital organs while leaving the wearer relatively
+      unencumbered.
+    name: Breastplate
+    page: 145
+    rarity: none
+    source: PHB
+    srd: true
+    type: MA
+    value: 40000
+    weight: 20
+- *id097
+- &id098
+  item_code: CHAIN-MAIL_PHB_NONE
+  item_info:
+    ac: 16
+    armor: true
+    entries:
+    - Made of interlocking metal rings, chain mail includes a layer of quilted fabric
+      worn underneath the mail to prevent chafing and to cushion the impact of blows.
+      The suit includes gauntlets.
+    name: Chain Mail
+    page: 145
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    strength: '13'
+    type: HA
+    value: 7500
+    weight: 55
+- *id098
+- &id099
+  item_code: CHAIN-SHIRT_PHB_NONE
+  item_info:
+    ac: 13
+    armor: true
+    entries:
+    - Made of interlocking metal rings, a chain shirt is worn between layers of clothing
+      or leather. This armor offers modest protection to the wearer's upper body and
+      allows the sound of the rings rubbing against one another to be muffled by outer
+      layers.
+    name: Chain Shirt
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    type: MA
+    value: 5000
+    weight: 20
+- *id099
+- item_code: CROSSBOW-BOLT_PHB_NONE
+  item_info:
+    name: Crossbow Bolt
+    page: 150
+    rarity: none
+    source: PHB
+    srd: true
+    type: A
+    value: 5
+    weight: 0.075
+- &id100
+  item_code: CROSSBOW-BOLTS-_PHB_NONE
+  item_info:
+    name: Crossbow Bolts (20)
+    packContents:
+    - item: crossbow bolt|phb
+      quantity: 20
+    page: 150
+    rarity: none
+    source: PHB
+    srd: true
+    type: A
+    value: 100
+    weight: 1.5
+- *id100
+- item_code: DOUBLEBLADED-SCIMITAR_ERLW_NONE
+  item_info:
+    dmg1: 2d4
+    dmgType: S
+    entries:
+    - entries:
+      - If you attack with a double-bladed scimitar as part of the {@action Attack}
+        action on your turn, you can use a bonus action immediately after to make
+        a melee attack with it. This attack deals {@dice 1d4} slashing damage on a
+        hit, instead of {@dice 2d4}.
+      name: Special
+      type: entries
+    hasFluff: true
+    name: Double-Bladed Scimitar
+    otherSources:
+    - page: 74
+      source: UAWGE
+    page: 21
+    property:
+    - S
+    - 2H
+    rarity: none
+    source: ERLW
+    sword: true
+    type: M
+    value: 10000
+    weapon: true
+    weaponCategory: martial
+    weight: 6
+- item_code: GREATAXE_PHB_NONE
+  item_info:
+    axe: true
+    dmg1: 1d12
+    dmgType: S
+    name: Greataxe
+    page: 149
+    property:
+    - H
+    - 2H
+    rarity: none
+    source: PHB
+    srd: true
+    type: M
+    value: 3000
+    weapon: true
+    weaponCategory: martial
+    weight: 7
+- item_code: GREATSWORD_PHB_NONE
+  item_info:
+    dmg1: 2d6
+    dmgType: S
+    name: Greatsword
+    page: 149
+    property:
+    - H
+    - 2H
+    rarity: none
+    source: PHB
+    srd: true
+    sword: true
+    type: M
+    value: 5000
+    weapon: true
+    weaponCategory: martial
+    weight: 6
+- &id101
+  item_code: HALF-PLATE-ARMOR_PHB_NONE
+  item_info:
+    ac: 15
+    armor: true
+    entries:
+    - Half plate consists of shaped metal plates that cover most of the wearer's body.
+      It does not include leg protection beyond simple greaves that are attached with
+      leather straps.
+    name: Half Plate Armor
+    page: 145
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    type: MA
+    value: 75000
+    weight: 40
+- *id101
+- &id102
+  item_code: HAND-CROSSBOW_PHB_NONE
+  item_info:
+    ammoType: crossbow bolt|phb
+    crossbow: true
+    dmg1: 1d6
+    dmgType: P
+    name: Hand Crossbow
+    page: 149
+    property:
+    - A
+    - L
+    - LD
+    range: 30/120
+    rarity: none
+    source: PHB
+    srd: true
+    type: R
+    value: 7500
+    weapon: true
+    weaponCategory: martial
+    weight: 3
+- *id102
+- item_code: HANDAXE_PHB_NONE
+  item_info:
+    axe: true
+    dmg1: 1d6
+    dmgType: S
+    name: Handaxe
+    page: 149
+    property:
+    - L
+    - T
+    range: 20/60
+    rarity: none
+    source: PHB
+    srd: true
+    type: M
+    value: 500
+    weapon: true
+    weaponCategory: simple
+    weight: 2
+- &id103
+  item_code: HEAVY-CROSSBOW_PHB_NONE
+  item_info:
+    ammoType: crossbow bolt|phb
+    crossbow: true
+    dmg1: 1d10
+    dmgType: P
+    name: Heavy Crossbow
+    page: 149
+    property:
+    - A
+    - H
+    - LD
+    - 2H
+    range: 100/400
+    rarity: none
+    source: PHB
+    srd: true
+    type: R
+    value: 5000
+    weapon: true
+    weaponCategory: martial
+    weight: 18
+- *id103
+- &id104
+  item_code: HIDE-ARMOR_PHB_NONE
+  item_info:
+    ac: 12
+    armor: true
+    entries:
+    - This crude armor consists of thick furs and pelts. It is commonly worn by barbarian
+      tribes, evil humanoids, and other folk who lack access to the tools and materials
+      needed to create better armor.
+    name: Hide Armor
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    type: MA
+    value: 1000
+    weight: 12
+- *id104
+- &id105
+  item_code: HOOKED-SHORTSPEAR_OOTA_UNKNOWN
+  item_info:
+    dmg1: 1d4
+    dmgType: P
+    entries:
+    - On a hit with this weapon, the wielder can forgo dealing damage and attempt
+      to trip the target, in which case the target must succeed on a Strength saving
+      throw or fall {@condition prone}. The DC is 8 + the wielder's Strength modifier
+      + the wielder's proficiency bonus.
+    name: Hooked Shortspear
+    page: 224
+    property:
+    - L
+    rarity: unknown
+    source: OotA
+    type: M
+    weapon: true
+    weaponCategory: martial
+    weight: 2
+- *id105
+- &id106
+  item_code: LEATHER-ARMOR_PHB_NONE
+  item_info:
+    ac: 11
+    armor: true
+    entries:
+    - The breastplate and shoulder protectors of this armor are made of leather that
+      has been stiffened by being boiled in oil. The rest of the armor is made of
+      softer and more flexible materials.
+    name: Leather Armor
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    type: LA
+    value: 1000
+    weight: 10
+- *id106
+- &id107
+  item_code: LIGHT-CROSSBOW_PHB_NONE
+  item_info:
+    ammoType: crossbow bolt|phb
+    crossbow: true
+    dmg1: 1d8
+    dmgType: P
+    name: Light Crossbow
+    page: 149
+    property:
+    - A
+    - LD
+    - 2H
+    range: 80/320
+    rarity: none
+    source: PHB
+    srd: true
+    type: R
+    value: 2500
+    weapon: true
+    weaponCategory: simple
+    weight: 5
+- *id107
+- &id108
+  item_code: LIGHT-REPEATING-CROSSBOW_OOTA_UNKNOWN
+  item_info:
+    ammoType: crossbow bolt|phb
+    crossbow: true
+    dmg1: 1d8
+    dmgType: P
+    entries:
+    - This crossbow is fitted with a cartridge that can hold up to six crossbow bolts.
+      It automatically reloads after firing until the cartridge runs out of ammunition.
+      Reloading the cartridge takes an action.
+    name: Light Repeating Crossbow
+    page: 224
+    property:
+    - A
+    - 2H
+    range: 40/160
+    rarity: unknown
+    source: OotA
+    type: R
+    weapon: true
+    weaponCategory: simple
+    weight: 5
+- *id108
+- *id108
+- item_code: LONGBOW_PHB_NONE
+  item_info:
+    ammoType: arrow|phb
+    bow: true
+    dmg1: 1d8
+    dmgType: P
+    name: Longbow
+    page: 149
+    property:
+    - A
+    - H
+    - 2H
+    range: 150/600
+    rarity: none
+    source: PHB
+    srd: true
+    type: R
+    value: 5000
+    weapon: true
+    weaponCategory: martial
+    weight: 2
+- item_code: LONGSWORD_PHB_NONE
+  item_info:
+    dmg1: 1d8
+    dmg2: 1d10
+    dmgType: S
+    name: Longsword
+    page: 149
+    property:
+    - V
+    rarity: none
+    source: PHB
+    srd: true
+    sword: true
+    type: M
+    value: 1500
+    weapon: true
+    weaponCategory: martial
+    weight: 3
+- item_code: NET_PHB_NONE
+  item_info:
+    entries:
+    - entries:
+      - A Large or smaller creature hit by a net is {@condition restrained} until
+        it is freed. A net has no effect on creatures that are formless, or creatures
+        that are Huge or larger. A creature can use its action to make a DC 10 Strength
+        check, freeing itself or another creature within its reach on a success. Dealing
+        5 slashing damage to the net (AC 10) also frees the creature without harming
+        it, ending the effect and destroying the net. When you use an action, bonus
+        action, or reaction to attack with a net, you can make only one attack regardless
+        of the number of attacks you can normally make.
+      name: Special
+      type: entries
+    name: Net
+    net: true
+    page: 149
+    property:
+    - S
+    - T
+    range: 5/15
+    rarity: none
+    source: PHB
+    srd: true
+    type: R
+    value: 100
+    weapon: true
+    weaponCategory: martial
+    weight: 3
+- &id109
+  item_code: PADDED-ARMOR_PHB_NONE
+  item_info:
+    ac: 11
+    armor: true
+    entries:
+    - Padded armor consists of quilted layers of cloth and batting.
+    name: Padded Armor
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    type: LA
+    value: 500
+    weight: 8
+- *id109
+- &id110
+  item_code: PLATE-ARMOR_PHB_NONE
+  item_info:
+    ac: 18
+    armor: true
+    entries:
+    - Plate consists of shaped, interlocking metal plates to cover the entire body.
+      A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and
+      thick layers of padding underneath the armor. Buckles and straps distribute
+      the weight over the body.
+    name: Plate Armor
+    page: 145
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    strength: '15'
+    type: HA
+    value: 150000
+    weight: 65
+- *id110
+- &id111
+  item_code: RING-MAIL_PHB_NONE
+  item_info:
+    ac: 14
+    armor: true
+    entries:
+    - This armor is leather armor with heavy rings sewn into it. The rings help reinforce
+      the armor against blows from swords and axes. Ring mail is inferior to chain
+      mail, and it's usually worn only by those who can't afford better armor.
+    name: Ring Mail
+    page: 145
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    type: HA
+    value: 3000
+    weight: 40
+- *id111
+- &id112
+  item_code: SCALE-MAIL_PHB_NONE
+  item_info:
+    ac: 14
+    armor: true
+    entries:
+    - This armor consists of a coat and leggings (and perhaps a separate skirt) of
+      leather covered with overlapping pieces of metal, much like the scales of a
+      fish. The suit includes gauntlets.
+    name: Scale Mail
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    type: MA
+    value: 5000
+    weight: 45
+- *id112
+- &id113
+  item_code: SHIELD_PHB_NONE
+  item_info:
+    ac: 2
+    entries:
+    - A shield is made from wood or metal and is carried in one hand. Wielding a shield
+      increases your Armor Class by 2. You can benefit from only one shield at a time.
+    name: Shield
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    type: S
+    value: 1000
+    weight: 6
+- *id113
+- item_code: SHORTBOW_PHB_NONE
+  item_info:
+    ammoType: arrow|phb
+    bow: true
+    dmg1: 1d6
+    dmgType: P
+    name: Shortbow
+    page: 149
+    property:
+    - A
+    - 2H
+    range: 80/320
+    rarity: none
+    source: PHB
+    srd: true
+    type: R
+    value: 2500
+    weapon: true
+    weaponCategory: simple
+    weight: 2
+- item_code: SHORTSWORD_PHB_NONE
+  item_info:
+    dmg1: 1d6
+    dmgType: P
+    name: Shortsword
+    page: 149
+    property:
+    - F
+    - L
+    rarity: none
+    source: PHB
+    srd: true
+    sword: true
+    type: M
+    value: 1000
+    weapon: true
+    weaponCategory: martial
+    weight: 2
+- item_code: SPEAR_PHB_NONE
+  item_info:
+    dmg1: 1d6
+    dmg2: 1d8
+    dmgType: P
+    name: Spear
+    page: 149
+    property:
+    - T
+    - V
+    range: 20/60
+    rarity: none
+    source: PHB
+    spear: true
+    srd: true
+    type: M
+    value: 100
+    weapon: true
+    weaponCategory: simple
+    weight: 3
+- &id114
+  item_code: SPIKED-ARMOR_SCAG_UNKNOWN
+  item_info:
+    ac: 14
+    armor: true
+    entries:
+    - Spiked armor is a rare type of medium armor made by dwarves. It consists of
+      a leather coat and leggings covered with spikes that are usually made of metal.
+    name: Spiked Armor
+    page: 121
+    rarity: unknown
+    source: SCAG
+    stealth: true
+    type: MA
+    value: 7500
+    weight: 45
+- *id114
+- &id115
+  item_code: SPLINT-ARMOR_PHB_NONE
+  item_info:
+    ac: 17
+    armor: true
+    entries:
+    - This armor is made of narrow vertical strips of metal riveted to a backing of
+      leather that is worn over cloth padding. Flexible chain mail protects the joints.
+    name: Splint Armor
+    page: 145
+    rarity: none
+    source: PHB
+    srd: true
+    stealth: true
+    strength: '15'
+    type: HA
+    value: 20000
+    weight: 60
+- *id115
+- item_code: STUDDED-LEATHER-ARMOR_PHB_NONE
+  item_info:
+    ac: 12
+    armor: true
+    entries:
+    - Made from tough but flexible leather, studded leather is reinforced with close-set
+      rivets or spikes.
+    name: Studded Leather Armor
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    type: LA
+    value: 4500
+    weight: 13
+- item_code: YKLWA_TOA_NONE
+  item_info:
+    dmg1: 1d8
+    dmgType: P
+    entries:
+    - A yklwa (pronounced YICK-ul-wah) is a simple melee weapon that is the traditional
+      weapon of Chultan warriors. A yklwa consists of a 3-foot wooden shaft with a
+      steel or stone blade up to 18 inches long. Although it has the thrown weapon
+      property, the yklwa is not well balanced for throwing.
+    name: Yklwa
+    page: 32
+    property:
+    - T
+    range: 10/30
+    rarity: none
+    source: ToA
+    type: M
+    value: 100
+    weapon: true
+    weaponCategory: simple
+    weight: 3
+- &id116
+  item_code: NO-ARMOR_CRB
+  item_info:
+    ac_bonus: 0
+    bulk: '-'
+    category: Unarmored
+    check_penalty: null
+    descr: Not weaing protective garments.
+    dex_cap: null
+    group: null
+    level: 0
+    name: No armor
+    price_gp: 0.0
+    price_text: '-'
+    source:
+    - abbr: CRB
+      page_start: 275
+      page_stop: 275
+    speed_penalty: null
+    strength: null
+    traits: null
+- *id116
+- &id117
+  item_code: EXPLORERS-CLOTHING_CRB
+  item_info:
+    ac_bonus: 0
+    bulk: L
+    category: Unarmored
+    check_penalty: null
+    descr: "Adventurers who don\u2019t wear armor travel in durable clothing. Though\
+      \ it\u2019s not armor and uses your unarmored defense proficiency, it still\
+      \ has a Dex Cap and can grant an item bonus to AC if etched with potency runes."
+    dex_cap: 5
+    group: null
+    level: 0
+    name: Explorer's clothing
+    price_gp: 0.1
+    price_text: 1 sp
+    source:
+    - abbr: CRB
+      page_start: 275
+      page_stop: 275
+    speed_penalty: null
+    strength: null
+    traits:
+    - Comfort
+- *id117
+- &id118
+  item_code: SPLINT-MAIL_CRB
+  item_info:
+    ac_bonus: 5
+    bulk: '3'
+    category: Heavy Armor
+    check_penalty: -3
+    descr: "This type of armor is chain mail reinforced with flexible, interlocking\
+      \ metal plates, typically located on the wearer\u2019s torso, upper arms, and\
+      \ legs. A suit of this armor comes with an undercoat of padded armor and a pair\
+      \ of gauntlets."
+    dex_cap: 1
+    group: Composite
+    level: 1
+    name: Splint mail
+    price_gp: 13.0
+    price_text: 13 gp
+    source:
+    - abbr: CRB
+      page_start: 275
+      page_stop: 275
+    speed_penalty: -10
+    strength: 16
+    traits: null
+- *id118
+- *id118
+- &id119
+  item_code: FULL-PLATE_CRB
+  item_info:
+    ac_bonus: 6
+    bulk: '4'
+    category: Heavy Armor
+    check_penalty: -3
+    descr: Plate mail consists of interlocking plates that encase nearly the entire
+      body in a carapace of steel. It is costly and heavy, and the wearer often requires
+      help to don it correctly, but it provides some of the best defense armor can
+      supply. A suit of this armor comes with an undercoat of padded armor and a pair
+      of gauntlets.
+    dex_cap: 0
+    group: Plate
+    level: 2
+    name: Full plate
+    price_gp: 30.0
+    price_text: 30 gp
+    source:
+    - abbr: CRB
+      page_start: 275
+      page_stop: 275
+    speed_penalty: -10
+    strength: 18
+    traits:
+    - Bulwark
+- *id119
+- *id119
+- *id119
+- item_code: SHEATH_CRB
+  item_info:
+    bulk: 0.0
+    descr: A sheath or scabbard lets you easily carry a weapon on your person.
+    hands: 0
+    level: 0
+    name: Sheath
+    price_gp: 0.01
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: TENFOOT-POLE_CRB
+  item_info:
+    bulk: 1.0
+    descr: When wielding this long pole, you can use Seek to search a square up to
+      10 feet away. The pole is not sturdy enough to use as a weapon.
+    hands: 2
+    level: 0
+    name: Ten-Foot Pole
+    price_gp: 0.01
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: TORCH_CRB
+  item_info:
+    bulk: 0.1
+    descr: A torch sheds bright light in a 20-foot radius (and dim light to the next
+      20 feet). It can be used as an improvised weapon that deals 1d4 bludgeoning
+      damage plus 1 fire damage.
+    hands: 1
+    level: 0
+    name: Torch
+    price_gp: 0.01
+    source:
+    - abbr: CRB
+      page_start: 292
+      page_stop: 292
+    traits: null
+- item_code: BANDOLIER_CRB
+  item_info:
+    bulk: 0.0
+    descr: A bandolier holds up to eight items of light Bulk within easy reach and
+      is usually used for alchemical items or potions. If you are carrying or stowing
+      a bandolier rather than wearing it around your chest, it has light Bulk instead
+      of negligible. A bandolier can be dedicated to a full set of tools, such as
+      healer's tools, allowing you to draw the tools as part of the action that requires
+      them.
+    hands: 0
+    level: 0
+    name: Bandolier
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- item_code: CLOTHING-EXPLORERS_CRB
+  item_info:
+    bulk: 0.1
+    descr: Explorer's clothing is sturdy enough that it can be reinforced to protect
+      you, even though it isn't a suit of armor. It comes in many forms, though the
+      most common sorts look like clerical vestments, monk's garments, or wizard's
+      robes, as members of all three classes are likely to avoid wearing armor. For
+      more information on explorer's clothing, see pages 275--76.
+    hands: 0
+    level: 0
+    name: Clothing (Explorer's)
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: CALTROPS_CRB
+  item_info:
+    bulk: 0.1
+    descr: These four-pronged metal spikes can cause damage to a creature's feet.
+      You can scatter caltrops in an empty square adjacent to you with an Interact
+      action. The first creature that moves into that square must succeed at a DC
+      14 Acrobatics check or take 1d4 piercing damage and 1 persistent bleed damage.
+      A creature taking persistent bleed damage from caltrops takes a 5-foot penalty
+      to its Speed. Spending an Interact action to pluck the caltrops free reduces
+      the DC to stop the bleeding. Once a creature takes damage from caltrops, enough
+      caltrops are ruined that other creatures moving into the square are safe. Deployed
+      caltrops can be salvaged and reused if no creatures took damage from them. Otherwise,
+      enough caltrops are ruined that they can't be salvaged.
+    hands: 1
+    level: 0
+    name: Caltrops
+    price_gp: 0.3
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- item_code: THIEVES-TOOLS-REPLACEMENT-PICKS_CRB
+  item_info:
+    bulk: 0.0
+    descr: You need thieves' tools to Pick Locks or Disable Devices (of some types)
+      using the Thievery skill. If your thieves' tools are broken, you can repair
+      them by replacing the lock picks with replacement picks appropriate to your
+      tools; this doesn't require using the Repair action.
+    hands: 0
+    level: 0
+    name: Thieves' Tools (Replacement Picks)
+    price_gp: 0.3
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: TOOL-SHORT_CRB
+  item_info:
+    bulk: 0.1
+    descr: This entry is a catchall for basic hand tools that don't have a specific
+      adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand
+      drill, ice hook, or trowel is a short tool. A tool can usually be used as an
+      improvised weapon, dealing 1d4 damage for a short tool or 1d6 for a long tool.
+      The GM determines the damage type that's appropriate or adjusts the damage if
+      needed.
+    hands: 1
+    level: 0
+    name: Tool (Short)
+    price_gp: 0.4
+    source:
+    - abbr: CRB
+      page_start: 292
+      page_stop: 292
+    traits: null
+- item_code: TOOL-LONG_CRB
+  item_info:
+    bulk: 1.0
+    descr: This entry is a catchall for basic hand tools that don't have a specific
+      adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand
+      drill, ice hook, or trowel is a short tool. A tool can usually be used as an
+      improvised weapon, dealing 1d4 damage for a short tool or 1d6 for a long tool.
+      The GM determines the damage type that's appropriate or adjusts the damage if
+      needed.
+    hands: 2
+    level: 0
+    name: Tool (Long)
+    price_gp: 1.0
+    source:
+    - abbr: CRB
+      page_start: 292
+      page_stop: 292
+    traits: null
+- item_code: REPAIR-KIT_CRB
+  item_info:
+    bulk: 1.0
+    descr: A repair kit allows you to perform simple repairs while traveling. It contains
+      a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning
+      leather and wood. You can use a repair kit to Repair items using the Crafting
+      skill.
+    hands: 2
+    level: 0
+    name: Repair Kit
+    price_gp: 2.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: ARTISANS-TOOLS_CRB
+  item_info:
+    bulk: 2.0
+    descr: You need these tools to create items from raw materials with the Craft
+      skill. Different sets are needed for different work, as determined by the GM;
+      for example, blacksmith's tools differ from woodworker's tools.
+    hands: 2
+    level: 0
+    name: Artisan's Tools
+    price_gp: 4.0
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- item_code: ALCHEMISTS-TOOLS_CRB
+  item_info:
+    bulk: 2.0
+    descr: These beakers and chemicals can be used to set up a mobile alchemical laboratory.
+      When you carry the tools from place to place, you keep many of the components
+      handy on your person, in pockets or bandoliers.
+    hands: 2
+    level: 0
+    name: Alchemist's Tools
+    price_gp: 5.0
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: HEALERS-TOOLS_CRB
+  item_info:
+    bulk: 1.0
+    descr: This kit of bandages, herbs, and suturing tools is necessary for Medicine
+      checks to Administer First Aid, Treat Disease, Treat Poison, or Treat Wounds.
+      When you carry the tools from place to place, you keep many of the components
+      handy on your person, in pockets or bandoliers.
+    hands: 2
+    level: 0
+    name: Healer's Tools
+    price_gp: 5.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: SNARE-KIT_CRB
+  item_info:
+    bulk: 2.0
+    descr: This kit contains tools and materials for creating snares. A snare kit
+      allows you to Craft snares using the Crafting skill.
+    hands: 2
+    level: 0
+    name: Snare Kit
+    price_gp: 5.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: THIEVES-TOOLS-INFILTRATOR-PICKS_CRB
+  item_info:
+    bulk: 0.0
+    descr: You need thieves' tools to Pick Locks or Disable Devices (of some types)
+      using the Thievery skill. Infiltrator thieves' tools add a +1 item bonus to
+      checks to Pick Locks and Disable Devices. If your thieves' tools are broken,
+      you can repair them by replacing the lock picks with replacement picks appropriate
+      to your tools; this doesn't require using the Repair action.
+    hands: 0
+    level: 3
+    name: Thieve's Tools (Infiltrator Picks)
+    price_gp: 3.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: REPAIR-KIT-SUPERB_CRB
+  item_info:
+    bulk: 1.0
+    descr: A repair kit allows you to perform simple repairs while traveling. It contains
+      a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning
+      leather and wood. You can use a repair kit to Repair items using the Crafting
+      skill. A superb repair kit gives you a +1 item bonus to the check.
+    hands: 2
+    level: 3
+    name: Repair Kit (Superb)
+    price_gp: 25.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: ARTISANS-TOOLS-STERLING_CRB
+  item_info:
+    bulk: 2.0
+    descr: You need these tools to create items from raw materials with the Craft
+      skill. Sterling artisan's tools give you a +1 item bonus to the check. Different
+      sets are needed for different work, as determined by the GM; for example, blacksmith's
+      tools differ from woodworker's tools.
+    hands: 2
+    level: 3
+    name: Artisan's Tools (Sterling)
+    price_gp: 50.0
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: HEALERS-TOOLS-EXPANDED_CRB
+  item_info:
+    bulk: 1.0
+    descr: This kit of bandages, herbs, and suturing tools is necessary for Medicine
+      checks to Administer First Aid, Treat Disease, Treat Poison, or Treat Wounds.
+      Expanded healer's tools provide a +1 item bonus to such checks. When you carry
+      the tools from place to place, you keep many of the components handy on your
+      person, in pockets or bandoliers.
+    hands: 2
+    level: 3
+    name: Healer's Tools (Expanded)
+    price_gp: 50.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: ALCHEMISTS-TOOLS-EXPANDED_CRB
+  item_info:
+    bulk: 2.0
+    descr: These beakers and chemicals can be used to set up a mobile alchemical laboratory.
+      Expanded alchemist's tools give a +1 item bonus to Crafting checks to create
+      alchemical items. When you carry the tools from place to place, you keep many
+      of the components handy on your person, in pockets or bandoliers.
+    hands: 2
+    level: 3
+    name: Alchemist's Tools (Expanded)
+    price_gp: 55.0
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: SNARE-KIT-SPECIALIST_CRB
+  item_info:
+    bulk: 2.0
+    descr: This kit contains tools and materials for creating snares. A snare kit
+      allows you to Craft snares using the Crafting skill. A specialist snare kit
+      gives you a +1 item bonus to the check.
+    hands: 2
+    level: 3
+    name: Snare Kit (Specialist)
+    price_gp: 55.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: FIST_CRB
+  item_info:
+    bulk: '0'
+    damagetype: Bludgeoning
+    descr: 'Nethys Note: no description was provided for this item'
+    dice_size: 4
+    hands: '1'
+    name: Fist
+    price_cp: 0
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Agile
+    - Finesse
+    - Nonlethal
+    - Unarmed
+    weaponcategory: Unarmed
+    weapongroup: Brawling
+- &id120
+  item_code: CLAN-DAGGER_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: This broad dagger is carried by dwarves as a weapon, tool, and designation
+      of clan. Losing or having to surrender a clan dagger is considered a mark of
+      embarrassment to most dwarves.
+    dice_size: 4
+    hands: '1'
+    name: Clan Dagger
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Uncommon
+    - Agile
+    - Dwarf
+    - Parry
+    - Versatile B
+    weaponcategory: Simple
+    weapongroup: Knife
+- *id120
+- &id121
+  item_code: GAUNTLET_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Bludgeoning
+    descr: A pair of these metal gloves comes with full plate, half plate, and splint
+      armor; they can also be purchased separately and worn with other types of armor.
+      They not only protect your hands but also transform your hands into lethal weapons.
+    dice_size: 4
+    hands: '1'
+    name: Gauntlet
+    price_cp: 20
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Agile
+    - Free-Hand
+    weaponcategory: Simple
+    weapongroup: Brawling
+- *id121
+- item_code: KATAR_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: Also known as punching daggers, katars are characterized by their H-shaped
+      hand grip that allows the blade to jut out from the knuckles.
+    dice_size: 4
+    hands: '1'
+    name: Katar
+    price_cp: 30
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Monk
+    - Uncommon
+    - Agile
+    - Deadly
+    - Monk
+    weaponcategory: Simple
+    weapongroup: Knife
+- &id122
+  item_code: LIGHT-MACE_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Bludgeoning
+    descr: "A light mace has a short wooden or metal shaft ending with a dense metal\
+      \ head. Used much like a club, it delivers heavy bludgeoning blows, but with\
+      \ extra power derived from the head\u2019s metal ridges or spikes."
+    dice_size: 4
+    hands: '1'
+    name: Light Mace
+    price_cp: 40
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Agile
+    - Finesse
+    - Shove
+    weaponcategory: Simple
+    weapongroup: Club
+- *id122
+- &id123
+  item_code: LONGSPEAR_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Piercing
+    descr: This very long spear, sometimes called a pike, is purely for thrusting
+      rather than throwing. Used by many soldiers and city watch for crowd control
+      and defense against charging enemies, it must be wielded with two hands.
+    dice_size: 8
+    hands: '2'
+    name: Longspear
+    price_cp: 50
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Reach
+    weaponcategory: Simple
+    weapongroup: Spear
+- *id123
+- *id123
+- *id123
+- &id124
+  item_code: SPIKED-GAUNTLET_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: Providing the same defensive function as a standard gauntlet, this version
+      has a group of spikes protruding from the knuckles to deliver piercing damage
+      with a punch.
+    dice_size: 4
+    hands: '1'
+    name: Spiked Gauntlet
+    price_cp: 30
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Agile
+    - Free-Hand
+    weaponcategory: Simple
+    weapongroup: Brawling
+- *id124
+- &id125
+  item_code: BASTARD-SWORD_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: "This broad-bladed sword, sometimes called the hand\u2011and\u2011a\u2011\
+      half sword, has a longer grip so it can be held in one hand or used with two\
+      \ hands to provide extra piercing or slashing power."
+    dice_size: 8
+    hands: '1'
+    name: Bastard Sword
+    price_cp: 400
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Two-Hand
+    - Two-Hand d12
+    weaponcategory: Martial
+    weapongroup: Sword
+- *id125
+- *id125
+- *id125
+- &id126
+  item_code: BATTLE-AXE_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: These axes are designed explicitly as weapons, rather than tools. They
+      typically weigh less, with a shaft reinforced with metal bands or bolts, and
+      have a sharper blade, making them ideal for chopping limbs rather than wood.
+    dice_size: 8
+    hands: '1'
+    name: Battle Axe
+    price_cp: 10
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Sweep
+    weaponcategory: Martial
+    weapongroup: Axe
+- *id126
+- &id127
+  item_code: BO-STAFF_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Bludgeoning
+    descr: "This strong but slender staff is tapered at the ends and well balanced.\
+      \ It\u2019s designed to be an offensive and defensive weapon."
+    dice_size: 8
+    hands: '2'
+    name: Bo Staff
+    price_cp: 20
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Monk
+    - Parry
+    - Reach
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Club
+- *id127
+- &id128
+  item_code: DOGSLICER_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Slashing
+    descr: "This short, curved, and crude makeshift blade often has holes drilled\
+      \ into it to reduce its weight. It\u2019s a favored weapon of goblins."
+    dice_size: 6
+    hands: '1'
+    name: Dogslicer
+    price_cp: 10
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Uncommon
+    - Agile
+    - Backstabber
+    - Finesse
+    - Goblin
+    weaponcategory: Martial
+    weapongroup: Sword
+- *id128
+- *id128
+- &id129
+  item_code: ELVEN-CURVE-BLADE_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Slashing
+    descr: Essentially a longer version of the scimitar, this traditional elven weapon
+      has a thinner blade than its cousin.
+    dice_size: 8
+    hands: '2'
+    name: Elven Curve Blade
+    price_cp: 400
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Elf
+    - Finesse
+    - Forceful
+    weaponcategory: Martial
+    weapongroup: Sword
+- *id129
+- *id129
+- &id130
+  item_code: FALCHION_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Slashing
+    descr: "This weapon is a heavier, two-handed version of the curved-bladed scimitar.\
+      \ It is weighted toward the blade\u2019s end, making it a powerful slashing\
+      \ weapon."
+    dice_size: 10
+    hands: '2'
+    name: Falchion
+    price_cp: 300
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Forceful
+    - Sweep
+    weaponcategory: Martial
+    weapongroup: Sword
+- *id130
+- *id130
+- &id131
+  item_code: FILCHERS-FORK_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: This halfling weapon looks like a long, two-pronged fork and is used as
+      both a weapon and a cooking implement.
+    dice_size: 4
+    hands: '1'
+    name: Filcher's Fork
+    price_cp: 100
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Agile
+    - Backstabber
+    - Deadly
+    - Finesse
+    - Halfling
+    - Thrown
+    weaponcategory: Martial
+    weapongroup: Spear
+- *id131
+- *id131
+- &id132
+  item_code: GNOME-HOOKED-HAMMER_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Bludgeoning
+    descr: "This gnome tool and weapon features a hammer at one end and a curved pick\
+      \ on the other. It\u2019s such a strange and awkward weapon that others think\
+      \ the gnomes are slightly erratic for using it."
+    dice_size: 6
+    hands: '1'
+    name: Gnome Hooked Hammer
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Gnome
+    - Trip
+    - Two-Hand
+    - Versatile
+    - Versatile P
+    - Two-Hand d10
+    weaponcategory: Martial
+    weapongroup: Hammer
+- *id132
+- item_code: GREATPICK_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Piercing
+    descr: This pick has a longer handle and broader head than a regular pick. It
+      is too heavy to wield in one hand.
+    dice_size: 10
+    hands: '2'
+    name: Greatpick
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Fatal
+    - Fatal d12
+    weaponcategory: Martial
+    weapongroup: Pick
+- item_code: GUISARME_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Slashing
+    descr: "This polearm bears a long, often one\u2011sided, curved blade with a hook\
+      \ protruding from the blunt side of the blade, which can allow its wielder to\
+      \ trip opponents at a distance. Its shaft is usually 8 feet long."
+    dice_size: 10
+    hands: '2'
+    name: Guisarme
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Reach
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Polearm
+- &id133
+  item_code: HATCHET_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Slashing
+    descr: This small axe can be used in close combat or thrown.
+    dice_size: 6
+    hands: '1'
+    name: Hatchet
+    price_cp: 40
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Agile
+    - Sweep
+    - Thrown
+    weaponcategory: Martial
+    weapongroup: Axe
+- *id133
+- *id133
+- &id134
+  item_code: HORSECHOPPER_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Slashing
+    descr: Created by goblins to battle horses, this weapon is essentially a long
+      shaft ending in a blade with a large hook.
+    dice_size: 8
+    hands: '2'
+    name: Horsechopper
+    price_cp: 90
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Goblin
+    - Reach
+    - Trip
+    - Versatile
+    - Versatile P
+    weaponcategory: Martial
+    weapongroup: Polearm
+- *id134
+- item_code: KAMA_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Slashing
+    descr: Similar to a sickle and used in some regions to reap grain, a kama has
+      a short, slightly curved blade and a wooden handle.
+    dice_size: 6
+    hands: '1'
+    name: Kama
+    price_cp: 100
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Agile
+    - Monk
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Knife
+- &id135
+  item_code: KATANA_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: A katana is a curved, single-edged sword known for its wickedly sharped
+      blade.
+    dice_size: 6
+    hands: '1'
+    name: Katana
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Deadly
+    - Two-Hand
+    - Versatile
+    - Deadly d8
+    - Versatile P
+    - Two-Hand d10
+    weaponcategory: Martial
+    weapongroup: Sword
+- *id135
+- *id135
+- item_code: KUKRI_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Slashing
+    descr: The blade of this foot-long knife curves inward and lacks a cross guard
+      at the hilt.
+    dice_size: 6
+    hands: '1'
+    name: Kukri
+    price_cp: 60
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Agile
+    - Finesse
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Knife
+- &id136
+  item_code: LIGHT-PICK_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: A light pick is a modified mining implement with a wooden shaft ending
+      in a pick head crafted more to pierce armor and flesh than chip rocks.
+    dice_size: 4
+    hands: '1'
+    name: Light Pick
+    price_cp: 40
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Agile
+    - Fatal
+    - Fatal d8
+    weaponcategory: Martial
+    weapongroup: Pick
+- *id136
+- item_code: MAINGAUCHE_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: "This parrying dagger features a robust guard to protect the wielder\u2019\
+      s hand."
+    dice_size: 4
+    hands: '1'
+    name: Main-gauche
+    price_cp: 50
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Agile
+    - Disarm
+    - Finesse
+    - Parry
+    - Versatile
+    - Versatile S
+    weaponcategory: Martial
+    weapongroup: Knife
+- &id137
+  item_code: NUNCHAKU_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Bludgeoning
+    descr: The nunchaku is constructed of two wooden or metal bars connected by a
+      short length of rope or chain.
+    dice_size: 6
+    hands: '1'
+    name: Nunchaku
+    price_cp: 20
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Backswing
+    - Disarm
+    - Finesse
+    - Monk
+    weaponcategory: Martial
+    weapongroup: Club
+- *id137
+- item_code: ORC-KNUCKLE-DAGGER_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: This stout, metal blade of orc design has a horizontal basket hilt with
+      blades jutting from each end, or sometimes one blade like that of a katar.
+    dice_size: 6
+    hands: '1'
+    name: Orc Knuckle Dagger
+    price_cp: 70
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Agile
+    - Disarm
+    - Orc
+    weaponcategory: Martial
+    weapongroup: Knife
+- item_code: RANSEUR_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Piercing
+    descr: "This polearm is a long trident with a central prong that\u2019s longer\
+      \ than the other two."
+    dice_size: 10
+    hands: '2'
+    name: Ranseur
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Disarm
+    - Reach
+    weaponcategory: Martial
+    weapongroup: Polearm
+- &id138
+  item_code: SAI_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: "This piercing dagger is a metal spike flanked by a pair of prongs that\
+      \ can be used to trap an enemy\u2019s\_weapon."
+    dice_size: 4
+    hands: '1'
+    name: Sai
+    price_cp: 60
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Agile
+    - Disarm
+    - Finesse
+    - Monk
+    - Versatile
+    - Versatile B
+    weaponcategory: Martial
+    weapongroup: Knife
+- *id138
+- &id139
+  item_code: SAP_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Bludgeoning
+    descr: "A sap has a soft wrapping around a dense core, typically a leather sheath\
+      \ around a lead rod. Its head is wider than its grip to disperse the force of\
+      \ a blow, as the weapon\u2019s purpose is to knock out its victim rather than\
+      \ to draw blood."
+    dice_size: 6
+    hands: '1'
+    name: Sap
+    price_cp: 10
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Agile
+    - Nonlethal
+    weaponcategory: Martial
+    weapongroup: Club
+- *id139
+- &id140
+  item_code: SCYTHE_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Slashing
+    descr: Derived from a farming tool used to mow down long grains and cereals, this
+      weapon has a long wooden shaft with protruding handles, capped with a curved
+      blade set at a right angle.
+    dice_size: 10
+    hands: '2'
+    name: Scythe
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Deadly
+    - Trip
+    - Deadly d10
+    weaponcategory: Martial
+    weapongroup: Polearm
+- *id140
+- &id141
+  item_code: SHIELD-BASH_CRB
+  item_info:
+    bulk: '0'
+    damagetype: Bludgeoning
+    descr: A shield bash is not actually a weapon, but a maneuver in which you thrust
+      or swing your shield to hit your foe with an impromptu attack.
+    dice_size: 4
+    hands: '1'
+    name: Shield Bash
+    price_cp: 0
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits: null
+    weaponcategory: Martial
+    weapongroup: Shield
+- *id141
+- *id141
+- *id141
+- &id142
+  item_code: SHIELD-BOSS_CRB
+  item_info:
+    bulk: '0'
+    damagetype: Bludgeoning
+    descr: Typically a round, convex, or conical piece of thick metal attached to
+      the center of a shield, a shield boss increases the bludgeoning damage of a
+      shield bash.
+    dice_size: 6
+    hands: '1'
+    name: Shield Boss
+    price_cp: 50
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits: null
+    weaponcategory: Martial
+    weapongroup: Shield
+- *id142
+- *id142
+- *id142
+- &id143
+  item_code: SHIELD-SPIKES_CRB
+  item_info:
+    bulk: '0'
+    damagetype: Piercing
+    descr: These metal spikes are strategically placed on the defensive side of the
+      shield to deal piercing damage with a shield bash.
+    dice_size: 6
+    hands: '1'
+    name: Shield Spikes
+    price_cp: 50
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits: null
+    weaponcategory: Martial
+    weapongroup: Shield
+- *id143
+- *id143
+- *id143
+- &id144
+  item_code: SPIKED-CHAIN_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: "This 4\u2011foot\u2011long length of chain is covered with barbs and has\
+      \ spikes on one or both ends. Some feature metal hoops used as handgrips."
+    dice_size: 8
+    hands: '2'
+    name: Spiked Chain
+    price_cp: 300
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Disarm
+    - Finesse
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Flail
+- *id144
+- *id144
+- &id145
+  item_code: STARKNIFE_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: From a central metal ring, four tapering metal blades extend like points
+      on a compass rose. When gripping a starknife from the center, the wielder can
+      use it as a melee weapon. It can also be thrown short distances.
+    dice_size: 4
+    hands: '1'
+    name: Starknife
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Agile
+    - Deadly
+    - Finesse
+    - Thrown
+    - Versatile
+    - Versatile S
+    weaponcategory: Martial
+    weapongroup: Knife
+- *id145
+- &id146
+  item_code: TEMPLE-SWORD_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: This heavy blade is favored by guardians of religious sites. It has a distinctive,
+      crescent-shaped blade that seems to be a mix of a sickle and sword. It often
+      has holes drilled into the blade or the pommel so that bells or other holy trinkets
+      can be affixed to the weapon as an aid for prayer or mediation.
+    dice_size: 8
+    hands: '1'
+    name: Temple Sword
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Monk
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Sword
+- *id146
+- item_code: WAR-FLAIL_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Bludgeoning
+    descr: ''
+    dice_size: 10
+    hands: '2'
+    name: War Flail
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Disarm
+    - Sweep
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Flail
+- item_code: AKLYS_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Bludgeoning
+    descr: ''
+    dice_size: 6
+    hands: '1'
+    name: Aklys
+    price_cp: 500
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 85
+      page_stop: 85
+    traits:
+    - Uncommon
+    - Ranged Trip
+    - Tethered
+    - Thrown
+    - Trip
+    weaponcategory: Advanced
+    weapongroup: Club
+- &id147
+  item_code: DWARVEN-WAR-AXE_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Slashing
+    descr: This favored weapon of the dwarves has a large, ornate head mounted on
+      a thick handle. This powerful axe can be wielded with one hand or two.
+    dice_size: 8
+    hands: '1'
+    name: Dwarven War Axe
+    price_cp: 300
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Dwarf
+    - Sweep
+    - Two-Hand
+    - Two-Hand d12
+    weaponcategory: Advanced
+    weapongroup: Axe
+- *id147
+- *id147
+- *id147
+- &id148
+  item_code: GNOME-FLICKMACE_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Bludgeoning
+    descr: More a flail than a mace, this weapon has a short handle attached to a
+      length of chain with a ball at the end. The ball is propelled to its reach with
+      the flick of the wrist, the momentum of which brings the ball back to the wielder
+      after the strike.
+    dice_size: 8
+    hands: '1'
+    name: Gnome Flickmace
+    price_cp: 300
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Gnome
+    - Reach
+    weaponcategory: Advanced
+    weapongroup: Flail
+- *id148
+- &id149
+  item_code: ORC-NECKSPLITTER_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: "This single-bladed bearded axe has a jagged blade that\u2019s perfect\
+      \ for separating bone from tendon and cartilage."
+    dice_size: 8
+    hands: '1'
+    name: Orc Necksplitter
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Forceful
+    - Orc
+    - Sweep
+    weaponcategory: Advanced
+    weapongroup: Axe
+- *id149
+- *id149
+- &id150
+  item_code: SAWTOOTH-SABER_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Slashing
+    descr: The signature weapon of the Red Mantis assassins, this curved blade is
+      serrated like a saw, hence the name.
+    dice_size: 8
+    hands: '1'
+    name: Sawtooth Saber
+    price_cp: 500
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Agile
+    - Finesse
+    - Twin
+    weaponcategory: Advanced
+    weapongroup: Sword
+- *id150
+- *id150
+- item_code: OGRE-HOOK_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Piercing
+    descr: Ogres are known for using immense, curved picks called ogre hooks.
+    dice_size: 10
+    hands: '2'
+    name: Ogre Hook
+    price_cp: 100
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 253
+      page_stop: 253
+    traits:
+    - Uncommon
+    - Deadly
+    - Trip
+    weaponcategory: Advanced
+    weapongroup: Pick
+- &id151
+  item_code: COMPOSITE-LONGBOW_CRB
+  item_info:
+    bulk: '2'
+    damagetype: Piercing
+    descr: This projectile weapon is made from horn, wood, and sinew laminated together
+      to increase the power of its pull and the force of its projectile. Like all
+      longbows, its great size also increases the bow's range and power. You must
+      use two hands to fire it, and it cannot be used while mounted. Any time an ability
+      is specifically restricted to a longbow, such as Erastil's favored weapon, it
+      also applies to composite longbows unless otherwise stated.
+    dice_size: 8
+    hands: 1+
+    name: Composite Longbow
+    price_cp: 2000
+    range: 100
+    reload: '0'
+    source:
+    - abbr: CRB
+      page_start: 282
+      page_stop: 282
+    traits:
+    - Deadly
+    - Propulsive
+    - Volley
+    - Deadly d10
+    - Volley 30 ft.
+    weaponcategory: Martial
+    weapongroup: Bow
+- *id151
+- *id151
+- *id151
+- &id152
+  item_code: COMPOSITE-SHORTBOW_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Piercing
+    descr: This shortbow is made from horn, wood, and sinew laminated together to
+      increase the power of its pull and the force of its projectile. Its compact
+      size and power make it a favorite of mounted archers. Any time an ability is
+      specifically restricted to a shortbow, it also applies to composite shortbows
+      unless otherwise stated.
+    dice_size: 6
+    hands: 1+
+    name: Composite Shortbow
+    price_cp: 1400
+    range: 60
+    reload: '0'
+    source:
+    - abbr: CRB
+      page_start: 282
+      page_stop: 282
+    traits:
+    - Deadly
+    - Propulsive
+    - Deadly d10
+    weaponcategory: Martial
+    weapongroup: Bow
+- *id152
+- *id152
+- *id152
+- item_code: HALFLING-SLING-STAFF_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Bludgeoning
+    descr: "This staff ends in a Y-shaped split that cradles a sling. The length of\
+      \ the staff provides excellent leverage when used two\u2011handed to fling rocks\
+      \ or bullets from the sling."
+    dice_size: 10
+    hands: '2'
+    name: Halfling Sling Staff
+    price_cp: 500
+    range: 80
+    reload: '1'
+    source:
+    - abbr: CRB
+      page_start: 282
+      page_stop: 282
+    traits:
+    - Uncommon
+    - Halfling
+    - Propulsive
+    weaponcategory: Martial
+    weapongroup: Sling
+- item_code: SHURIKEN_CRB
+  item_info:
+    bulk: '-'
+    damagetype: Piercing
+    descr: This throwing star is a small piece of flat metal with sharp edges, designed
+      to be flung with a flick of the wrist.
+    dice_size: 4
+    hands: '1'
+    name: Shuriken
+    price_cp: 1
+    range: 20
+    reload: '0'
+    source:
+    - abbr: CRB
+      page_start: 282
+      page_stop: 282
+    traits:
+    - Uncommon
+    - Agile
+    - Monk
+    - Thrown
+    weaponcategory: Martial
+    weapongroup: Dart
