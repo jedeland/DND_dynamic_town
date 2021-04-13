@@ -10565,3 +10565,50 @@
     attachedSpells:
     - lightning bolt
     - globe of invulnerability
+- item_code: CLOTHING-EXPLORERS_CRB
+  item_info:
+    bulk: 0.1
+    descr: Explorer's clothing is sturdy enough that it can be reinforced to protect
+      you, even though it isn't a suit of armor. It comes in many forms, though the
+      most common sorts look like clerical vestments, monk's garments, or wizard's
+      robes, as members of all three classes are likely to avoid wearing armor. For
+      more information on explorer's clothing, see pages 275--76.
+    hands: 0
+    level: 0
+    name: Clothing (Explorer's)
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: CLOTHING-ORIDINARY_CRB
+  item_info:
+    bulk: 0.0
+    descr: Ordinary clothing is functional with basic tailoring, such as peasant garb,
+      monk's robes, or work clothes.
+    hands: 0
+    level: 0
+    name: Clothing (Oridinary)
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- &id066
+  item_code: SCROLL-CASE_CRB
+  item_info:
+    bulk: 0.0
+    descr: Scrolls, maps, and other rolled documents are stored in scroll cases for
+      safe transport.
+    hands: 2
+    level: 0
+    name: Scroll Case
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- *id066

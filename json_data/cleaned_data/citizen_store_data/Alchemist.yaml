@@ -8010,3 +8010,53 @@
       The {@condition poisoned} creature's skin itches for the duration. The creature
       can repeat the saving throw at the end of each of its turns, ending the effect
       on itself on a success.
+- &id075
+  item_code: BELT-POUCH_CRB
+  item_info:
+    bulk: 0.0
+    descr: A belt pouch holds up to four items of light Bulk.
+    hands: 0
+    level: 0
+    name: Belt Pouch
+    price_gp: 0.04
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- *id075
+- &id076
+  item_code: MATERIAL-COMPONENT-POUCH_CRB
+  item_info:
+    bulk: 0.1
+    descr: This pouch contains material components for those spells that require them.
+      Though the components are used up over time, you can refill spent components
+      during your daily preparations.
+    hands: 1
+    level: 0
+    name: Material Component Pouch
+    price_gp: 0.5
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- *id076
+- item_code: ADVENTURERS-PACK_CRB
+  item_info:
+    bulk: 2.0
+    descr: 'This item is the starter kit for an adventurer, containing the essential
+      items for exploration and survival. The Bulk value is for the entire pack together,
+      but see the descriptions of individual items as necessary. \n\n The pack contains
+      the following items: backpack (containing the other goods), bedroll, two belt
+      pouches, 10 pieces of chalk, flint and steel, 50 feet of rope, 2 weeks'' rations,
+      soap, 5 torches, and a waterskin.'
+    hands: 0
+    level: 0
+    name: Adventurer's Pack
+    price_gp: 0.7
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null

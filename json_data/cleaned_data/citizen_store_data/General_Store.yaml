@@ -6513,3 +6513,534 @@
       - - Carve an intricate pattern in wood
         - '15'
 - *id066
+- item_code: HIDE-ARMOR_PHB_NONE
+  item_info:
+    ac: 12
+    armor: true
+    entries:
+    - This crude armor consists of thick furs and pelts. It is commonly worn by barbarian
+      tribes, evil humanoids, and other folk who lack access to the tools and materials
+      needed to create better armor.
+    name: Hide Armor
+    page: 144
+    rarity: none
+    source: PHB
+    srd: true
+    type: MA
+    value: 1000
+    weight: 12
+- item_code: BANDOLIER_CRB
+  item_info:
+    bulk: 0.0
+    descr: A bandolier holds up to eight items of light Bulk within easy reach and
+      is usually used for alchemical items or potions. If you are carrying or stowing
+      a bandolier rather than wearing it around your chest, it has light Bulk instead
+      of negligible. A bandolier can be dedicated to a full set of tools, such as
+      healer's tools, allowing you to draw the tools as part of the action that requires
+      them.
+    hands: 0
+    level: 0
+    name: Bandolier
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- item_code: BASIC-CRAFTERS-BOOK_CRB
+  item_info:
+    bulk: 0.1
+    descr: This book contains the formulas (page 293) for Crafting the common items
+      in this chapter.
+    hands: 2
+    level: 0
+    name: Basic Crafter's Book
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- item_code: WRITING-SET-EXTRA-INK-AND-PAPER_CRB
+  item_info:
+    bulk: 0.0
+    descr: Using a writing set, you can draft correspondence and scribe scrolls. A
+      set includes stationery, including a variety of paper and parchment, as well
+      as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written
+      a large amount, you can refill your kit with extra ink and paper.
+    hands: 0
+    level: 0
+    name: Writing Set (Extra Ink and Paper)
+    price_gp: 0.1
+    source:
+    - abbr: CRB
+      page_start: 292
+      page_stop: 292
+    traits: null
+- item_code: SADDLEBAGS_CRB
+  item_info:
+    bulk: 0.1
+    descr: Saddlebags come in a pair. Each can hold up to 3 Bulk of items. The Bulk
+      value given is for saddlebags worn by a mount. If you are carrying or stowing
+      saddlebags, they count as 1 Bulk instead of light Bulk.
+    hands: 2
+    level: 0
+    name: Saddlebags
+    price_gp: 0.2
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: THIEVES-TOOLS-REPLACEMENT-PICKS_CRB
+  item_info:
+    bulk: 0.0
+    descr: You need thieves' tools to Pick Locks or Disable Devices (of some types)
+      using the Thievery skill. If your thieves' tools are broken, you can repair
+      them by replacing the lock picks with replacement picks appropriate to your
+      tools; this doesn't require using the Repair action.
+    hands: 0
+    level: 0
+    name: Thieves' Tools (Replacement Picks)
+    price_gp: 0.3
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: TOOL-SHORT_CRB
+  item_info:
+    bulk: 0.1
+    descr: This entry is a catchall for basic hand tools that don't have a specific
+      adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand
+      drill, ice hook, or trowel is a short tool. A tool can usually be used as an
+      improvised weapon, dealing 1d4 damage for a short tool or 1d6 for a long tool.
+      The GM determines the damage type that's appropriate or adjusts the damage if
+      needed.
+    hands: 1
+    level: 0
+    name: Tool (Short)
+    price_gp: 0.4
+    source:
+    - abbr: CRB
+      page_start: 292
+      page_stop: 292
+    traits: null
+- item_code: FISHING-TACKLE_CRB
+  item_info:
+    bulk: 1.0
+    descr: This kit include a collapsible fishing pole, fishhooks, line, lures, and
+      a fishing net.
+    hands: 2
+    level: 0
+    name: Fishing Tackle
+    price_gp: 0.8
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: MUSICAL-INSTRUMENT-HANDHELD_CRB
+  item_info:
+    bulk: 1.0
+    descr: Handheld instruments include bagpipes, a small set of chimes, small drums,
+      fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly
+      sized instruments. The GM might rule that an especially large handheld instrument
+      (like a tuba) has greater Bulk.
+    hands: 2
+    level: 0
+    name: Musical Instrument (Handheld)
+    price_gp: 0.8
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: FORMULA-BOOK-BLANK_CRB
+  item_info:
+    bulk: 1.0
+    descr: A formula book holds the formulas necessary to make items other than the
+      common equipment from this chapter; alchemists typically get one for free. Each
+      formula book can hold the formulas for up to 100 different items. Formulas can
+      also appear on parchment sheets, tablets, and almost any other medium; there's
+      no need for you to copy them into a specific book as long as you can keep them
+      on hand to reference them.
+    hands: 1
+    level: 0
+    name: Formula Book (Blank)
+    price_gp: 1.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: SPELLBOOK-BLANK_CRB
+  item_info:
+    bulk: 1.0
+    descr: A spellbook holds the written knowledge necessary to learn and prepare
+      various spells, a necessity for wizards (who typically get one for free) and
+      a useful luxury for other spellcasters looking to learn additional spells. Each
+      spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.
+    hands: 1
+    level: 0
+    name: Spellbook (Blank)
+    price_gp: 1.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: TOOL-LONG_CRB
+  item_info:
+    bulk: 1.0
+    descr: This entry is a catchall for basic hand tools that don't have a specific
+      adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand
+      drill, ice hook, or trowel is a short tool. A tool can usually be used as an
+      improvised weapon, dealing 1d4 damage for a short tool or 1d6 for a long tool.
+      The GM determines the damage type that's appropriate or adjusts the damage if
+      needed.
+    hands: 2
+    level: 0
+    name: Tool (Long)
+    price_gp: 1.0
+    source:
+    - abbr: CRB
+      page_start: 292
+      page_stop: 292
+    traits: null
+- item_code: MUSICAL-INSTRUMENT-HEAVY_CRB
+  item_info:
+    bulk: 16.0
+    descr: Handheld instruments include bagpipes, a small set of chimes, small drums,
+      fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly
+      sized instruments. The GM might rule that an especially large handheld instrument
+      (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full
+      set of chimes, and keyboard instruments are less portable and generally need
+      to be stationary while played.
+    hands: 2
+    level: 0
+    name: Musical Instrument (Heavy)
+    price_gp: 2.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: REPAIR-KIT_CRB
+  item_info:
+    bulk: 1.0
+    descr: A repair kit allows you to perform simple repairs while traveling. It contains
+      a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning
+      leather and wood. You can use a repair kit to Repair items using the Crafting
+      skill.
+    hands: 2
+    level: 0
+    name: Repair Kit
+    price_gp: 2.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: ARTISANS-TOOLS_CRB
+  item_info:
+    bulk: 2.0
+    descr: You need these tools to create items from raw materials with the Craft
+      skill. Different sets are needed for different work, as determined by the GM;
+      for example, blacksmith's tools differ from woodworker's tools.
+    hands: 2
+    level: 0
+    name: Artisan's Tools
+    price_gp: 4.0
+    source:
+    - abbr: CRB
+      page_start: 289
+      page_stop: 289
+    traits: null
+- item_code: ALCHEMISTS-TOOLS_CRB
+  item_info:
+    bulk: 2.0
+    descr: These beakers and chemicals can be used to set up a mobile alchemical laboratory.
+      When you carry the tools from place to place, you keep many of the components
+      handy on your person, in pockets or bandoliers.
+    hands: 2
+    level: 0
+    name: Alchemist's Tools
+    price_gp: 5.0
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: HEALERS-TOOLS_CRB
+  item_info:
+    bulk: 1.0
+    descr: This kit of bandages, herbs, and suturing tools is necessary for Medicine
+      checks to Administer First Aid, Treat Disease, Treat Poison, or Treat Wounds.
+      When you carry the tools from place to place, you keep many of the components
+      handy on your person, in pockets or bandoliers.
+    hands: 2
+    level: 0
+    name: Healer's Tools
+    price_gp: 5.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: SNARE-KIT_CRB
+  item_info:
+    bulk: 2.0
+    descr: This kit contains tools and materials for creating snares. A snare kit
+      allows you to Craft snares using the Crafting skill.
+    hands: 2
+    level: 0
+    name: Snare Kit
+    price_gp: 5.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: THIEVES-TOOLS-INFILTRATOR-PICKS_CRB
+  item_info:
+    bulk: 0.0
+    descr: You need thieves' tools to Pick Locks or Disable Devices (of some types)
+      using the Thievery skill. Infiltrator thieves' tools add a +1 item bonus to
+      checks to Pick Locks and Disable Devices. If your thieves' tools are broken,
+      you can repair them by replacing the lock picks with replacement picks appropriate
+      to your tools; this doesn't require using the Repair action.
+    hands: 0
+    level: 3
+    name: Thieve's Tools (Infiltrator Picks)
+    price_gp: 3.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: FISHING-TACKLE-PROFESSIONAL_CRB
+  item_info:
+    bulk: 1.0
+    descr: This kit include a collapsible fishing pole, fishhooks, line, lures, and
+      a fishing net. Professional fishing tackle grants a +1 item bonus to checks
+      to fish.
+    hands: 2
+    level: 3
+    name: Fishing Tackle (Professional)
+    price_gp: 20.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: REPAIR-KIT-SUPERB_CRB
+  item_info:
+    bulk: 1.0
+    descr: A repair kit allows you to perform simple repairs while traveling. It contains
+      a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning
+      leather and wood. You can use a repair kit to Repair items using the Crafting
+      skill. A superb repair kit gives you a +1 item bonus to the check.
+    hands: 2
+    level: 3
+    name: Repair Kit (Superb)
+    price_gp: 25.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: ARTISANS-TOOLS-STERLING_CRB
+  item_info:
+    bulk: 2.0
+    descr: You need these tools to create items from raw materials with the Craft
+      skill. Sterling artisan's tools give you a +1 item bonus to the check. Different
+      sets are needed for different work, as determined by the GM; for example, blacksmith's
+      tools differ from woodworker's tools.
+    hands: 2
+    level: 3
+    name: Artisan's Tools (Sterling)
+    price_gp: 50.0
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: HEALERS-TOOLS-EXPANDED_CRB
+  item_info:
+    bulk: 1.0
+    descr: This kit of bandages, herbs, and suturing tools is necessary for Medicine
+      checks to Administer First Aid, Treat Disease, Treat Poison, or Treat Wounds.
+      Expanded healer's tools provide a +1 item bonus to such checks. When you carry
+      the tools from place to place, you keep many of the components handy on your
+      person, in pockets or bandoliers.
+    hands: 2
+    level: 3
+    name: Healer's Tools (Expanded)
+    price_gp: 50.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: MUSICAL-INSTRUMENT-VIRTUOSO-HANDHELD_CRB
+  item_info:
+    bulk: 1.0
+    descr: Handheld instruments include bagpipes, a small set of chimes, small drums,
+      fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly
+      sized instruments. The GM might rule that an especially large handheld instrument
+      (like a tuba) has greater Bulk. \n\n A virtuoso instrument gives a +1 item bonus
+      to Performance checks using that instrument.
+    hands: 2
+    level: 3
+    name: Musical Instrument (Virtuoso Handheld)
+    price_gp: 50.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: ALCHEMISTS-TOOLS-EXPANDED_CRB
+  item_info:
+    bulk: 2.0
+    descr: These beakers and chemicals can be used to set up a mobile alchemical laboratory.
+      Expanded alchemist's tools give a +1 item bonus to Crafting checks to create
+      alchemical items. When you carry the tools from place to place, you keep many
+      of the components handy on your person, in pockets or bandoliers.
+    hands: 2
+    level: 3
+    name: Alchemist's Tools (Expanded)
+    price_gp: 55.0
+    source:
+    - abbr: CRB
+      page_start: 287
+      page_stop: 287
+    traits: null
+- item_code: SNARE-KIT-SPECIALIST_CRB
+  item_info:
+    bulk: 2.0
+    descr: This kit contains tools and materials for creating snares. A snare kit
+      allows you to Craft snares using the Crafting skill. A specialist snare kit
+      gives you a +1 item bonus to the check.
+    hands: 2
+    level: 3
+    name: Snare Kit (Specialist)
+    price_gp: 55.0
+    source:
+    - abbr: CRB
+      page_start: 291
+      page_stop: 291
+    traits: null
+- item_code: MUSICAL-INSTRUMENT-VIRTUOSO-HEAVY_CRB
+  item_info:
+    bulk: 16.0
+    descr: 'Handheld instruments include bagpipes, a small set of chimes, small drums,
+      fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly
+      sized instruments. The GM might rule that an especially large handheld instrument
+      (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full
+      set of chimes, and keyboard instruments are less portable and generally need
+      to be stationary while played. \n\n A virtuoso instrument gives a +1 item bonus
+      to Performance checks using that instrument. '
+    hands: 2
+    level: 3
+    name: Musical Instrument (Virtuoso Heavy)
+    price_gp: 100.0
+    source:
+    - abbr: CRB
+      page_start: 290
+      page_stop: 290
+    traits: null
+- item_code: BATTLE-AXE_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: These axes are designed explicitly as weapons, rather than tools. They
+      typically weigh less, with a shaft reinforced with metal bands or bolts, and
+      have a sharper blade, making them ideal for chopping limbs rather than wood.
+    dice_size: 8
+    hands: '1'
+    name: Battle Axe
+    price_cp: 10
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 280
+      page_stop: 280
+    traits:
+    - Sweep
+    weaponcategory: Martial
+    weapongroup: Axe
+- item_code: GNOME-HOOKED-HAMMER_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Bludgeoning
+    descr: "This gnome tool and weapon features a hammer at one end and a curved pick\
+      \ on the other. It\u2019s such a strange and awkward weapon that others think\
+      \ the gnomes are slightly erratic for using it."
+    dice_size: 6
+    hands: '1'
+    name: Gnome Hooked Hammer
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Gnome
+    - Trip
+    - Two-Hand
+    - Versatile
+    - Versatile P
+    - Two-Hand d10
+    weaponcategory: Martial
+    weapongroup: Hammer
+- item_code: LIGHT-PICK_CRB
+  item_info:
+    bulk: '0.1'
+    damagetype: Piercing
+    descr: A light pick is a modified mining implement with a wooden shaft ending
+      in a pick head crafted more to pierce armor and flesh than chip rocks.
+    dice_size: 4
+    hands: '1'
+    name: Light Pick
+    price_cp: 40
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Agile
+    - Fatal
+    - Fatal d8
+    weaponcategory: Martial
+    weapongroup: Pick
+- item_code: TEMPLE-SWORD_CRB
+  item_info:
+    bulk: '1'
+    damagetype: Slashing
+    descr: This heavy blade is favored by guardians of religious sites. It has a distinctive,
+      crescent-shaped blade that seems to be a mix of a sickle and sword. It often
+      has holes drilled into the blade or the pommel so that bells or other holy trinkets
+      can be affixed to the weapon as an aid for prayer or mediation.
+    dice_size: 8
+    hands: '1'
+    name: Temple Sword
+    price_cp: 200
+    range: null
+    reload: null
+    source:
+    - abbr: CRB
+      page_start: 281
+      page_stop: 281
+    traits:
+    - Uncommon
+    - Monk
+    - Trip
+    weaponcategory: Martial
+    weapongroup: Sword
