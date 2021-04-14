@@ -3,6 +3,7 @@
 #This file initiates a store class, using data from the above json data and offers options to include pathfinder data
 #Pathfinder data can be found here, with minor changes to the files to make the items 5e compatible
 #https://gitlab.com/jrmiller82/pathfinder-2-sqlite/-/blob/master/data/weapons.yaml
+import os
 import random
 from pprint import pprint
 
@@ -15,11 +16,14 @@ class Store:
     #Current args: culture, remaining_stores, region_wealth
     # Location size and culture are provided by a Location class, so town.culture and town.location_size are the arguments provided
     def __init__(self, culture, store_type, region_wealth):
-        #Location size is passed by the Location class
+        #Static variables
+        outclasses_area = 0
+
+        #Class variables
         self.store_type = store_type
         self.name = self.find_valid_name(culture, self.store_type)
-        self.store_wealth = self.determine_store_wealth(region_wealth)
-        self.inventory = self.populate_stock(self.store_type, self.store_wealth, outclasses_area=True)
+        self.store_wealth = self.determine_store_wealth(region_wealth, outclasses_area)
+        self.inventory = self.populate_stock(self.store_type, self.store_wealth, outclasses_area)
         self.notable_npcs = self.create_npcs(culture, self.store_wealth)
     print("Creating store class")
 
@@ -50,43 +54,58 @@ class Store:
 
         return name
 
-    def determine_store_wealth(self, local_wealth):
+    def determine_store_wealth(self, local_wealth, outclasses_area):
         #This will set out how wealthy the local area is, and add in some variance to determine how wealthy the store is
-        outclasses_area = False
         upper_band, lower_band = ["Affluent","Prosperous", "Rich", "Strong"], ["Average", "Struggling", "Poor"]
         #Stores in upper column can have maximum 2 legendary artifacts, and minimum have a very rare item.
         #Stores in lower column can have max 2 rare artifacts, and minimum one common magic item
 
         if local_wealth in upper_band:
-            print("This area is quite rich!")
+            wealth_description = "This area is quite rich!"
+            band = "upper"
             store_wealth = {"artifact": range(0,1), "legendary": range(0, 2), "very rare": range(1, 4), "rare": range(1,5),
                             "uncommon": range(0, 3), "common": range(0,3)}
 
         elif local_wealth in lower_band:
+            wealth_description = "This area has potential ... *cough*"
+            band = "lower"
             print("This area has potential ...")
             outclasses_area = random.randint(1, 20)
             store_wealth = {"very rare": range(0, 1), "rare": range(0,2),
                             "uncommon": range(0, 4), "common": range(0,4)}
             if outclasses_area == 19 or outclasses_area == 20:
                 print("The local store, {}, is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region ...".format(self.name))
+                wealth_description = "The local store, {}, is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region ...".format(self.name)
                 outclasses_area = True
+                band = "hero"
                 store_wealth = {"artifact": range(1, 2), "legendary": range(1, 2), "very rare": range(0, 2),
                                 "rare": range(0, 2),
                                 "uncommon": range(0, 4), "common": range(0, 4)}
 
         #Populate stock uses the wealth calculation to make a reasonable inventory for the store
-        inventory = self.populate_stock(self.store_type, local_wealth, outclasses_area)
 
-        store_wealth = {"store_wealth": store_wealth, "inventory": inventory}
+        store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
 
-        return local_wealth
+        return store_wealth
 
     @staticmethod
-    def populate_stock(store_type, local_wealth, outclasses_area):
+    def populate_stock(store_type, store_wealth, outclasses_area):
         #Calculates what could be available
-        with open("cleaned_data/items-base.yaml", "r+") as f:
+        inv = store_wealth["store_wealth"]
+        citizen_list, hero_list = os.listdir("cleaned_data/citizen_store_data"), os.listdir("cleaned_data/hero_store_data")
+        if store_type in hero_list:
+            prefix = "hero_store_data"
+        elif store_type in citizen_list:
+            prefix = "citizen_store_data"
+        else:
+            print("Store not found!")
+            return
+
+        with open("cleaned_data/{}/{}.yaml".format(prefix, store_type), "r+") as f:
             print()
             items_dict = yaml.safe_load(f)
+        #TODO: call the functions made in yaml_controller, needs to loop over values in store wealth and get assigned items first,
+        # then gets base items, ratio of 30/70 to 45/55 split between magic and regular
         first = list(items_dict.keys())[0]
         print("First is ", first)
         items = items_dict[first]
