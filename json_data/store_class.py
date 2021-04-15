@@ -9,6 +9,7 @@ from pprint import pprint
 
 import yaml
 
+from json_data import yaml_controller
 from name_data.name_controller import get_single_name
 
 
@@ -62,17 +63,18 @@ class Store:
 
         if local_wealth in upper_band:
             wealth_description = "This area is quite rich!"
-            band = "upper"
             store_wealth = {"artifact": range(0,1), "legendary": range(0, 2), "very rare": range(1, 4), "rare": range(1,5),
                             "uncommon": range(0, 3), "common": range(0,3)}
+            store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
+            return store_wealth
 
         elif local_wealth in lower_band:
             wealth_description = "This area has potential ... *cough*"
-            band = "lower"
             print("This area has potential ...")
             outclasses_area = random.randint(1, 20)
             store_wealth = {"very rare": range(0, 1), "rare": range(0,2),
                             "uncommon": range(0, 4), "common": range(0,4)}
+            store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
             if outclasses_area == 19 or outclasses_area == 20:
                 print("The local store, {}, is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region ...".format(self.name))
                 wealth_description = "The local store, {}, is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region ...".format(self.name)
@@ -81,31 +83,41 @@ class Store:
                 store_wealth = {"artifact": range(1, 2), "legendary": range(1, 2), "very rare": range(0, 2),
                                 "rare": range(0, 2),
                                 "uncommon": range(0, 4), "common": range(0, 4)}
+                store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
+                return store_wealth
+            else:
+                return store_wealth
 
         #Populate stock uses the wealth calculation to make a reasonable inventory for the store
 
-        store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
 
-        return store_wealth
 
     @staticmethod
     def populate_stock(store_type, store_wealth, outclasses_area):
         #Calculates what could be available
+        print("Populating stock")
         inv = store_wealth["store_wealth"]
         citizen_list, hero_list = os.listdir("cleaned_data/citizen_store_data"), os.listdir("cleaned_data/hero_store_data")
-        if store_type in hero_list:
+
+        if (store_type + ".yaml") in hero_list:
             prefix = "hero_store_data"
-        elif store_type in citizen_list:
+        elif (store_type + ".yaml") in citizen_list:
             prefix = "citizen_store_data"
         else:
             print("Store not found!")
             return
-
+        print(prefix)
+        print("About to open file using the following format!")
+        print("cleaned_data/{}/{}.yaml".format(prefix, store_type))
         with open("cleaned_data/{}/{}.yaml".format(prefix, store_type), "r+") as f:
-            print()
+            print("Opened file")
+            #Item dict is passed as a list
             items_dict = yaml.safe_load(f)
+            # print("Items dict is ", type(items_dict))
+            # pprint(items_dict)
         #TODO: call the functions made in yaml_controller, needs to loop over values in store wealth and get assigned items first,
         # then gets base items, ratio of 30/70 to 45/55 split between magic and regular
+        yaml_controller.assign_categories(items_dict, inventory_ratios=store_wealth)
         first = list(items_dict.keys())[0]
         print("First is ", first)
         items = items_dict[first]
