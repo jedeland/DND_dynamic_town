@@ -118,9 +118,9 @@ class Store:
         #TODO: call the functions made in yaml_controller, needs to loop over values in store wealth and get assigned items first,
         # then gets base items, ratio of 30/70 to 45/55 split between magic and regular
         yaml_controller.assign_categories(items_dict, inventory_ratios=store_wealth)
-        first = list(items_dict.keys())[0]
-        print("First is ", first)
-        items = items_dict[first]
+        # first = list(items_dict.keys())[0]
+        # print("First is ", first)
+        # items = items_dict[first]
         stock = ["Sword", "Dagger", "Horse"]
         print(stock)
         return stock
