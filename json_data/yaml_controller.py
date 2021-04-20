@@ -20,13 +20,17 @@ def assign_categories(yaml_file, inventory_ratios):
 def find_rarity(yaml_file, inventory_ratios):
     print()
     rarity_set = set()
-    print(type(rarity_set))
+    # print(type(rarity_set))
     for yaml_dict in yaml_file:
         try:
-            print()
-            print(yaml_dict["item_info"]["rarity"])
-            if "rarity" in yaml_dict["item_info"].keys():
-                rarity_set.add(yaml_dict["item_info"]["rarity"])
+            # print(yaml_dict["item_info"]["rarity"])
+
+            rarity_set.add(yaml_dict["item_info"]["rarity"])
         except:
-            print("There was an exception at - ", yaml_dict["item_code"])
+            #If value is pathfinder item it should be non magical regular item
+            if "CRB" in str(yaml_dict["item_code"]):
+                rarity_set.add("pathfinder_nonmagic")
+            else:
+                print("There was an exception at - ", yaml_dict["item_code"])
             pass
+    print(rarity_set)
