@@ -137,6 +137,7 @@ def populate_region():
     try:
         for i in range(town.number_of_stores):
             store_type = random.choice(stores)
+            print("Starting market gen using - {} {} {}".format(town.culture, store_type, town.economic_situation))
             store = Store(town.culture, store_type, town.economic_situation)
             used_stores.append(store_type)
             print("trying to make store", store.__dict__)
