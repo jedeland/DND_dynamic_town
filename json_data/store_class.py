@@ -58,13 +58,14 @@ class Store:
     def determine_store_wealth(self, local_wealth, outclasses_area):
         #This will set out how wealthy the local area is, and add in some variance to determine how wealthy the store is
         upper_band, lower_band = ["Affluent","Prosperous", "Rich", "Strong"], ["Average", "Struggling", "Poor"]
-        #Stores in upper column can have maximum 2 legendary artifacts, and minimum have a very rare item.
+        #Stores in upper column can have maximum 3 legendary artifacts, and minimum have a very rare item.
         #Stores in lower column can have max 2 rare artifacts, and minimum one common magic item
-
+        #TODO: convert ratios using percentage modifier
+        # See here https://stackoverflow.com/questions/14992521/python-weighted-random
         if local_wealth in upper_band:
             wealth_description = "This area is quite rich!"
-            store_wealth = {"artifact": range(0,1), "legendary": range(0, 2), "very rare": range(1, 4), "rare": range(1,5),
-                            "uncommon": range(0, 3), "common": range(0,3)}
+            store_wealth = {"artifact": range(0, 1), "legendary": range(0, 3), "very rare": range(1, 4), "rare": range(1,6),
+                            "uncommon": range(1, 8), "common": range(1, 10)}
             store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
             return store_wealth
 
@@ -72,17 +73,17 @@ class Store:
             wealth_description = "This area has potential ... *cough*"
             print("This area has potential ...")
             outclasses_area = random.randint(1, 20)
-            store_wealth = {"very rare": range(0, 1), "rare": range(0,2),
-                            "uncommon": range(0, 4), "common": range(0,4)}
+            store_wealth = {"legendary": range(0, 1), "very rare": range(0, 1), "rare": range(0,2),
+                            "uncommon": range(1, 3), "common": range(1, 5)}
             store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
             if outclasses_area == 19 or outclasses_area == 20:
                 print("The local store, {}, is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region ...".format(self.name))
                 wealth_description = "The local store, {}, is truly out of place, its fine goods and raiment's seem odd in this rather less fortunate region ...".format(self.name)
                 outclasses_area = True
                 band = "hero"
-                store_wealth = {"artifact": range(1, 2), "legendary": range(1, 2), "very rare": range(0, 2),
-                                "rare": range(0, 2),
-                                "uncommon": range(0, 4), "common": range(0, 4)}
+                store_wealth = {"artifact": range(1, 2), "legendary": range(1, 4), "very rare": range(1, 4),
+                                "rare": range(1, 3),
+                                "uncommon": range(1, 6), "common": range(2, 7)}
                 store_wealth = {"store_wealth": store_wealth, "wealth_description": wealth_description}
                 return store_wealth
             else:
@@ -117,7 +118,9 @@ class Store:
             # pprint(items_dict)
         #TODO: call the functions made in yaml_controller, needs to loop over values in store wealth and get assigned items first,
         # then gets base items, ratio of 30/70 to 45/55 split between magic and regular
+        print("Printing categories")
         yaml_controller.assign_categories(items_dict, inventory_ratios=store_wealth)
+        yaml_controller.find_rarity(items_dict, inventory_ratios=store_wealth)
         # first = list(items_dict.keys())[0]
         # print("First is ", first)
         # items = items_dict[first]
