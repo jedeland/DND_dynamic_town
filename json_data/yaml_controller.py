@@ -34,3 +34,13 @@ def find_rarity(yaml_file, inventory_ratios):
                 print("There was an exception at - ", yaml_dict["item_code"])
             pass
     print(rarity_set)
+    print("***")
+    rarity_bins = {
+        "non-magic": ["pathfinder_nonmagic", "none", "unknown"],
+        "uncommon": ["uncommon", "unknown (magic)"],
+        "common": ["common", "varies" ],
+        "rare": ["rare", "varies"],
+        "very rare": ["very rare", "varies", "unknown (magic)"],
+        "legendary": ["legendary"],
+        "artifact": ["artifact"]
+    }
