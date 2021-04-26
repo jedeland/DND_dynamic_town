@@ -131,7 +131,8 @@ def determine_region_culture(culture_list):
 
 def populate_region():
     parent_culture = determine_region_culture(culture_list=get_cultures())
-    stores = ["General_Store", "Wandmaker", "Alchemist", "Enchanter", "Scribe", "Blacksmith"]
+    #Re add wandmaker and other stores later, such as tavern, stable, wandmaker and fletcher
+    stores = ["General_Store", "Alchemist", "Enchanter", "Scribe", "Blacksmith"]
     town = Location(parent_culture)
     used_stores = []
     try:
@@ -143,6 +144,7 @@ def populate_region():
             print("trying to make store", store.__dict__)
     except Exception as e:
         print("Issue was ", e)
+        pass
     print(used_stores)
 
 
