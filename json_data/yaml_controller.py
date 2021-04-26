@@ -19,21 +19,21 @@ def assign_categories(yaml_file, inventory_ratios):
 
 def find_rarity(yaml_file, inventory_ratios):
     print()
-    # rarity_set = set()
-    # print(type(rarity_set))
-    # for yaml_dict in yaml_file:
-    #     try:
-    #         # print(yaml_dict["item_info"]["rarity"])
-    #
-    #         rarity_set.add(yaml_dict["item_info"]["rarity"])
-    #     except:
-    #         #If value is pathfinder item it should be non magical regular item
-    #         if "CRB" in str(yaml_dict["item_code"]):
-    #             rarity_set.add("pathfinder_nonmagic")
-    #         else:
-    #             print("There was an exception at - ", yaml_dict["item_code"])
-    #         pass
-    # print(rarity_set)
+    rarity_set = set()
+    print(type(rarity_set))
+    for yaml_dict in yaml_file:
+        try:
+            # print(yaml_dict["item_info"]["rarity"])
+
+            rarity_set.add(yaml_dict["item_info"]["rarity"])
+        except:
+            #If value is pathfinder item it should be non magical regular item
+            if "CRB" in str(yaml_dict["item_code"]):
+                rarity_set.add("pathfinder_nonmagic")
+            else:
+                print("There was an exception at - ", yaml_dict["item_code"])
+            pass
+    print(rarity_set)
     print("***")
     rarity_bins = {
         "non-magic": ["pathfinder_nonmagic", "none", "unknown"],
@@ -46,9 +46,29 @@ def find_rarity(yaml_file, inventory_ratios):
     }
     print(rarity_bins)
     inventory_dict = {}
-    for result in yaml_file:
-        print(result["item_info"].keys())
-        if "rarity" in result["item_info"].keys():
-            print("Value is DND item")
-        else:
-            print("Value is pathfinder item")
+    for i in rarity_set:
+        #Initialise outer dict
+        inventory_dict[str(i)] = list()
+    try:
+        for result in yaml_file:
+            # print(result["item_info"].keys())
+            if "rarity" in result["item_info"].keys():
+                result_rarity = result["item_info"]["rarity"]
+                inventory_dict[result_rarity].append(result)
+            else:
+                pass
+                # print("Value is pathfinder item")
+        #TODO: add way to change dict keys to inventory_bins before choice selection
+        #Choose values
+        for k, v in inventory_dict.items():
+            if k in inventory_ratios.keys():
+                v = random.sample(v, inventory_ratios.get(k))
+                inventory_dict[k] = v
+                print("New sampled list: ", inventory_dict[k])
+            else:
+                pass
+        for k, v in inventory_dict.items():
+            print(len(v))
+    except Exception as e:
+        print("The exception in rarirty assignment was ", e)
+        pass
