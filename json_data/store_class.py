@@ -97,9 +97,8 @@ class Store:
     def populate_stock(store_type, store_wealth, outclasses_area):
         #Calculates what could be available
         print("Populating stock")
-        inv = store_wealth["store_wealth"]
         citizen_list, hero_list = os.listdir("cleaned_data/citizen_store_data"), os.listdir("cleaned_data/hero_store_data")
-
+        print("Still working here")
         if (store_type + ".yaml") in hero_list:
             prefix = "hero_store_data"
         elif (store_type + ".yaml") in citizen_list:
