@@ -59,16 +59,20 @@ def find_rarity(yaml_file, inventory_ratios):
                 pass
                 # print("Value is pathfinder item")
         #TODO: add way to change dict keys to inventory_bins before choice selection
-        #Choose values
+        # Choose values
         for k, v in inventory_dict.items():
+            print("K is ", k)
+            print("Keys is ", inventory_ratios.keys())
             if k in inventory_ratios.keys():
                 v = random.sample(v, inventory_ratios.get(k))
+                print("Sample length is, ", len(v))
                 inventory_dict[k] = v
-                print("New sampled list: ", inventory_dict[k])
+                #print("New sampled list: ", inventory_dict[k])
             else:
                 pass
         for k, v in inventory_dict.items():
-            print(len(v))
+            print("Length is : ", len(v))
+            pprint(k)
     except Exception as e:
         print("The exception in rarirty assignment was ", e)
         pass
