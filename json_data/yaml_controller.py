@@ -62,8 +62,10 @@ def find_rarity(yaml_file, inventory_ratios):
         # Choose values
         for k, v in inventory_dict.items():
             print("K is ", k)
-            print("Keys is ", inventory_ratios.keys())
-            if k in inventory_ratios.keys():
+            print("Keys is ", inventory_ratios["store_wealth"].keys())
+            if k in inventory_ratios["store_wealth"].keys():
+                print("K was found! ", k)
+                print("V is ", v)
                 v = random.sample(v, inventory_ratios.get(k))
                 print("Sample length is, ", len(v))
                 inventory_dict[k] = v
